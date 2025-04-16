@@ -1,0 +1,22 @@
+@mixin geist {
+  $path: '../fonts';
+  @font-face {
+    font-family: 'Geist';
+    src: local('Geist-Regular'), local('Geist-Regular'),
+      url(#{$path}/Geist-Regular.woff2) format('woff2'),
+      url(#{$path}/Geist-Regular.woff) format('woff'),
+      url(#{$path}/Geist-Regular.ttf) format('ttf');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Geist';
+    src: local('Geist-Medium'), local('Geist-Medium'),
+      url(#{$path}/Geist-Medium.woff2) format('woff2'),
+      url(#{$path}/Geist-Medium.woff) format('woff'),
+      url(#{$path}/Geist-Medium.ttf) format('ttf');
+    font-weight: 500;
+    font-style: normal;
+  }
+}
+@include geist();

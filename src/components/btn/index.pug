@@ -1,0 +1,11 @@
+include ../svg.pug
+mixin btn(title, theme,size, type='button', iconLeft, iconRight )
+  - const classTheme = theme ? `btn--${theme}` :''
+  - const classSize = size ? `btn-${size}` :''
+  button(class="btn" class=[classTheme,classSize] type=type )&attributes(attributes)
+    if(iconLeft)
+      +svg(iconLeft)
+    | #{title}
+    if(iconRight)
+      +svg(iconRight)
+

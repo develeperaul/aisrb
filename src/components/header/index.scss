@@ -1,0 +1,53 @@
+header {
+  @apply py-3 bg-surface-dark_400;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @screen lg {
+    display: grid;
+    grid-template-columns: 226px 1fr 226px;
+  }
+  &__middle {
+    display: none;
+    @screen lg {
+      display: block;
+      justify-self: center;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+  }
+  &__right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+    &--actions {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  &__contacts {
+    a[href^='tel:'] {
+      @apply text-text_000 text-body_xs;
+    }
+    address {
+      @apply text-surface-dark_100 text-body_xs;
+    }
+  }
+  .logo {
+    img {
+      width: 84px;
+      height: 36px;
+    }
+  }
+  .burger {
+    @screen lg {
+      display: none;
+    }
+  }
+}

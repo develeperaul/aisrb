@@ -1,0 +1,50 @@
+include ../btn/index.pug
+include ../iconbtn/index.pug
+include ../link/index.pug
+footer
+  .container 
+    .footer 
+      .footer__top
+        .footer__top--left
+          .footer__descr
+            a.logo(href="/" class="logo")
+              img(src=require('/assets/icons/logo.svg'), alt="лого") 
+            p.text Опубликованная на сайте информация носит рекламный характер и не является публичной офертой
+          .footer__contacts
+            .footer__contact.tel 
+              h4 Телефон
+              a(href="tel:+73472242040") +7 (347) 224-20-40
+            .footer__contact.address
+              h4 Адрес
+              address г. Уфа, ул. Обская, 7
+          .footer__actions
+            +btn('Записаться на встречу', 'primary')
+            .socials  
+              +iconbtn('whatsapp', 'primary')
+              +iconbtn('youtube', 'primary')
+              +iconbtn('vk', 'primary')
+              +iconbtn('ok', 'primary')
+        .footer__top--right
+          .footer__links
+            .links
+              .links__item
+                h4 Объекты
+                ul.list 
+                  li
+                    +link('/', 'Новый Фамильный', 'tertiary')
+              .links__item
+                h4 Объекты
+                ul.list 
+                  li
+                    +link('/', 'Новый Фамильный', 'tertiary')
+              .links__item
+                h4 Объекты
+                ul.list 
+                  li
+                    +link('/', 'Новый Фамильный', 'tertiary')
+              .links__item
+                h4 Объекты
+                ul.list 
+                  li
+                    +link('/', 'Новый Фамильный', 'tertiary')
+      .footer__bottom

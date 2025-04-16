@@ -1,0 +1,165 @@
+.range-filter {
+  @apply grid gap-2;
+  .multi-range-slider {
+    position: relative;
+    width: 80%;
+    height: 32px;
+    display: block;
+  }
+
+  input[type='range'] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  input[type='range']:focus {
+    outline: none;
+  }
+
+  input[type='range']::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    pointer-events: all;
+    -webkit-appearance: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #2e96e1;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.625 10L3.625 6L7.625 2' stroke='%232E96E1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+  }
+
+  /* All the same stuff for Firefox */
+  input[type='range']::-moz-range-thumb {
+    pointer-events: all;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #2e96e1;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.625 10L3.625 6L7.625 2' stroke='%232E96E1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+  }
+
+  input[type='range']::-moz-focus-outer {
+    border: 0;
+  }
+
+  /* All the same stuff for IE */
+  input[type='range']::-ms-thumb {
+    pointer-events: all;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #2e96e1;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.625 10L3.625 6L7.625 2' stroke='%232E96E1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+  }
+
+  input.input-left[type='range']::-webkit-slider-thumb {
+    transform: rotate(180deg);
+  }
+  /*
+  input[type='range'].hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 10px rgba(38, 152, 217, 0.1);
+  }
+  input[type='range'].hover::-moz-range-thumb {
+    box-shadow: 0 0 0 10px rgba(38, 152, 217, 0.1);
+  }
+  input[type='range'].hover::-ms-thumb {
+    box-shadow: 0 0 0 10px rgba(38, 152, 217, 0.1);
+  }
+  input[type='range'].active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 20px rgba(38, 152, 217, 0.2);
+  }
+  input[type='range'].active::-moz-range-thumb {
+    box-shadow: 0 0 0 20px rgba(38, 152, 217, 0.2);
+  }
+  input[type='range'].active::-ms-thumb {
+    box-shadow: 0 0 0 20px rgba(38, 152, 217, 0.2);
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+  input[type='range']:focus::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+  input[type='range']::-moz-range-track {
+    background: transparent;
+  }
+  input[type='range']::-ms-track {
+    background: transparent;
+  }
+  input[type='range']::-ms-fill-lower {
+    background: transparent;
+  }
+  input[type='range']:focus::-ms-fill-lower {
+    background: transparent;
+  }
+  input[type='range']::-ms-fill-upper {
+    background: transparent;
+  }
+  input[type='range']:focus::-ms-fill-upper {
+    background: transparent;
+  }
+  */
+  .slider {
+    position: absolute;
+    width: 100%;
+    top: 17px;
+    z-index: 1;
+    height: 2px;
+  }
+
+  .slider > .track {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #ededed;
+  }
+
+  .slider > .range {
+    position: absolute;
+    z-index: 2;
+    left: 25%;
+    right: 25%;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #2698d9;
+  }
+
+  .price__wrapper {
+    @apply text-0_75 leading-160 text-secondary01 flex justify-between w-[80%];
+  }
+}

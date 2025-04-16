@@ -1,0 +1,126 @@
+.btn {
+  @apply text-body_m inline-flex items-center text-text_000 justify-between rounded-3md;
+  @apply transition-all duration-300 ease-linear;
+  outline-offset: -2px;
+  height: 56px;
+  padding-inline: 24px;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  svg {
+    @apply text-secondary_500;
+    height: 24px;
+    width: 24px;
+  }
+  &:disabled {
+    @apply cursor-not-allowed;
+  }
+  &:not([disabled]):hover {
+    @apply bg-surface-dark_100;
+  }
+  &:not([disabled]):active {
+    @apply bg-surface-dark_200;
+  }
+  &:disabled {
+    @apply outline-1 outline-surface-dark_300 text-surface-dark_300;
+    svg {
+      @apply text-surface-dark_300;
+    }
+  }
+
+  &--primary {
+    @apply bg-text_000 text-text_950;
+    svg {
+      @apply text-secondary_500;
+    }
+    &:not([disabled]):hover {
+      @apply bg-secondary_400;
+      svg {
+        @apply text-text_950;
+      }
+    }
+    &:not([disabled]):active {
+      @apply bg-secondary_500;
+    }
+    &:disabled {
+      @apply bg-surface-dark_300 text-surface-dark_200;
+
+      svg {
+        @apply text-surface-dark_200;
+      }
+    }
+  }
+  &--secondary {
+    @apply bg-secondary_500 text-text_000;
+    svg {
+      @apply text-text_000;
+    }
+    &:not([disabled]):hover {
+      @apply bg-secondary_400;
+    }
+    &:not([disabled]):active {
+      @apply bg-secondary_500;
+    }
+    &:disabled {
+      @apply bg-surface-dark_300 text-surface-dark_200;
+      svg {
+        @apply text-surface-dark_200;
+      }
+    }
+  }
+  &--teartiary {
+    @apply bg-surface-dark_300 text-text_000;
+    svg {
+      @apply text-secondary_500;
+    }
+    &:not([disabled]):hover {
+      @apply bg-surface-dark_100;
+    }
+    &:not([disabled]):active {
+      @apply bg-surface-dark_200;
+    }
+    &:disabled {
+      @apply bg-surface-dark_300 text-surface-dark_200;
+      svg {
+        @apply text-surface-dark_200;
+      }
+    }
+  }
+
+  &--border {
+    @apply outline outline-surface-dark_200 outline-1 bg-transparent text-text_000;
+
+    svg {
+      @apply text-secondary_500;
+    }
+    &:not([disabled]):hover {
+      @apply bg-surface-dark_100 outline-none;
+    }
+    &:not([disabled]):active {
+      @apply bg-surface-white_200 outline-none;
+    }
+    &:disabled {
+      @apply text-surface-dark_200;
+
+      svg {
+        @apply text-surface-dark_300;
+      }
+    }
+  }
+
+  &-sm {
+    height: 48px;
+    padding-inline: 20px;
+  }
+  &-xs {
+    font-size: 14px;
+    line-height: 20px;
+    gap: 8px;
+    padding-inline: 12px;
+    height: 36px;
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}

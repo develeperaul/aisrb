@@ -1,0 +1,4 @@
+mixin link(href, text, theme, size)
+  - const classTheme = theme ? `link--${theme}` :''
+  - const classSize = size ? `link-${size}` :''
+  a(href=href class="link" class=[classTheme,classSize]) #{text}

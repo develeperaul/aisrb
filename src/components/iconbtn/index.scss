@@ -1,0 +1,95 @@
+.iconbtn {
+  @apply text-body_m  text-text_000 rounded-3md;
+  @apply transition-all duration-300 ease-linear;
+  outline-offset: -2px;
+  height: 56px;
+  padding-inline: 16px;
+
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+  &:disabled {
+    @apply cursor-not-allowed;
+  }
+  &:not([disabled]):hover {
+    @apply bg-surface-dark_100;
+  }
+  &:not([disabled]):active {
+    @apply bg-surface-dark_200;
+  }
+  &:disabled {
+    @apply bg-surface-dark_200 text-surface-dark_300;
+  }
+
+  &--primary {
+    @apply bg-surface-dark_300 text-text_000;
+
+    &:not([disabled]):hover {
+      @apply bg-secondary_400 text-text_000;
+    }
+    &:not([disabled]):active {
+      @apply bg-secondary_500 text-text_000;
+    }
+    &:disabled {
+      @apply bg-surface-dark_300 text-surface-dark_200;
+    }
+  }
+  &--secondary {
+    @apply bg-text_000 text-primary_500;
+    &:not([disabled]):hover {
+      @apply bg-secondary_400 text-primary_500;
+    }
+    &:not([disabled]):active {
+      @apply bg-secondary_500 text-primary_500;
+    }
+    &:disabled {
+      @apply bg-surface-dark_300 text-surface-dark_200;
+    }
+  }
+  &--tertiary {
+    @apply bg-secondary_500 text-text_000;
+    &:not([disabled]):hover {
+      @apply bg-secondary_400 text-text_000;
+    }
+    &:not([disabled]):active {
+      @apply bg-secondary_500 text-text_000;
+    }
+    &:disabled {
+      @apply bg-transparent text-surface-dark_300;
+    }
+  }
+  &--border {
+    @apply outline outline-surface-dark_200 outline-1 bg-transparent text-text_000;
+    &:not([disabled]):hover {
+      @apply bg-surface-dark_100 outline-none text-text_000;
+    }
+    &:not([disabled]):active {
+      @apply bg-surface-white_200 outline-none text-text_000;
+    }
+    &:disabled {
+      @apply text-surface-dark_300 outline outline-surface-dark_300 outline-1 bg-transparent;
+    }
+  }
+
+  &-sm {
+    height: 48px;
+    padding-inline: 12px;
+  }
+  &-xs {
+    padding-inline: 8px;
+    height: 36px;
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  &-xxs {
+    padding-inline: 4px;
+    height: 24px;
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

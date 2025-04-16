@@ -1,0 +1,10 @@
+@tailwind base;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-dark_400;
+  }
+}

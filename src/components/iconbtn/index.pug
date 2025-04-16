@@ -1,0 +1,11 @@
+include ../svg.pug
+mixin iconbtn(icon, theme,size, type='button',href)
+  - const classTheme = theme ? `iconbtn--${theme}` :''
+  - const classSize = size ? `iconbtn-${size}` :''
+  if(type == "link")
+    a( href=href class="iconbtn" class=[classTheme,classSize] )&attributes(attributes)
+        +svg(icon)
+  else
+    button(class="iconbtn" class=[classTheme,classSize] type=type )&attributes(attributes)
+        +svg(icon)
+

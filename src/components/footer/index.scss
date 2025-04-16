@@ -1,0 +1,72 @@
+footer {
+  @apply bg-surface-dark_500 text-text_000;
+  .footer {
+    &__top {
+      @apply grid gap-6 lg:grid-cols-2 lg:gap-5 pt-12 pb-6 lg:pb-8 xl:pt-16;
+      &--left {
+        & > :nth-child(1) {
+          @apply mb-6 lg:mb-8;
+        }
+        & > :nth-child(2) {
+          @apply mb-8;
+        }
+      }
+      &--right {
+        @apply grid-cols-2;
+      }
+    }
+    &__bottom {
+      @apply border-t border-surface-dark_300 pt-6 pb-8 lg:pt-8;
+    }
+    &__descr {
+      @apply grid gap-4 lg:grid-cols-2;
+    }
+    &__contacts {
+      @apply grid gap-4 lg:grid-cols-2;
+    }
+    &__actions {
+      @apply grid gap-4 lg:grid-cols-2 lg:justify-items-start;
+    }
+    &__contact {
+      @apply grid gap-3;
+      & h4 {
+        @apply text-surface-dark_100 text-body_xs;
+      }
+      & address,
+      & a {
+        @apply font-medium text-body_m lg:text-h6 xl:text-h4;
+      }
+      & address {
+        font-style: normal;
+      }
+    }
+
+    .logo {
+      @apply w-[111px] h-[47px];
+      img {
+        width: 100%;
+      }
+    }
+    .text {
+      @apply text-surface-dark_100 text-body_xs lg:w-[242px];
+    }
+
+    .socials {
+      @apply inline-flex gap-2;
+    }
+    .links {
+      @apply grid gap-x-4 gap-y-6 grid-cols-2 lg:grid-cols-4;
+      &__item {
+        h4 {
+          @apply text-surface-dark_100 text-body_xs mb-3;
+        }
+        .list {
+          @apply grid gap-2.5;
+          .link {
+            @apply text-body_s xl:text-body_m;
+          }
+        }
+      }
+    }
+  }
+}
