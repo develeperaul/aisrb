@@ -1,0 +1,21 @@
+.flat-slider {
+  position: relative;
+  height: 100%;
+  .swiper-slide {
+    @apply relative overflow-hidden rounded-xl;
+    img {
+      @apply h-[325px] w-[325px] object-cover mx-auto;
+    }
+  }
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      @apply bg-surface-white_100;
+      max-width: 14.5px;
+      width: 100%;
+      height: 2px;
+    }
+    .swiper-pagination-bullet-active {
+      @apply bg-surface-white_400;
+    }
+  }
+}

@@ -1,0 +1,175 @@
+.range-filter {
+  @apply grid gap-2;
+  &__label {
+    @apply text-text_400 text-body_xs font-medium;
+  }
+  &__input {
+    @apply bg-surface-dark_300 rounded-lg p-4 relative;
+  }
+  .multi-range-slider {
+    position: absolute;
+    bottom: calc(0px - 3px);
+    width: calc(100% - 32px);
+    height: 8px;
+    display: block;
+  }
+
+  input[type='range'] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  input[type='range']:focus {
+    outline: none;
+  }
+
+  input[type='range']::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    pointer-events: all;
+    -webkit-appearance: none;
+    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    background-color: #00b0a4;
+    border-radius: 50%;
+  }
+
+  /* All the same stuff for Firefox */
+  input[type='range']::-moz-range-thumb {
+    pointer-events: all;
+    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    background-color: #00b0a4;
+    border-radius: 50%;
+  }
+
+  input[type='range']::-moz-focus-outer {
+    border: 0;
+  }
+
+  /* All the same stuff for IE */
+  input[type='range']::-ms-thumb {
+    pointer-events: all;
+    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    background-color: #00b0a4;
+    border-radius: 50%;
+  }
+
+  input.input-left[type='range']::-webkit-slider-thumb {
+    transform: rotate(180deg);
+  }
+  /*
+  input[type='range'].hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 10px rgba(38, 152, 217, 0.1);
+  }
+  input[type='range'].hover::-moz-range-thumb {
+    box-shadow: 0 0 0 10px rgba(38, 152, 217, 0.1);
+  }
+  input[type='range'].hover::-ms-thumb {
+    box-shadow: 0 0 0 10px rgba(38, 152, 217, 0.1);
+  }
+  input[type='range'].active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 20px rgba(38, 152, 217, 0.2);
+  }
+  input[type='range'].active::-moz-range-thumb {
+    box-shadow: 0 0 0 20px rgba(38, 152, 217, 0.2);
+  }
+  input[type='range'].active::-ms-thumb {
+    box-shadow: 0 0 0 20px rgba(38, 152, 217, 0.2);
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+  input[type='range']:focus::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+  input[type='range']::-moz-range-track {
+    background: transparent;
+  }
+  input[type='range']::-ms-track {
+    background: transparent;
+  }
+  input[type='range']::-ms-fill-lower {
+    background: transparent;
+  }
+  input[type='range']:focus::-ms-fill-lower {
+    background: transparent;
+  }
+  input[type='range']::-ms-fill-upper {
+    background: transparent;
+  }
+  input[type='range']:focus::-ms-fill-upper {
+    background: transparent;
+  }
+  */
+  .slider {
+    position: absolute;
+    width: 100%;
+    top: 3px;
+    z-index: 1;
+    height: 2px;
+  }
+
+  .slider > .track {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #ededed;
+  }
+
+  .slider > .range {
+    position: absolute;
+    z-index: 2;
+    left: 25%;
+    right: 25%;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #00b0a4;
+  }
+
+  .price__wrapper {
+    @apply flex justify-between relative;
+    .prefix {
+      @apply text-surface-white_100 text-body_s;
+      &:first-child {
+        @apply mr-2;
+      }
+      &:last-child {
+        @apply ml-1;
+      }
+    }
+    .number {
+      @apply text-text_000 text-body_s;
+    }
+    .separator {
+      @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    }
+  }
+}

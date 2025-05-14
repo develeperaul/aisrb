@@ -1,0 +1,25 @@
+.minispecification {
+  @apply rounded-xl p-4 md:p-6 bg-surface-dark_400;
+  &__icon {
+    @apply mb-6 xl:mb-8 text-secondary_500;
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  &__content {
+    @apply grid gap-4 lg:gap-2;
+  }
+  &__title {
+    @apply text-text_000 text-body_m  font-semibold lg:text-h6;
+  }
+  &__text {
+    @apply text-text_400 text-body_s lg:text-body_m;
+  }
+  &-primary {
+    @apply bg-surface-dark_200;
+  }
+  &-secondary {
+    @apply bg-surface-dark_300;
+  }
+}

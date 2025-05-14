@@ -1,4 +1,129 @@
 @tailwind components;
 @layer components {
   /* start core */
+  .tab-content {
+    @apply hidden;
+    &.active {
+      @apply block;
+    }
+  }
+  .topcontent {
+    h4 {
+      @apply text-text_000;
+    }
+    p {
+      @apply text-text_400;
+    }
+    &__04 {
+      h4 {
+        font-family: 'HeadingPro';
+      }
+      p {
+        @apply text-body_s;
+      }
+    }
+    &__05 {
+      h4 {
+        @apply text-h6 font-semibold;
+      }
+      p {
+        @apply text-body_s;
+      }
+    }
+    &__06 {
+      h4 {
+        @apply text-body_m font-semibold;
+      }
+      p {
+        @apply text-body_s;
+      }
+    }
+  }
+
+  .filter-actions {
+    @apply grid gap-4;
+    &__rooms {
+      @apply grid gap-2;
+      &--label {
+        @apply text-text_400  text-body_xs;
+      }
+      &--btns {
+        @apply flex gap-4;
+        & > * {
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .menumap {
+    @apply hidden xl:block;
+    width: 274px;
+  }
+  .menumap-list {
+    @apply grid gap-3 p-3 bg-text_000 rounded-xl;
+  }
+  .btnmap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    width: 100%;
+    @apply text-body_s font-medium px-4 py-3 rounded-3md hover:bg-surface-white_50;
+    &.active {
+      @apply bg-surface-white_50;
+    }
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      & > .icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        display: grid;
+        place-content: center;
+      }
+    }
+    &__right {
+      @apply text-text_400 text-body_m;
+    }
+  }
+  .card-menu {
+    @apply p-6 bg-surface-dark_400 rounded-xl grid gap-6 content-start;
+    width: 465px;
+    grid-template-rows: auto 1fr;
+    max-height: 608px;
+    overflow: hidden;
+    &__top {
+      @apply flex gap-3;
+      & > * {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    &__list {
+      @apply overflow-auto;
+    }
+    &__item > div {
+      & > *:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .card-map {
+    @apply p-6 bg-surface-dark_200 rounded-xl grid gap-6;
+
+    &__title {
+      @apply text-h6 font-semibold text-text_000;
+    }
+    &__text {
+      @apply text-text_400 text-body_s;
+    }
+    &__item {
+      .card-map__title {
+        @apply text-body_m;
+      }
+    }
+  }
 }

@@ -1,0 +1,26 @@
+.about {
+  &__wrapper {
+    @apply grid gap-8;
+  }
+  &__top {
+    @apply grid gap-3 lg:grid-cols-2 lg:gap-4;
+  }
+  &__bottom {
+    @apply flex gap-3 overflow-auto -mx-4 lg:mx-0 lg:grid lg:grid-cols-2 xl:grid-cols-4;
+    & > div {
+      @apply w-[256px] shrink-0 lg:w-full xl:w-auto;
+    }
+  }
+  &__content {
+    @apply grid gap-8 lg:gap-6 lg:content-center;
+  }
+  &__bg {
+    @apply h-[205px] lg:h-[288px] xl:h-[400px] rounded-xl overflow-hidden -mx-4 lg:mx-0;
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+  .text {
+    @apply grid gap-4 text-body_s text-text_400 max-w-[465px];
+  }
+}

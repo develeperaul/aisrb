@@ -1,0 +1,44 @@
+.place-card {
+  @apply p-4 lg:p-6 grid lg:grid-cols-[48px_1fr] xl:grid-cols-1 lg:gap-6 xl:gap-0 bg-surface-dark_300 rounded-xl;
+  &__icon {
+    @apply mb-6 lg:mb-0 xl:mb-6 w-12 h-12 grid place-content-center bg-surface-dark_200 rounded-xl;
+    @screen xl {
+      width: 64px;
+      height: 64px;
+    }
+    & img {
+      width: 24px;
+      height: 24px;
+      @screen xl {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+  &__title {
+    @apply text-body_m font-semibold mb-4 text-text_000;
+  }
+  &__tags {
+    @apply flex flex-nowrap gap-1;
+    &--item {
+      @apply rounded-lg bg-surface-dark_200 text-text_000 py-1 px-2 text-body_xs;
+    }
+    &--count {
+      display: flex;
+      align-items: center;
+      &::before {
+        content: '';
+        background-image: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.75 8C8.75 8.14834 8.70601 8.29334 8.6236 8.41668C8.54119 8.54001 8.42406 8.63614 8.28701 8.69291C8.14997 8.74967 7.99917 8.76453 7.85368 8.73559C7.7082 8.70665 7.57456 8.63522 7.46967 8.53033C7.36478 8.42544 7.29335 8.2918 7.26441 8.14632C7.23547 8.00083 7.25032 7.85003 7.30709 7.71299C7.36386 7.57594 7.45999 7.45881 7.58332 7.3764C7.70666 7.29399 7.85166 7.25 8 7.25C8.19891 7.25 8.38968 7.32902 8.53033 7.46967C8.67098 7.61032 8.75 7.80109 8.75 8Z" fill="%235C677F"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+        @apply text-surface-dark_100;
+      }
+    }
+  }
+}

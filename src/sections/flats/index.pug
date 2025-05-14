@@ -1,0 +1,23 @@
+include ../../components/minispecification/index.pug
+include ../../components/btn/index.pug
+include ../../components/svg.pug
+
+section.section.section3.section-rounded.flats 
+  .container 
+    .flats__wrapper
+      .flats__top
+        
+      .flats__bottom
+        .flats-list.col
+          each val in [1, 2, 3, 4]
+            include ../../components/flatpreview/index.pug
+        .flats-list.row
+          each val in [1, 2, 3, 4]
+            include ../../components/flatpreview/index2.pug
+        .flats-no
+          .flats-no__icon
+            +svg('binocl', 24)
+          h2.flats-no__title Квартиры не найдены
+          p.flats-no__text Попробуйте изменить параметры поиска или уточнить фильтры
+          +btn('Сбросить фильтр','primary2', '', '', 'xcircle')(class="flats-no__action")
+          

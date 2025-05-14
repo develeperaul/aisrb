@@ -1,0 +1,17 @@
+include ../../components/btn/index.pug
+section.section.section3.section-offset.section-rounded.special-offers
+  .container 
+    .section__top 
+      .left 
+        h2.title Спецпредложения
+    .special-offers__wrapper
+      .special-offers__lg
+        .special-offers__list
+          each val in [1, 2, 3, 4]
+            include ../../components/flatpreview/index3.pug
+      .special-offers__xl
+        .special-offers__list 
+          each val in [1, 2, 3, 4]
+            include ../../components/flatpreview/index.pug
+      .special-offers__action
+        +btn('Смотреть все квартиры','', '')

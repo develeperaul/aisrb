@@ -1,0 +1,25 @@
+@import './cell/index.scss';
+
+.timer {
+  @apply bg-surface-dark_300 inline-grid rounded-xl p-6;
+  &__title {
+    @apply text-text_000 mb-2;
+  }
+  &__content {
+    @apply inline-flex gap-5;
+    & > *:not(:last-child) {
+      position: relative;
+      &::before {
+        @apply text-body_xs text-surface-dark_50;
+        content: ':';
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &__action {
+    @apply flex justify-between mt-6;
+  }
+}

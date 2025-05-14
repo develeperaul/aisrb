@@ -1,0 +1,55 @@
+.general-slider {
+  position: relative;
+  height: 580px;
+  @screen lg {
+    height: 538px;
+  }
+  @screen xl {
+    height: 580px;
+  }
+  .swiper-slide {
+    @apply relative overflow-hidden rounded-1.5xl lg:rounded-2xl;
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.48) 100%
+      );
+    }
+  }
+  .content {
+    position: absolute;
+    left: 16px;
+    bottom: 56px;
+
+    &__top {
+      @apply grid gap-4 mb-6;
+    }
+    &__bottom {
+      height: 56px;
+    }
+    h3,
+    p {
+      filter: invert(1);
+    }
+    h3 {
+      @apply text-h5 font-semibold xl:text-h4;
+    }
+    p {
+      @apply font-medium;
+    }
+  }
+  .btn-controls {
+    position: absolute;
+    display: inline-flex;
+    gap: 8px;
+    bottom: 0;
+    right: 0;
+  }
+}

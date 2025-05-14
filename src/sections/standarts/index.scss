@@ -1,0 +1,23 @@
+.standarts {
+  &__content {
+    @apply grid gap-5 lg:grid-cols-2;
+  }
+  &__item {
+    @apply grid gap-6 content-between bg-surface-dark_300 rounded-xl xl:h-[184px] xl:grid-cols-[1fr_184px] xl:content-normal;
+    &--top {
+      @apply p-4 pb-0 grid gap-2 lg:p-6 lg:pb-0 xl:pr-0 xl:pb-6;
+      & .title {
+        @apply text-body_m text-text_000 font-semibold;
+      }
+      & .text {
+        @apply text-text_400;
+      }
+    }
+    &--bottom {
+      @apply h-[194.11px] xl:h-full;
+      img {
+        @apply rounded-xl w-full h-full object-cover;
+      }
+    }
+  }
+}

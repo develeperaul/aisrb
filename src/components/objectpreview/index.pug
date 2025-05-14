@@ -1,0 +1,26 @@
+include ../badge/index.pug
+.objectpreview
+  .objectpreview__top 
+    img(src=require('/assets/test.jpeg'), alt="test") 
+    .labels
+        +badge('Сдан в срок', 'back')
+        
+  .objectpreview__bottom 
+    .objectpreview__bottom--top 
+      h4.objectpreview__title Жилой дом на ул. Магистральной 
+      p.objectpreview__subtitle Советский район
+    .objectpreview__bottom--bottom
+      .objectpreview__bottom--bottom-wrapper 
+        ul 
+          li
+            span Общая площадь квартир
+            span 36,94 м²
+          li
+            span Этажей
+            span 16
+          li
+            span Подъездов
+            span 3
+          li
+            span Квартир
+            span 36

@@ -1,0 +1,11 @@
+include ../svg.pug
+mixin badge(title,iconName,size,theme,type,isTitle=false)
+  - const classTheme = theme ? `badge--${theme}` :''
+  - const classSize = size ? `badge-${size}` :''
+  - const classType = type ? `badge__${type}` :''
+  .badge(class=[classType,classTheme,classSize])&attributes(attributes)
+    if(!isTitle)
+      +svg(iconName)
+    else
+      h4.badge__title #{iconName}
+    span #{title}

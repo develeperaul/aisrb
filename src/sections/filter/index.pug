@@ -1,0 +1,21 @@
+include ../../components/btn/index.pug
+section.section.section2.section-rounded.filter
+  .container 
+    .section__top
+      .left
+        h2.title Новый Фамильный
+        p.subtitle ул. Акназарова
+      .right 
+        +btn('На карте','teartiary', '', "", 'mappoint')
+    .filter__wrapper
+      .filter__top
+        include ../../components/breadcrumb/index.pug
+        h3.title Выберите квартиру своей мечты
+      .filter-action
+        .filter-actions__rooms
+          .filter-actions__rooms--label Количество комнат
+          .filter-actions__rooms--btns
+            +btn('С','primary')(class="action")
+            +btn('1','primary')(class="action")
+            +btn('2','primary')(class="action")
+            +btn('3','primary')(class="action")

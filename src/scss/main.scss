@@ -4,3 +4,90 @@
 @import './base.scss';
 @import './utilities.scss';
 @import './components.scss';
+@import '../sections/index.scss';
+
+.wrapper {
+  box-sizing: border-box;
+  height: 350px;
+  padding: 12px;
+  width: 320px;
+  box-shadow: 0px 4px 24px 0px #5f69830a;
+  box-shadow: 0px 4px 12px 0px #5f69831a;
+
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.menu {
+  height: 100%;
+  overflow: auto;
+}
+
+.menu__title {
+  padding: 8px 12px;
+
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.menu__checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 8px;
+  height: 40px;
+}
+
+.menu__checkbox_input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+  border-radius: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.menu__checkbox_input::after {
+  display: none;
+}
+
+.menu__checkbox_input:checked::after {
+  position: relative;
+  top: 10px;
+  left: 10px;
+
+  display: block;
+
+  width: 11px;
+  height: 8px;
+
+  content: '';
+
+  background-image: url('data:image/svg+xml;utf8,<svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.70711 3.29289C1.31658 2.90237 0.683418 2.90237 0.292893 3.29289C-0.0976311 3.68342 -0.0976311 4.31658 0.292893 4.70711L3.29289 7.70711C3.68342 8.09763 4.31658 8.09763 4.70711 7.70711L10.7071 1.70711C11.0976 1.31658 11.0976 0.683418 10.7071 0.292893C10.3166 -0.0976311 9.68342 -0.0976311 9.29289 0.292893L4 5.58579L1.70711 3.29289Z" fill="%23F5F6F7"/></svg>');
+
+  transform: translate(-50%, -50%);
+}
+
+.menu__checkbox_title {
+  margin-left: 12px;
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(92, 94, 102, 0.14);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}

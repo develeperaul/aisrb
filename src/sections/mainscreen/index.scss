@@ -1,0 +1,9 @@
+.mainscreen {
+  @apply bg-surface-dark_500 py-4 lg:pb-16;
+  &__wrapper {
+    @apply grid gap-4 lg:grid-cols-[1fr_375px] xl:grid-cols-[1fr_373px] xl:gap-4;
+  }
+  &__slider {
+    @apply overflow-hidden;
+  }
+}

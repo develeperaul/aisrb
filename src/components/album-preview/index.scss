@@ -1,0 +1,13 @@
+.album-preview {
+  @apply bg-surface-dark_300 p-4 lg:p-6 rounded-xl grid gap-12 w-[320px];
+
+  &__bottom {
+  }
+
+  &__title {
+    @apply text-body_m text-text_000;
+  }
+  &__date {
+    @apply text-body_m text-text_400;
+  }
+}

@@ -1,0 +1,47 @@
+
+include ../../iconbtn/index.pug
+.swiper.general-slider
+  .swiper-wrapper
+    .swiper-slide
+      img(src=require('/assets/test.jpeg'), alt="test") 
+      .content
+        .content__top
+          h3 Больше, чем застройщик
+          p Оставьте заявку и наш специалист свяжется с вами, чтобы ответить на все вопросы о квартирах, ипотеке и спецпредложениях
+        .content__bottom
+          +btn('Подробнее','primary', '')(class="action")
+    .swiper-slide
+      img(src=require('/assets/test.jpeg'), alt="test") 
+    .swiper-slide
+      img(src=require('/assets/test.jpeg'), alt="test") 
+    .btn-controls
+      +iconbtn('back', 'secondary')(class="btn-prev")
+      +iconbtn('forward', 'secondary')(class="btn-next")
+      //- .content
+        h3(class=' text-primary01') Благоустройство
+        p Благоустроенная территория. Ландшафтный дизайн и озеленение территории жилого комплекса «Стрижи» выполнены с учетом современных тенденций и желаний жителей
+        .btn-controls
+          button.btn.btn-prev
+            +svg('back', 32)
+          button.btn.btn-next
+            +svg('forward', 32)
+    //- .swiper-slide
+      img(src='https://swiperjs.com/demos/images/nature-1.jpg')
+      .content
+        h3 Благоустройс
+        p Благоустроенная территория. Ландшафтный дизайн и озеленение территории жилого комплекса «Стрижи» выполнены с учетом современных тенденций и желаний жителей
+        .btn-controls
+          button.btn.btn-prev
+            +svg('back', 32)
+          button.btn.btn-next
+            +svg('forward', 32)
+    //- .swiper-slide
+      img(src='https://swiperjs.com/demos/images/nature-1.jpg')
+      .content
+        h3 Благоустройс
+        p Благоустроенная территория. Ландшафтный дизайн и озеленение территории жилого комплекса «Стрижи» выполнены с учетом современных тенденций и желаний жителей
+        .btn-controls
+          button.btn.btn-prev
+            +svg('back', 32)
+          button.btn.btn-next
+            +svg('forward', 32)

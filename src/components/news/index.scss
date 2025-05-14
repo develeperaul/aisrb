@@ -1,0 +1,15 @@
+.news-item {
+  @apply bg-surface-dark_200 p-6 lg:p-4 xl:p-6 grid gap-4 content-between h-[276px] lg:h-[244px] xl:h-[250px] rounded-xl;
+  &__content {
+    @apply grid gap-2;
+    h4 {
+      @apply text-text_000 text-h6 font-semibold;
+    }
+    p {
+      @apply text-text_400 xl:text-body_m;
+    }
+  }
+  &__data {
+    @apply text-secondary_500;
+  }
+}

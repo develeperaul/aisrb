@@ -1,0 +1,18 @@
+
+extend ../layouts/main.pug
+
+  
+block content
+  section.inner
+    .container
+      .inner-cover 
+        .inner-cover__wrapper
+          .inner-cover__top
+            include ../components/breadcrumb/index.pug
+            .inner-cover__top-content
+              h1.title АИС-Стандарт
+          .inner-cover__bg 
+            img(src=require('/assets/test.jpeg'), alt="test")
+  include ../sections/standarts2/index.pug
+    
+

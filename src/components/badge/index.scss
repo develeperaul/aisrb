@@ -1,0 +1,62 @@
+.badge {
+  @apply grid grid-cols-[auto_1fr] gap-1 items-center rounded-lg px-2 py-1.5 text-body_m bg-text_000 w-fit;
+  &__title {
+    @apply text-body_m font-semibold xl:text-h6;
+  }
+  svg {
+    @apply text-secondary_500 w-5 h-5;
+  }
+  &--primary {
+    @apply bg-surface-dark_300 text-text_000;
+    svg {
+      @apply text-secondary_500;
+    }
+  }
+  &--secondary {
+    @apply bg-secondary_500 text-text_000;
+    svg {
+      @apply text-text_000;
+    }
+  }
+  &--accept {
+    @apply bg-surface-white_50;
+    svg {
+      @apply text-secondary_500;
+    }
+  }
+  &--thirt {
+    @apply bg-surface-dark_200 text-text_000;
+    svg {
+      @apply text-secondary_500;
+    }
+  }
+  &-smm {
+    @apply py-[4px] text-body_xs;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+    .badge__vert {
+      @apply p-3;
+    }
+  }
+  &-sm {
+    @apply py-[5px] text-body_s;
+    .badge__vert {
+      @apply p-3;
+    }
+  }
+  &-xs {
+    @apply py-1 text-body_xs;
+    .badge__vert {
+      @apply p-3;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &__vert {
+    @apply grid-cols-1 grid-rows-[auto_1fr] p-4;
+  }
+}

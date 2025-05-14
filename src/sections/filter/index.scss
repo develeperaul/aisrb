@@ -1,0 +1,13 @@
+.filter {
+  .subtitle {
+    @apply text-text_400;
+  }
+  &__wrapper {
+  }
+  &__top {
+    @apply hidden xl2:grid gap-6;
+    .title {
+      @apply text-h6;
+    }
+  }
+}

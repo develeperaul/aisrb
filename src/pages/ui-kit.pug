@@ -1,0 +1,77 @@
+include ../components/btn/index.pug
+include ../components/iconbtn/index.pug
+include ../components/specification/index.pug
+include ../components/minispecification/index.pug
+
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    
+    //- script(src="https://api-maps.yandex.ru/2.1/?apikey=62425c4f-4dfc-4f52-a01f-bc1e23d27b7d&lang=ru_RU" type="text/javascript")
+  body
+    
+              
+    main
+      
+      include ../components/header/index.pug
+      include ../components/footer/index.pug
+      include ../components/select/index.pug
+      include ../components/range/index.pug
+      include ../components/flatpreview/index.pug
+      include ../components/flatpreview/index2.pug
+      include ../components/objectcard/index.pug
+      include ../components/objectcard/index2.pug
+      include ../components/objectpreview/index.pug
+      include ../components/news/index.pug
+      //- include ../components/mainscreen/index.pug
+      include ../components/slider/general/index.pug
+      include ../components/offerbanner/index.pug
+      include ../components/timer/index.pug
+      include ../components/badge/index.pug
+      include ../components/features-card/index.pug
+      include ../components/inner-cover/index.pug
+      include ../components/placecard/index.pug
+      
+      
+      +specification( require('/assets/images/specification/specification-1.png'), 'Монолит-каркас с заполнением кирпичом')
+      +badge('test', 'back','','primary','vert')
+      +badge('test', 'back','','primary')
+      +badge('test', 'back','','secondary')
+      +badge('test', 'back','','accept')
+      +badge('test', 'back','','thirt')
+      +badge('test', 'back')
+      +badge('test', 'back','sm')
+      +badge('test', 'back','xs')
+      +badge('test', 'back','xs')
+      +badge('test', 'back','xs')
+      +iconbtn('back')(disabled)
+      +iconbtn('back', 'primary')(disabled)
+      +iconbtn('back', 'secondary')(disabled)
+      +iconbtn('back', 'tertiary')(disabled)
+      +iconbtn('back', 'border')(disabled)
+      +btn('hi','primary', '')()
+      +btn('hi','primary', '')()
+      +btn('hi','primary', '')(disabled)
+      +btn('hi','secondary', '')(disabled)
+      +btn('hi','border', '')(disabled)
+      +btn('hi','', '')
+      +btn('hi','', '')(disabled)
+      +minispecification("title", "text", 'back')
+      +minispecification("title", "text", 'back', 'primary')
+      +minispecification("title", "text", 'back', 'secondary')
+      include ../sections/standarts/index.pug
+      
+
+      h2
+        | ф sdfssdfsd
+
+      
+      
+      
+    
+    

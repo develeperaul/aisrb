@@ -1,0 +1,32 @@
+.inner-cover {
+  &__wrapper {
+    @apply grid gap-6 xl:gap-8;
+  }
+  &__top {
+    @apply grid gap-6;
+    &-content {
+      @apply grid gap-2;
+    }
+  }
+  & h1.title {
+    @apply font-semibold text-h5 xl:text-h4;
+  }
+  & p.subtitle {
+    @apply text-text_400 text-body_s lg:text-body_m;
+  }
+  &__bg {
+    @apply h-[196px] xl:h-[256px] relative rounded-1.5xl overflow-hidden;
+    & img {
+      @apply w-full h-full object-cover;
+    }
+    &::before {
+      @apply absolute left-0 top-0 w-full h-full;
+      content: '';
+      background: linear-gradient(
+        180deg,
+        rgba(12, 23, 47, 0) 0%,
+        rgba(12, 23, 47, 0.64) 100%
+      );
+    }
+  }
+}

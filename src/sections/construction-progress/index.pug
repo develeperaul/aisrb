@@ -1,0 +1,33 @@
+section.section.section2.section-offset.section-rounded.construction-progress
+  .container 
+    .section__top   
+      .left 
+        h2.title Ход строительства 
+    .construction-progress__wrapper
+      .construction-progress__actions
+        .construction-progress__actions--left
+          .select(data-sel data-label="Выберите" )
+            input(type="text" hidden name="PROP3")
+            .select__label Все литеры
+            .select__head Все
+            .select__body 
+              .select__body-wrapper
+                .select__options
+                  div(data-val='09:00 — 12:00') 09:00 — 12:00
+                  div(data-val='12:00 — 14:00') 12:00 — 14:00
+          .select(data-sel data-label="Выберите" )
+            input(type="text" hidden name="PROP3")
+            .select__label Год
+            .select__head 2025
+            .select__body 
+              .select__body-wrapper
+                .select__options
+                  div(data-val='09:00 — 12:00') 09:00 — 12:00
+                  div(data-val='12:00 — 14:00') 12:00 — 14:00
+        .construction-progress__actions--right
+          +btn('Фото')
+          +btn('Онлайн')
+      .construction-progress__list 
+        each val in [1, 2, 3, 4]
+          include ../../components/album-preview/index.pug
+    

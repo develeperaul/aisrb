@@ -1,0 +1,32 @@
+include ../iconbtn/index.pug 
+include ../badge/index.pug 
+include ../svg.pug 
+.flatpreview-g
+  .flatpreview-g__left
+    .flatpreview-g__left--content
+      
+      .flatpreview__type Студия 
+      .flatpreview-g__descr 
+        span 9 этаж из 12
+        span 
+          +svg("dot", 4)
+        span 22,58 м²
+      .flatpreview-g__naming
+        div
+          .flatpreview-g__name ЖК «Черника»
+          .flatpreview-g__subname Черниковка 
+        +badge('с отделкой', 'paintroller','smm','secondary')(class='label')
+    img(src=require('/assets/flat.png'), alt="test") 
+  .flatpreview-g__right
+    .flatpreview-g__communication
+      +badge('с отделкой', 'paintroller','sm','accept')
+      +badge('2 с/у', 'toilet','sm','accept')
+    .flatpreview-g__actions 
+      +iconbtn('dots', 'secondary', 'sm')
+      +iconbtn('heart', 'secondary', 'sm')
+  
+    
+    
+
+
+    

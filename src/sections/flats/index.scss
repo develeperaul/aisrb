@@ -1,0 +1,33 @@
+.flats {
+  &__wrapper {
+  }
+  &__top {
+  }
+  &__bottom {
+  }
+  &-list {
+    &.col {
+      @apply grid gap-4 xl:gap-5 lg:grid-cols-3 xl:grid-cols-4;
+    }
+    &.row {
+      @apply grid gap-4 xl:gap-5 lg:grid-cols-2 xl:grid-cols-1;
+    }
+  }
+  &-no {
+    @apply bg-text_000 rounded-3xl grid place-content-center justify-items-center py-[114px] lg:py-[117px] xl:py-[106px];
+    &__icon {
+      @apply bg-surface-white_50 rounded-3md grid place-content-center p-4 w-fit mb-6 xl:mb-8;
+    }
+    &__title {
+      @apply text-body_m font-semibold xl:text-h6 mb-2;
+    }
+    &__text {
+      @apply text-text_400 text-body_s xl:text-body_m mb-6 xl:mb-8;
+    }
+    &__action {
+      svg {
+        @apply text-text_000;
+      }
+    }
+  }
+}

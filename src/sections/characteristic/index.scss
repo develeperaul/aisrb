@@ -1,0 +1,10 @@
+.characteristic {
+  &__content {
+  }
+  &__list {
+    @apply flex flex-nowrap gap-5 overflow-auto;
+    & > * {
+      @apply w-[315px] xl:w-[242px] flex-shrink-0;
+    }
+  }
+}

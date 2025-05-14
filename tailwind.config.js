@@ -49,6 +49,7 @@ module.exports = {
     },
 
     screens: {
+      md: '768px',
       lg: '1024px',
       xl: '1600px',
       xl2: '1920px',
@@ -94,12 +95,12 @@ module.exports = {
       addComponents({
         '.container': {
           maxWidth: '100%',
-          padding: '0 16px',
+          padding: '0 20px',
           marginRight: 'auto',
           marginLeft: 'auto',
           '@screen xl': {
             maxWidth: '1552px',
-            padding: '0 24px',
+            padding: '0',
           },
         },
         '.container2': {

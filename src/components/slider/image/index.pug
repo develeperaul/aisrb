@@ -1,0 +1,15 @@
+
+include ../../badge/index.pug
+.swiper.image-slider
+  .swiper-wrapper
+    .swiper-slide
+      .labels
+        +badge('test', 'back','','primary')
+        +badge('test', 'back','','primary')
+      img(src=require('/assets/test.jpeg'), alt="test") 
+    .swiper-slide
+      .labels
+        +badge('test', 'back','','primary')
+        +badge('test', 'back','','primary')
+      img(src=require('/assets/test.jpeg'), alt="test") 
+  .swiper-pagination

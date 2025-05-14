@@ -5,7 +5,7 @@ mixin btn(title, theme,size, type='button', iconLeft, iconRight )
   button(class="btn" class=[classTheme,classSize] type=type )&attributes(attributes)
     if(iconLeft)
       +svg(iconLeft)
-    | #{title}
+    span #{title}
     if(iconRight)
       +svg(iconRight)
 

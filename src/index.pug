@@ -1,5 +1,6 @@
 include ./components/btn/index.pug
 include ./components/iconbtn/index.pug
+include ./components/specification/index.pug
 
 
 doctype html
@@ -14,24 +15,15 @@ html(lang="ru")
   body
     
               
+    include ./components/header/index.pug
     main
-      include ./components/header/index.pug
-      include ./components/footer/index.pug
-      +iconbtn('back')(disabled)
-      +iconbtn('back', 'primary')(disabled)
-      +iconbtn('back', 'secondary')(disabled)
-      +iconbtn('back', 'tertiary')(disabled)
-      +iconbtn('back', 'border')(disabled)
-      +btn('hi','primary', '')()
-      +btn('hi','primary', '')()
-      +btn('hi','primary', '')(disabled)
-      +btn('hi','secondary', '')(disabled)
-      +btn('hi','border', '')(disabled)
-      +btn('hi','', '')
-      +btn('hi','', '')(disabled)
-      h2
-        | ф sdfssdfsd
-
+      include ./sections/mainscreen/index.pug
+      include ./sections/objects/index.pug
+      include ./sections/news/index.pug
+      include ./sections/standarts/index.pug
+    include ./components/footer/index.pug
+      
+      
       
       
       

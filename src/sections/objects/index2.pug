@@ -1,0 +1,94 @@
+include ../../components/btn/index.pug
+include ../../components/chip/index.pug
+
+section.section.pt-0.section2.section-offset.objects
+  .container
+    .objects__wrapper
+      //- .objects__filter
+        .mob
+          +btn('На карте','primary', '','','location')(class="action")
+          +btn('Фильтры','primary', '','','filter')(class="action")
+        .desc: .filter-actions
+          .select(data-sel data-label="Выберите" )
+            input(type="text" hidden name="PROP3")
+            .select__label Выберите ЖК
+            .select__head Любой
+            .select__body 
+              .select__body-wrapper
+                .select__options
+                  div(data-val='09:00 — 12:00') 09:00 — 12:00
+                  div(data-val='12:00 — 14:00') 12:00 — 14:00
+                  div(data-val='14:00 — 16:00') 14:00 — 16:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00  
+          .filter-actions__rooms
+            .filter-actions__rooms--label Количество комнат
+            .filter-actions__rooms--btns
+              +btn('С','primary')(class="action")
+              +btn('1','primary')(class="action")
+              +btn('2','primary')(class="action")
+              +btn('3','primary')(class="action")
+
+          .range-filter
+            .range-filter__label Площадь
+            .range-filter__input
+              .price__wrapper
+                span.price-from
+                  span.prefix  от
+                  span.number
+                  span.prefix  м²
+                span.prefix.separator  —
+                span.price-to
+                  span.prefix  до
+                  span.number
+                  span.prefix  м²
+              .multi-range-slider
+                input.input-left(type='range' min='10' step='1' max='100' value='10')
+                input.input-right(type='range' min='10' step='1' max='100' value='100')
+                .slider
+                  .track
+                  .range
+          .range-filter
+            .range-filter__label Этаж
+            .range-filter__input
+              .price__wrapper
+                span.price-from
+                  span.prefix  от
+                  span.number
+                  
+                span.prefix.separator  —
+                span.price-to
+                  span.prefix  до
+                  span.number
+                  
+              .multi-range-slider
+                input.input-left(type='range' min='1' step='1' max='25' value='1')
+                input.input-right(type='range' min='1' step='1' max='25' value='25')
+                .slider
+                  .track
+                  .range
+          .select(data-sel data-label="Выберите" )
+            input(type="text" hidden name="PROP3")
+            .select__label Особенности
+            .select__head Не выбрано
+            .select__body 
+              .select__body-wrapper
+                .select__options
+                  div(data-val='09:00 — 12:00') 09:00 — 12:00
+                  div(data-val='12:00 — 14:00') 12:00 — 14:00
+                  div(data-val='14:00 — 16:00') 14:00 — 16:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00
+                  div(data-val='16:00 — 18:00') 18:00 — 18:00  
+          +btn('Показать предложения','primary')(class="action")
+      //- div
+        +chip('Новый Фамильный','','sm','','close')
+        +chip('2-ком','','sm','','close')
+        +btn('Очистить фильтр','primary', 'sm', '', 'xcircle')(class="action")
+      .objects__content
+        include ../../components/objectcard/index.pug
+        include ../../components/objectcard/index2.pug
+        include ../../components/objectcard/index2.pug

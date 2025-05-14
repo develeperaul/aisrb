@@ -1,0 +1,24 @@
+.special-offers {
+  &__wrapper {
+  }
+  &__lg {
+    @screen xl {
+      display: none;
+    }
+    .special-offers__list {
+      @apply grid lg:grid-cols-2 gap-4;
+    }
+  }
+  &__xl {
+    display: none;
+    @screen xl {
+      display: block;
+    }
+    .special-offers__list {
+      @apply grid grid-cols-4 gap-5;
+    }
+  }
+  &__action {
+    @apply mx-auto flex justify-center mt-6 xl:mt-8;
+  }
+}

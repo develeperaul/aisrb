@@ -1,0 +1,55 @@
+.chip {
+  @apply bg-surface-dark_300 font-medium text-body_m rounded-full inline-flex items-center justify-center gap-1 text-text_000;
+
+  @apply transition-all duration-300 ease-linear;
+
+  height: 48px;
+  padding-inline: 16px;
+
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+  &:disabled {
+    @apply cursor-not-allowed;
+  }
+  &:not([disabled]):hover {
+    @apply bg-surface-dark_100;
+  }
+  &:not([disabled]):active {
+    @apply bg-surface-dark_200;
+  }
+  &:disabled {
+    @apply text-surface-dark_200;
+  }
+
+  &--primary {
+    @apply bg-secondary_500;
+
+    &:not([disabled]):hover {
+      @apply bg-secondary_400;
+    }
+    &:not([disabled]):active {
+      @apply bg-secondary_500;
+    }
+  }
+
+  &-sm {
+    @apply text-body_xs;
+    height: 32px;
+    padding-inline: 12px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &-xs {
+    @apply text-body_s;
+    height: 36px;
+    padding-inline: 12px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

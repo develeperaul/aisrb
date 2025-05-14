@@ -1,0 +1,16 @@
+
+include ../../iconbtn/index.pug
+.swiper.advantages-slider
+  .swiper-wrapper
+    .swiper-slide
+      include ../../features-card/index.pug
+    .swiper-slide
+      include ../../features-card/index.pug
+    .swiper-slide
+      include ../../features-card/index.pug
+    .swiper-slide
+      include ../../features-card/index.pug
+    .swiper-slide
+      include ../../features-card/index.pug
+  +iconbtn('back', 'secondary')(class="btn-prev")
+  +iconbtn('forward', 'secondary')(class="btn-next")

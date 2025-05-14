@@ -5,6 +5,15 @@
   }
 
   body {
-    @apply bg-surface-dark_400;
+    @apply bg-surface-dark_500 text-body_s;
+  }
+  section {
+    @apply py-12 xl:py-16;
+  }
+  .top {
+    @apply mb-6 lg:mb-8 grid gap-2;
+  }
+  .title {
+    @apply font-semibold text-h6 text-text_000  xl:text-h6;
   }
 }

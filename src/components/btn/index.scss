@@ -50,6 +50,25 @@
       }
     }
   }
+  &--primary2 {
+    @apply text-text_000 bg-primary_500;
+    svg {
+      @apply text-secondary_500;
+    }
+    &:not([disabled]):hover {
+      @apply bg-primary_400;
+    }
+    &:not([disabled]):active {
+      @apply bg-primary_600;
+    }
+    &:disabled {
+      @apply bg-surface-dark_50 text-surface-dark_100;
+
+      svg {
+        @apply text-surface-dark_100;
+      }
+    }
+  }
   &--secondary {
     @apply bg-secondary_500 text-text_000;
     svg {

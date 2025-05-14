@@ -1,0 +1,25 @@
+include ../svg.pug
+include ../badge/index.pug
+.objectcard.objectcard__primary
+  .objectcard__top 
+    .bg
+      include ../slider/image/index.pug
+  .objectcard__middle
+    .topcontent
+      h4 ЖК «Черника»
+      p ул. Акназарова
+    .objectcard__descr
+      .objectcard__descr--left
+        span.objectcard__count 87 квартир в продаже
+        span.objectcard__price от 3 526 455 ₽ 
+      .objectcard__descr--right
+        .objectcard__descr--info
+          +svg('back',20)
+          span 110 машино-мест
+        .objectcard__descr--info
+          +svg('back',20)
+          span 57 кладовых
+  .objectcard__bottom
+    +badge('2 лифта в каждой секции', 'back','','primary','vert')
+    +badge('2 лифта в каждой секции', 'back','','primary','vert')
+    +badge('2 лифта в каждой секции', 'back','','primary','vert')

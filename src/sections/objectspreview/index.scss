@@ -1,0 +1,5 @@
+.objectspreview {
+  &__content {
+    @apply grid gap-6 lg:gap-x-4 xl:gap-x-5 xl:gap-y-8 lg:grid-cols-3;
+  }
+}

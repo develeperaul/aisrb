@@ -1,0 +1,10 @@
+include ../svg.pug
+mixin chip(title, theme,size, type='button', icon )
+  - const classTheme = theme ? `chip--${theme}` :''
+  - const classSize = size ? `chip-${size}` :''
+  button(class="chip" class=[classTheme,classSize] type=type )&attributes(attributes)
+    
+    | #{title}
+    if(icon)
+      +svg(icon)
+

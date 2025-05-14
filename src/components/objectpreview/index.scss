@@ -1,0 +1,56 @@
+.objectpreview {
+  @apply grid content-start gap-5;
+  &__top {
+    @apply rounded-xl h-[211px] lg:h-[284px] overflow-hidden relative;
+    img {
+      @apply object-cover w-full h-full;
+    }
+    .labels {
+      @apply absolute left-4 right-4 top-4 flex items-center justify-between;
+    }
+  }
+  &__bottom {
+    @apply px-4 lg:px-0;
+    &--top {
+      @apply grid gap-1;
+    }
+    &--bottom {
+      display: grid;
+      grid-template-rows: 0fr;
+      @apply overflow-hidden;
+      &-wrapper {
+        min-height: 0;
+      }
+      ul {
+        @apply grid gap-1 pt-4 border-t border-surface-dark_100 mt-4;
+        li {
+          @apply flex justify-between items-center pt-1.5 pb-1;
+          :first-child {
+            @apply text-text_400 text-body_s;
+          }
+          :last-child {
+            @apply text-text_000 text-body_m;
+          }
+        }
+      }
+    }
+  }
+  &__title {
+    @apply text-text_000 font-semibold lg:text-h6;
+  }
+  &__subtitle {
+    @apply text-text_400 text-body_s flex justify-between items-center;
+    &::after {
+      content: 'Показать';
+      @apply text-text_000 text-body_xs;
+    }
+  }
+  &:hover {
+    .objectpreview__subtitle::after {
+      content: 'Скрыть';
+    }
+    .objectpreview__bottom--bottom {
+      grid-template-rows: 1fr;
+    }
+  }
+}

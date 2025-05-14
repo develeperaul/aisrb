@@ -1,0 +1,17 @@
+.about-objectsection {
+  &__wrapper {
+    @apply grid gap-6 lg:grid-cols-2 xl:flex xl:justify-between xl:items-center;
+  }
+  &__top {
+    @apply grid gap-2 xl:gap-3;
+    .title {
+      @apply text-h6 xl:text-h5;
+    }
+    .text {
+      @apply text-text_400 text-body_m;
+    }
+  }
+  &__bottom {
+    @apply grid gap-3 xl:flex;
+  }
+}

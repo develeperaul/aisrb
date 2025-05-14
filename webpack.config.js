@@ -105,6 +105,9 @@ module.exports = {
     publicPath: '',
     assetModuleFilename: 'src/assets/images/[name][ext]',
   },
+  externals: {
+    ymaps3: 'ymaps3',
+  },
   devServer: {
     historyApiFallback: true,
     open: true,

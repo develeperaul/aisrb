@@ -1,0 +1,27 @@
+
+extend ../layouts/main.pug
+
+  
+block content
+  section.inner
+    .container
+      .inner-cover 
+        .inner-cover__wrapper
+          .inner-cover__top
+            include ../components/breadcrumb/index.pug
+            .inner-cover__top-content
+              h1.title Новости
+          .inner-cover__bg 
+            img(src=require('/assets/test.jpeg'), alt="test")
+  section.news.section.section1.section-rounded
+    .container
+      .news__wrapper
+        .news__list
+          include ../components/news/index.pug
+          include ../components/news/index.pug
+          include ../components/news/index.pug
+          include ../components/news/index.pug
+          include ../components/news/index.pug
+          include ../components/news/index.pug
+    
+

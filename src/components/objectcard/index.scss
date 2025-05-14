@@ -1,0 +1,114 @@
+.objectcard {
+  display: grid;
+  gap: 16px;
+  &__middle {
+    @apply grid gap-4;
+    & > :nth-child(2) {
+      position: relative;
+      overflow: hidden;
+      .open {
+        padding-top: 16px;
+        &::before {
+          @apply bg-surface-dark_300  absolute w-full h-[1px];
+          content: '';
+        }
+      }
+    }
+
+    @apply text-text_000;
+  }
+  &__bottom {
+    @apply flex gap-2;
+  }
+  &__descr {
+    @apply grid gap-3;
+    &--left {
+      @apply flex gap-1.5;
+    }
+    &--right {
+      @apply flex gap-2;
+    }
+    &--info {
+      @apply flex items-center gap-2;
+      svg {
+        @apply text-surface-dark_50 w-5 h-5;
+      }
+    }
+  }
+  &__count {
+    @apply text-body_s text-text_400;
+  }
+  &__price {
+    @apply text-body_s text-secondary_500;
+  }
+
+  .objectcard__top {
+    margin-bottom: 4px;
+    overflow: hidden;
+    height: 210px;
+
+    & > * {
+      height: 100%;
+    }
+    @screen lg {
+      height: 236px;
+    }
+    @screen xl {
+      height: 430px;
+    }
+  }
+
+  &__primary {
+    .objectcard__top {
+      margin-bottom: 4px;
+      overflow: hidden;
+      height: 424px;
+      & > * {
+        height: 100%;
+      }
+      @screen lg {
+        height: 562px;
+      }
+      @screen xl {
+        height: 840px;
+      }
+    }
+    .objectcard__middle {
+      & > :nth-child(2) {
+        position: relative;
+
+        overflow: hidden;
+        padding-top: 16px;
+        &::before {
+          @apply bg-surface-dark_300  absolute w-full h-[1px];
+          content: '';
+        }
+      }
+    }
+
+    .objectcard__bottom {
+      @apply flex gap-2;
+      & > * {
+        width: 100%;
+      }
+    }
+    @screen xl {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: grid;
+      grid-template-areas:
+        'A A'
+        'B C';
+      align-content: end;
+      .objectcard__top {
+        grid-area: A;
+      }
+      .objectcard__middle {
+        grid-area: B;
+      }
+      .objectcard__bottom {
+        grid-area: C;
+        align-self: end;
+      }
+    }
+  }
+}

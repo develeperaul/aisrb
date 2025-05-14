@@ -1,0 +1,50 @@
+.about-project {
+  &__wrapper {
+    align-items: start;
+    @apply grid gap-8 xl:grid-cols-2;
+  }
+  &__top {
+    @apply grid gap-2 lg:gap-3;
+  }
+  .text {
+    @apply grid gap-4 text-body_s text-text_400 xl:max-w-[455px];
+  }
+  &__bottom {
+    display: grid;
+
+    grid-template-areas:
+      'A A   B B   C C'
+      'D D   D E   E E'
+      'F F   F F   F F';
+
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    @screen lg {
+      grid-template-areas:
+        'A A   B B   C C'
+        'D D   E E   F F';
+      gap: 16px 12px;
+    }
+    @screen xl {
+      gap: 20px;
+    }
+    & > :nth-child(1) {
+      grid-area: A;
+    }
+    & > :nth-child(2) {
+      grid-area: B;
+    }
+    & > :nth-child(3) {
+      grid-area: C;
+    }
+    & > :nth-child(4) {
+      grid-area: D;
+    }
+    & > :nth-child(5) {
+      grid-area: E;
+    }
+    & > :nth-child(6) {
+      grid-area: F;
+    }
+  }
+}

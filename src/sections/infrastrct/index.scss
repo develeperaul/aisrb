@@ -1,0 +1,10 @@
+.infrastrct {
+  #contacts-map,
+  #infrastrct-map {
+    width: 100%;
+    height: 480px;
+    @screen lg {
+      height: 640px;
+    }
+  }
+}

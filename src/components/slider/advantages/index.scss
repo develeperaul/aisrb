@@ -1,0 +1,29 @@
+.advantages-slider {
+  position: relative;
+  height: 100%;
+  .btn-prev {
+    @apply hidden md:block absolute left-12 top-1/2 transform -translate-y-1/2;
+    z-index: 3;
+  }
+  .btn-next {
+    @apply hidden md:block absolute right-12 top-1/2 transform -translate-y-1/2;
+    z-index: 3;
+  }
+  .swiper-slide {
+    @apply relative overflow-hidden rounded-xl;
+    img {
+      @apply h-full w-full object-cover;
+    }
+  }
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      @apply bg-surface-white_100;
+      max-width: 14.5px;
+      width: 100%;
+      height: 2px;
+    }
+    .swiper-pagination-bullet-active {
+      @apply bg-surface-white_400;
+    }
+  }
+}

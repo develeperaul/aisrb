@@ -1,0 +1,10 @@
+include ../svg.pug
+mixin minispecification(title,text,icon,theme)
+  - const classTheme = theme ? `minispecification-${theme}` :''
+  .minispecification(class=[classTheme])
+    if(icon)
+      .minispecification__icon
+        +svg('back')
+    .minispecification__content
+      h4.minispecification__title #{title}
+      p.minispecification__text #{text}
