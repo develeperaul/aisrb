@@ -2,6 +2,8 @@ include ../components/btn/index.pug
 include ../components/iconbtn/index.pug
 include ../components/specification/index.pug
 include ../components/minispecification/index.pug
+include ../components/input/index.pug
+include ../components/input/index2.pug
 
 
 doctype html
@@ -22,15 +24,17 @@ html(lang="ru")
       include ../components/footer/index.pug
       include ../components/select/index.pug
       include ../components/range/index.pug
+      include ../components/flatkladov/index.pug
       include ../components/flatpreview/index.pug
       include ../components/flatpreview/index2.pug
+      include ../components/flatpreview/index3.pug
       include ../components/objectcard/index.pug
       include ../components/objectcard/index2.pug
       include ../components/objectpreview/index.pug
       include ../components/news/index.pug
       //- include ../components/mainscreen/index.pug
       include ../components/slider/general/index.pug
-      include ../components/offerbanner/index.pug
+      //- include ../components/offerbanner/index.pug
       include ../components/timer/index.pug
       include ../components/badge/index.pug
       include ../components/features-card/index.pug
@@ -54,7 +58,12 @@ html(lang="ru")
       +iconbtn('back', 'secondary')(disabled)
       +iconbtn('back', 'tertiary')(disabled)
       +iconbtn('back', 'border')(disabled)
-      +btn('hi','primary', '')()
+      +btn('open','primary', '')(data-target="banks" data-action="open")
+      +btn('open','primary', '')(data-target="book" data-action="open")
+      +btn('open','primary', '')(data-target="infrastructure" data-action="open")
+      +btn('open','primary', '')(data-target="construction" data-action="open" id="slider1")
+      +btn('open','primary', '')(data-target="construction" data-action="open" id="slider2")
+      <a class="btn btn--primary" href="#slider2" data-target="construction" data-action="open" id="slider2"><span>open</span></a>
       +btn('hi','primary', '')()
       +btn('hi','primary', '')(disabled)
       +btn('hi','secondary', '')(disabled)
@@ -64,6 +73,8 @@ html(lang="ru")
       +minispecification("title", "text", 'back')
       +minispecification("title", "text", 'back', 'primary')
       +minispecification("title", "text", 'back', 'secondary')
+      +input('name', 'Ваше имя')
+      +inputwhite('name', 'Ваше имя')
       include ../sections/standarts/index.pug
       
 
@@ -73,5 +84,10 @@ html(lang="ru")
       
       
       
+    //- button(class="show-modal")
+    //- | Show Bottom Sheet
+    include ../components/popup/thanks/index.pug
+    include ../components/popup/book/index.pug
+    include ../components/popup/infrastructure/index.pug
     
-    
+    include ../components/popup/construction/index.pug

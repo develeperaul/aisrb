@@ -5,13 +5,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @screen lg {
+  @screen xl {
     display: grid;
     grid-template-columns: 226px 1fr 226px;
   }
   &__middle {
     display: none;
-    @screen lg {
+    @screen xl {
       display: block;
       justify-self: center;
     }
@@ -46,7 +46,7 @@ header {
     }
   }
   .burger {
-    @screen lg {
+    @screen xl {
       display: none;
     }
   }

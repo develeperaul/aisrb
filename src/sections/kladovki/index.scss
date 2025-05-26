@@ -1,0 +1,11 @@
+.flatskladov {
+  &__wrapper {
+  }
+  &__top {
+  }
+  &__bottom {
+  }
+  &-list {
+    @apply grid gap-4 xl:gap-5 lg:grid-cols-2;
+  }
+}

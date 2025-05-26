@@ -1,9 +1,14 @@
+include ../../components/iconbtn/index.pug
+
 section.section.section2.pt-0.infrastrct
   .container 
     .section__top
       .left
         h2.title Инфраструктура
     //- #contacts-map
-    #infrastrct-map
-script.
+    .infrastrct__content
+      .infrastrct-map
+        +iconbtn("zoom", 'secondary', 'sm')(class='map-zoom' data-target="infrastrct" data-action="open")
+
+
   

@@ -1,0 +1,26 @@
+.offer-slider {
+  @apply bg-surface-dark_400 rounded-1.5xl lg:rounded-xl p-4 lg:p-6 xl:p-8 pb-12 lg:pb-14 xl:pb-16;
+  .swiper-pagination {
+    @apply bottom-4 lg:bottom-6 xl:bottom-8;
+    .swiper-pagination-bullet {
+      @apply bg-surface-dark_100;
+    }
+    .swiper-pagination-bullet-active {
+      @apply bg-text_000;
+    }
+  }
+}
+.offerbanner {
+  @apply inline-grid gap-6;
+  &__descr {
+    @apply flex items-center gap-4;
+  }
+  &__top {
+    .bg {
+      @apply rounded-xl h-[190px];
+    }
+  }
+  .title {
+    @apply text-text_000 text-body_m font-semibold;
+  }
+}

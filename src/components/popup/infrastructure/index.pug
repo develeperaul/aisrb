@@ -1,0 +1,21 @@
+include ../../btn/index.pug
+include ../../iconbtn/index.pug
+.modal.infrastructure-popup(data-animate-open="fadeIn" data-animate-close="fadeOut" id="infrastructure" class="animate__faster")
+  .popup-header 
+    .container
+      .popup-header__wrapper
+        a(href="/" class="logo")
+          img(src=require('/assets/icons/logo.svg'), alt="лого") 
+        .popup-header__title Расположение и инфраструктура
+        +iconbtn('close','primary','xs')(data-target="infrastructure" data-action="close")
+  .infrastructure-popup__content
+    .infrastructure-popup__map.infrastrct-map
+    .infrastructure-popup__info.bottom-sheet
+      .sheet-header
+        .drag-handle
+      .infrastructure-popup__info--content.sheet-content
+        a.infrastructure-popup__info--tel(href="tel:+73472242040") +7 (347) 224-20-40
+        div.infrastructure-popup__info--address г. Уфа, ул. Обская, 7
+        .infrastructure-popup__info--actions
+          +btn("Записаться на встречу", "primary2")(data-target="book" data-action="open")
+          +iconbtn('whatsapp','primary-w')

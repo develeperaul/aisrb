@@ -36,22 +36,25 @@ function actionSelect(e) {
     else {
       setXPosBody(this);
       this.classList.add('active');
-
       [...options].forEach((opt) => {
-        const optsChild = opt.querySelectorAll('.checkbox__childs > *');
-        if (optsChild.length > 0) {
-          [...optsChild].forEach(
-            (optChild) =>
-              (optChild.onclick = selectOpt.bind(
-                null,
-                optChild,
-                head,
-                optsChild,
-                this,
-                opt
-              ))
-          );
-        }
+        // console.log(opt);
+
+        // const optsChild = opt.querySelectorAll('.checkbox__childs > *');
+        // console.log(optsChild);
+        // if (optsChild.length > 0) {
+        //   [...optsChild].forEach((optChild) => {
+        //     console.log(optChild);
+
+        //     optChild.onclick = selectOpt.bind(
+        //       null,
+        //       optChild,
+        //       head,
+        //       optsChild,
+        //       this,
+        //       opt
+        //     );
+        //   });
+        // }
         opt.onclick = selectOpt.bind(null, opt, head, options, this, null);
       });
       window.onclick = windowTarget.bind(null, this);
@@ -61,16 +64,47 @@ function actionSelect(e) {
 }
 function selectOpt(opt, head, options, _this, parentChild = null, e) {
   updateEl(true);
-  const val = opt.dataset.val;
-  const input = _this.querySelector('input');
 
-  if (val) {
+  // const val = opt.dataset.val;
+  const val = opt.textContent;
+  const input = _this.querySelector('input');
+  const inputCheckOpt = opt.querySelector('input');
+  if (inputCheckOpt) {
+    let v = [];
+    let names = [];
+    let isChecked = false;
     [...options].forEach((o) => {
-      if (o !== opt && o.classList.contains('active'))
-        o.classList.remove('active');
+      const inputOpt = o.querySelector('input');
+      const optVal = o.dataset.val;
+      const optKey = o.dataset.key;
+
+      if (optVal) {
+        if (inputOpt)
+          if (inputOpt.checked) {
+            v.push(optVal);
+            names.push(optKey);
+            isChecked = true;
+          } else {
+            if (!isChecked) isChecked = false;
+          }
+      }
     });
-    _this.classList.remove('active');
-    setVal(opt, head, input, val);
+    // console.log(isChecked);
+    console.log(names);
+
+    setVal(undefined, head, input, v.join(','), names.join('-'));
+    if (!isChecked) {
+      rezetSelect(_this);
+    }
+  } else {
+    if (val) {
+      [...options].forEach((o) => {
+        if (o !== opt && o.classList.contains('active'))
+          o.classList.remove('active');
+      });
+      _this.classList.remove('active');
+      setVal(opt, head, input, val);
+    }
   }
 }
 function windowTarget(_this, e) {
@@ -82,12 +116,24 @@ function windowTarget(_this, e) {
   }
 }
 
-function setVal(opt, head, input, val) {
-  opt.classList.add('active');
+function setVal(opt = undefined, head, input, val, keys = undefined) {
+  if (opt) {
+    opt.classList.add('active');
+    head.textContent = opt.textContent;
+  } else {
+    head.textContent = val;
+  }
   head.setAttribute('data-select', val);
   input.value = val;
-  input.dispatchEvent(new Event('change'));
-  head.textContent = opt.textContent;
+
+  if (keys !== undefined) {
+    console.log(keys);
+
+    input.setAttribute('data-names', keys);
+  } else {
+    input.removeAttribute('data-names', keys);
+  }
+  // input.dispatchEvent(new Event('change'));
 }
 
 function setXPosBody(select) {
@@ -120,6 +166,8 @@ export function rezetSelect(select) {
   if (dataSelEl) dataSelEl.removeAttribute('data-select');
   const activeOptEl = select.querySelector('[data-val].active');
   if (activeOptEl) activeOptEl.classList.remove('active');
+
   const valLabel = select.getAttribute('data-label');
+
   if (valLabel) dataSelEl.textContent = valLabel;
 }

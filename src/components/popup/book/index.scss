@@ -1,0 +1,33 @@
+.book {
+  overflow: hidden;
+  height: 100%;
+  display: grid;
+  &__top {
+    overflow: auto;
+    height: 100%;
+  }
+  &__fields {
+    @apply grid gap-5;
+  }
+  &__bottom {
+    @apply py-4 lg:py-6 bg-text_000  grid gap-4;
+  }
+  &__descr {
+    @apply grid gap-2 xl:gap-3 mb-4;
+  }
+  &__actions {
+    @apply grid gap-2;
+  }
+  &__title {
+    @apply font-semibold text-h6 lg:text-h5;
+  }
+  &__text {
+    @apply text-body_s text-surface-dark_50;
+  }
+  &__btn {
+    @apply w-full;
+  }
+  &__info {
+    @apply text-body_xs text-surface-white_300;
+  }
+}

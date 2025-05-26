@@ -1,0 +1,19 @@
+
+extend ../layouts/main.pug
+
+  
+block content
+  section.inner
+    .container
+      .inner-cover 
+        .inner-cover__wrapper
+          .inner-cover__top
+            include ../components/breadcrumb/index.pug
+            .inner-cover__top-content
+              h1.title Выбор кладовой
+              
+          //- .inner-cover__bg 
+            
+  include ../sections/kladovki/index.pug
+  
+

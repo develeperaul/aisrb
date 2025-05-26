@@ -1,0 +1,22 @@
+.thanks {
+  &__top {
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+  &__bottom {
+    @apply pt-6 pb-4 grid gap-6;
+  }
+  &__content {
+    @apply grid gap-2 xl:gap-3;
+  }
+  &__title {
+    @apply font-semibold text-body_m lg:text-h6 xl:text-h5;
+  }
+  &__text {
+    @apply text-body_s text-surface-dark_50;
+  }
+  &__btn {
+    @apply w-full;
+  }
+}

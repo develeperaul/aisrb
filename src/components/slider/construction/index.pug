@@ -1,0 +1,58 @@
+include ../../iconbtn/index.pug
+<div class="swiper construction-slider">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide construction-slider__slide" data-hash="slider1">
+      <div class="swiper swiper-carousel">
+        <div class="swiper-wrapper">
+          <div class="swiper-carousel__slide">
+            img(src=require('/assets/test2.jpg'), alt="test") 
+          </div>
+          <div class="swiper-carousel__slide">
+            img(src=require('/assets/test.jpeg'), alt="test") 
+          </div>
+          <div class="swiper-carousel__slide">
+            img(src=require('/assets/test.jpeg'), alt="test") 
+          </div>  
+        </div>
+        .swiper-carousel__actions
+          .sm-btn-controls
+
+              +iconbtn('back', 'secondary-w')(class="sm-btn-prev")
+              +iconbtn('forward', 'secondary-w')(class="sm-btn-next")
+          
+          div(class="swiper-carousel__pagination")
+        .content__nav
+          .content__nav--title Январь
+          .content__nav--date 2025 г.
+
+          .btn-controls
+            +iconbtn('back', 'primary-w')(class="btn-prev")
+            +iconbtn('forward', 'primary-w')(class="btn-next")
+            +iconbtn('close','primary-w')(class="btn-close" data-target="constuction" data-action="close")
+      </div>
+    </div>
+    <div class="swiper-slide construction-slider__slide" data-hash="slider2">
+      <div class="swiper swiper-carousel">
+        <div class="swiper-wrapper">
+          <div class="swiper-carousel__slide">2.1</div>
+          <div class="swiper-carousel__slide">2.2</div>
+          <div class="swiper-carousel__slide">2.3</div>
+          
+          .sm-btn-controls
+            +iconbtn('back', 'primary-w')(class="sm-btn-prev")
+            +iconbtn('forward', 'primary-w')(class="sm-btn-next")
+            
+        </div>
+        .content__nav
+          .content__nav--title февраль
+          .content__nav--date 2025 г.
+
+          .btn-controls
+            +iconbtn('back', 'primary-w')(class="btn-prev")
+            +iconbtn('forward', 'primary-w')(class="btn-next")
+            +iconbtn('close','primary-w')(class="btn-close" data-target="constuction" data-action="close")
+        <div class="swiper-carousel__pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>

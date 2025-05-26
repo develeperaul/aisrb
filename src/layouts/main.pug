@@ -12,6 +12,16 @@ html(lang="ru")
     main
       block content
     include ../components/footer/index.pug
+    //- .modal(data-animate-open="fadeIn" data-animate-close="fadeOut" id="success" class="animate__faster")      
+      .btn-close
+        button(data-target="success" data-action="close")
+          +svg('close', 24)
+      .popup.popup-success
+        h2 Благодарим <br> за заявку
+      .popup-success__actions 
+        button.btn(data-target="success" data-action="close") 
+          +svg('close', 24)
+    
     
     
           

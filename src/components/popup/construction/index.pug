@@ -1,0 +1,13 @@
+include ../../btn/index.pug
+include ../../iconbtn/index.pug
+.modal(data-animate-open="fadeIn" data-animate-close="fadeOut" id="construction" class="animate__faster")
+  .construction-popup
+    .popup-header.popup-header-w 
+      .container
+        .popup-header__wrapper
+          a(href="/" class="logo")
+            img(src=require('/assets/icons/logo-b.svg'), alt="лого") 
+          .popup-header__title Расположение и инфраструктура
+          +iconbtn('close','primary-w','xs')(data-target="infrastructure" data-action="close")
+    .construction-popup__content
+      include ../../slider/construction/index.pug

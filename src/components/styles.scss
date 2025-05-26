@@ -1,9 +1,11 @@
 @import './slider/index.scss';
 
+@import './input/index.scss';
 @import './range/index.scss';
 @import './select/index.scss';
 @import './chip/index.scss';
 @import './btn/index.scss';
+@import './btncheck/index.scss';
 @import './iconbtn/index.scss';
 @import './badge/index.scss';
 @import './badge-about/index.scss';
@@ -13,6 +15,7 @@
 @import './breadcrumb/index.scss';
 @import './minispecification/index.scss';
 @import './flatpreview/index.scss';
+@import './flatkladov/index.scss';
 @import './placecard/index.scss';
 @import './album-preview/index.scss';
 
@@ -20,11 +23,16 @@
 @import './timer/index.scss';
 @import './news/index.scss';
 
-@import './offerbanner/index.scss';
-
 @import './objectpreview/index.scss';
 
 @import './inner-cover/index.scss';
 
+@import './popup/thanks/index.scss';
+
 @import './header/index.scss';
 @import './footer/index.scss';
+
+@import './popup/thanks/index.scss';
+@import './popup/book/index.scss';
+@import './popup/infrastructure/index.scss';
+@import './popup/construction/index.scss';

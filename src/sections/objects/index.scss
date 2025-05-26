@@ -2,9 +2,71 @@
   &__filter {
     .mob {
       @apply lg:hidden;
+      .filter-actions__wrapper {
+        @apply flex items-center;
+      }
     }
     .desc {
       @apply hidden lg:block;
+      .filter-actions__wrapper {
+        & > :nth-child(1) {
+          display: flex;
+          gap: 12px;
+        }
+        & > :nth-child(2) {
+          display: flex;
+          gap: 12px;
+        }
+        & > :nth-child(3) {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 12px;
+        }
+        @screen lg {
+          gap: 20px;
+        }
+        @screen xl {
+          display: flex;
+          gap: 24px;
+
+          & > :nth-child(2) {
+            width: 100%;
+          }
+          & > :nth-child(3) {
+            flex-shrink: 0;
+            align-items: end;
+          }
+          & > :nth-child(1) {
+            .select {
+              width: 222px;
+            }
+          }
+        }
+      }
+
+      .filter-actions__chips {
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        padding-top: 64px;
+        display: none;
+        &.active {
+          display: flex;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          top: 32px;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          background: #343f57;
+        }
+        & > :first-child {
+          display: flex;
+          gap: 12px;
+        }
+      }
     }
   }
   &__content {

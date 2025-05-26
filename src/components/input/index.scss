@@ -1,0 +1,120 @@
+.field {
+  @apply relative grid gap-2;
+
+  &-iconleft {
+    .iconleft {
+      @apply absolute z-10;
+      width: 24px;
+      height: 24px;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+    }
+    .field__input {
+      @apply pl-12;
+    }
+  }
+
+  &__input {
+    @apply h-[56px] text-text_000 bg-surface-dark_300 rounded-lg outline-none w-full;
+    padding: 1rem;
+    padding-bottom: 20px;
+    padding-right: 48px;
+
+    &::-moz-placeholder,
+    &::placeholder {
+      @apply text-surface-dark_50;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+    }
+  }
+  &__hint {
+    display: none;
+  }
+  &__label {
+    @apply pointer-events-none text-text_400 text-body_xs;
+  }
+  &__wrapper {
+    position: relative;
+    .iconright {
+      @apply absolute z-10;
+      width: 24px;
+      height: 24px;
+      top: 50%;
+      right: 16px;
+      transform: translateY(-50%);
+    }
+    .field__input:hover {
+      @apply bg-surface-dark_200;
+    }
+    .field__input:focus {
+      @apply bg-surface-dark_300;
+
+      box-shadow: 0px 0px 0px 4px #798ece3d;
+    }
+  }
+  &__hint {
+    @apply pointer-events-none text-surface-dark_50 text-body_xs;
+  }
+
+  &__input:not(:placeholder-shown):not(:focus) {
+    @apply bg-surface-dark_300;
+  }
+  &.disabled {
+    .field__label {
+      @apply text-surface-dark_300;
+    }
+    .field__hint {
+      @apply text-surface-dark_300;
+    }
+  }
+  &__input:disabled {
+    @apply text-surface-dark_200;
+  }
+  &__input:disabled::placeholder {
+    @apply text-surface-dark_200;
+  }
+  &__invalid &__input {
+  }
+  &-white {
+    .field__wrapper {
+      svg {
+        @apply text-surface-white_500;
+      }
+    }
+    &.disabled {
+      .field__label {
+        @apply text-surface-white_300;
+      }
+      .field__hint {
+        @apply text-surface-white_300;
+      }
+    }
+    .field__input {
+      @apply bg-surface-white_50  text-text_950;
+      &::placeholder {
+        @apply text-surface-white_300;
+      }
+      &:hover {
+        @apply bg-surface-white_100;
+      }
+      &:not(:placeholder-shown):not(:focus) {
+        @apply bg-surface-white_50;
+      }
+      &:disabled {
+        @apply text-surface-white_200;
+      }
+      &:disabled::placeholder {
+        @apply text-surface-white_200;
+      }
+    }
+  }
+
+  &__invalid {
+    .field__hint {
+      display: block;
+    }
+  }
+}

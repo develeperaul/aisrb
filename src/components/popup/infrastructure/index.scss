@@ -1,0 +1,21 @@
+.infrastructure-popup {
+  @apply fixed w-full h-full top-0 left-0 grid grid-rows-[auto_1fr];
+  &__content {
+    @apply h-full;
+  }
+  &__map {
+    @apply h-full;
+  }
+  &__info {
+    @apply lg:hidden h-fit;
+    &--tel {
+      @apply text-body_m font-semibold mb-2;
+    }
+    &--address {
+      @apply text-surface-dark_50 text-body_s mb-4;
+    }
+    &--actions {
+      @apply grid grid-cols-[1fr__auto] gap-3;
+    }
+  }
+}

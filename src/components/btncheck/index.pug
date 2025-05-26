@@ -1,0 +1,13 @@
+include ../svg.pug
+mixin btncheck(title, theme,size, name, value, iconLeft, iconRight )
+  - const classTheme = theme ? `btn--${theme}` :''
+  - const classSize = size ? `btn-${size}` :''
+  label(class="btn" class=[classTheme,classSize]  )&attributes(attributes)
+    input(type="checkbox" name=name hidden value=value )
+    
+    if(iconLeft)
+      +svg(iconLeft)
+    span #{title}
+    if(iconRight)
+      +svg(iconRight)
+

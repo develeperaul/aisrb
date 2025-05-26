@@ -1,5 +1,5 @@
 .btn {
-  @apply text-body_m inline-flex items-center text-text_000 justify-between rounded-3md;
+  @apply text-body_m inline-flex justify-center items-center text-text_000 rounded-3md w-full lg:w-auto;
   @apply transition-all duration-300 ease-linear;
   outline-offset: -2px;
   height: 56px;
@@ -27,6 +27,24 @@
       @apply text-surface-dark_300;
     }
   }
+  &-w {
+    @apply text-text_950 bg-transparent;
+    svg {
+      @apply text-secondary_500;
+    }
+    &:not([disabled]):hover {
+      @apply bg-surface-white_50;
+    }
+    &:not([disabled]):active {
+      @apply bg-surface-white_100;
+    }
+    &:disabled {
+      @apply text-surface-white_100 bg-transparent;
+      svg {
+        @apply text-surface-white_100;
+      }
+    }
+  }
 
   &--primary {
     @apply bg-text_000 text-text_950;
@@ -47,6 +65,25 @@
 
       svg {
         @apply text-surface-dark_200;
+      }
+    }
+    &-w {
+      @apply bg-primary_500 text-text_000;
+      svg {
+        @apply bg-secondary_500;
+      }
+      &:not([disabled]):hover {
+        @apply bg-primary_400 text-text_000;
+      }
+      &:not([disabled]):active {
+        @apply bg-primary_600;
+      }
+      &:disabled {
+        @apply bg-surface-white_50 text-surface-white_100;
+
+        svg {
+          @apply text-surface-white_100;
+        }
       }
     }
   }
@@ -86,6 +123,24 @@
         @apply text-surface-dark_200;
       }
     }
+    &-w {
+      @apply bg-secondary_500 text-text_000;
+      svg {
+        @apply text-text_000;
+      }
+      &:not([disabled]):hover {
+        @apply bg-secondary_400;
+      }
+      &:not([disabled]):active {
+        @apply bg-secondary_600;
+      }
+      &:disabled {
+        @apply bg-surface-white_50 text-surface-white_100;
+        svg {
+          @apply text-surface-white_100;
+        }
+      }
+    }
   }
   &--teartiary {
     @apply bg-surface-dark_300 text-text_000;
@@ -102,6 +157,24 @@
       @apply bg-surface-dark_300 text-surface-dark_200;
       svg {
         @apply text-surface-dark_200;
+      }
+    }
+    &-w {
+      @apply bg-surface-white_50 text-text_950;
+      svg {
+        @apply text-secondary_500;
+      }
+      &:not([disabled]):hover {
+        @apply bg-text_000;
+      }
+      &:not([disabled]):active {
+        @apply bg-surface-white_100;
+      }
+      &:disabled {
+        @apply bg-surface-white_50 text-surface-white_100;
+        svg {
+          @apply text-surface-white_100;
+        }
       }
     }
   }
@@ -123,6 +196,26 @@
 
       svg {
         @apply text-surface-dark_300;
+      }
+    }
+    &-w {
+      @apply outline outline-surface-white_50 outline-1 bg-transparent text-text_950;
+
+      svg {
+        @apply text-secondary_500;
+      }
+      &:not([disabled]):hover {
+        @apply bg-surface-white_50 outline-none;
+      }
+      &:not([disabled]):active {
+        @apply bg-surface-white_100 outline-1;
+      }
+      &:disabled {
+        @apply text-surface-white_100;
+
+        svg {
+          @apply text-surface-white_100;
+        }
       }
     }
   }

@@ -1,0 +1,43 @@
+include ../../components/input/index.pug
+include ../../components/btn/index.pug
+section.section.section1.section-rounded.contacts
+  .container
+    .contacts__wrapper
+      .contacts__content
+        .contacts__content--top
+          .contacts__content--list
+            each val in [1,2,3,4,5,6,7,8]
+              .contacts__content--item.item
+                .item__title Для обращений и служебной переписки
+                .item__text info@aisrb.ru
+
+        .contacts__content--bottom
+          form.contacts__content--form.form
+            .form__top
+              h3.form__title Забронировать
+              p.form__text Оставьте заявку и наш специалист свяжется с вами, чтобы ответить на все вопросы о квартирах, ипотеке и спецпредложениях
+            .form__fields
+              +input('','Телефон','+7 (999) 000-00-00')(data-mask="+{7}(000)-000-00-00")
+              +input('','Имя','Введите текст')
+              .select(data-sel data-label="Выберите" )
+                input(type="text" hidden name="PROP3")
+                .select__label Время звонка
+                .select__head Выберите
+                .select__body 
+                  .select__body-wrapper
+                    .select__options
+                      div(data-val='09:00 — 12:00') 09:00 — 12:00
+              .select(data-sel data-label="Выберите" )
+                input(type="text" hidden name="PROP3")
+                .select__label Время звонка
+                .select__head Выберите
+                .select__body 
+                  .select__body-wrapper
+                    .select__options
+                      div(data-val='09:00 — 12:00') 09:00 — 12:00
+            .form__actions 
+              +btn('Отправить')
+              +btn('Написать в WhatsApp')
+            p.form__info Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных
+  .contacts__map
+    #contacts-map

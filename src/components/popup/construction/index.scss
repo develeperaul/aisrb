@@ -1,0 +1,7 @@
+.construction-popup {
+  @apply fixed w-full h-full top-0 left-0 grid grid-rows-[auto_1fr];
+  z-index: 10;
+  &__content {
+    @apply h-full overflow-hidden p-4 bg-text_000;
+  }
+}

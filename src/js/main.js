@@ -1,8 +1,13 @@
 import '../scss/style.scss';
 import '../index.pug';
 
+import './animation.js';
+import './bsheet.js';
+
+import './validate-form-footer.js';
 import './tabs.js';
 import { clicktTab } from './tabs.js';
+import { rezetSelect } from '../components/select/index.js';
 import './accordeon.js';
 
 import '../components/index.js';
@@ -10,7 +15,7 @@ import '../components/index.js';
 import * as ymaps3 from 'ymaps3';
 
 initMap();
-initMap2();
+// initMap2();
 
 async function initMap() {
   // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
@@ -57,7 +62,7 @@ async function initMap() {
           name: 'Test3',
           geometry: {
             type: 'Point',
-            coordinates: [82.88611700042408, 55.07147614178742],
+            coordinates: [82.98611700042408, 55.07147614178742],
           },
           properties: { name: 'marker', description: '' },
           type: 'Feature',
@@ -108,28 +113,33 @@ async function initMap() {
       );
       this._layouts = {};
       this._countALL = 0;
-
-      for (const key in this._props) {
-        if (Object.prototype.hasOwnProperty.call(this._props, key)) {
+      console.log(this._props.markers);
+      for (const key in this._props.markers) {
+        if (Object.prototype.hasOwnProperty.call(this._props.markers, key)) {
           // создание маркеров
           const l = new YMapLayer({ source: key, type: 'markers' });
-          map.addChild(new YMapFeatureDataSource({ id: key }));
-          map.addChild(l);
+          this._props.map.addChild(new YMapFeatureDataSource({ id: key }));
+          this._props.map.addChild(l);
           this._layouts[key] = l;
           console.log(this._layouts);
 
-          this._props[key].points.forEach((f) => {
-            map.addChild(this.marker(f, key));
+          this._props.markers[key].points.forEach((f) => {
+            this._props.map.addChild(
+              this.marker(f, key, this._props.markers[key].btn)
+            );
           });
 
           // cоздание кнопок в окне
-          const element = this._props[key];
+          const element = this._props.markers[key];
           const buttonEl = document.createElement('button');
           buttonEl.classList.add('btnmap');
           buttonEl.setAttribute('data-layout', key);
           buttonEl.addEventListener('click', () => {
             const btns = this._container.querySelectorAll('.btnmap');
             const nameLBtn = buttonEl.getAttribute('data-layout');
+
+            // перемещение карты по границам маркеров
+
             if (nameLBtn === 'all') {
               [...btns].forEach((b) => {
                 if (b == buttonEl) {
@@ -146,7 +156,34 @@ async function initMap() {
                   b.classList.remove('active');
                 }
               });
+              this._props.map.setLocation({
+                duration: 1000,
+                easing: 'ease-in-out',
+                center: this._props.center,
+                zoom: 12,
+              });
             } else {
+              let bounds = [];
+              this._props.markers[key].points.forEach((p) =>
+                bounds.push(p.geometry.coordinates)
+              );
+              console.log(bounds);
+              if (bounds.length > 1)
+                this._props.map.setLocation({
+                  bounds,
+                  duration: 1000,
+                  easing: 'ease-in-out',
+                  zoom: 12,
+                  // center: this._props[key].points[0].geometry.coordinates,
+                });
+              else
+                this._props.map.setLocation({
+                  duration: 1000,
+                  easing: 'ease-in-out',
+                  zoom: 12,
+                  center:
+                    this._props.markers[key].points[0].geometry.coordinates,
+                });
               [...btns].forEach((b) => {
                 const nameL = b.getAttribute('data-layout');
                 if (nameL) {
@@ -168,9 +205,7 @@ async function initMap() {
           buttonEl.insertAdjacentHTML(
             'afterbegin',
             `
-            
-            
-            
+
               <span class="btnmap__left">
                 <span class="icon" style="background: ${element.btn.bg}">
                 ${element.btn.icon}
@@ -180,7 +215,7 @@ async function initMap() {
                 </span>
               </span>
               <span class="btnmap__right" data-count>${element.points.length}</span>
-              
+
             `
           );
         }
@@ -193,28 +228,32 @@ async function initMap() {
       if (countAllEl) countAllEl.textContent = this._countALL;
     }
 
-    marker = (feature, source) => {
+    marker = (feature, source, theme) => {
       // console.log(feature);
-      // console.log(feature.geometry);
 
       const markerContainerElement = document.createElement('div');
       markerContainerElement.classList.add('marker-container');
 
       const markerText = document.createElement('div');
+      markerText.classList.add('marker-text');
       markerText.id = feature.name;
       // markerText.classList.add('marker-text', 'hidden');
       markerText.innerText = feature.name;
 
-      markerContainerElement.onmouseover = () => {
-        markerText.classList.replace('hidden', 'visible');
-      };
+      // markerContainerElement.onmouseover = () => {
+      //   console.log('onmouseover');
+      //   markerText.classList.replace('hidden', 'visible');
+      // };
 
-      markerContainerElement.onmouseout = () => {
-        markerText.classList.replace('visible', 'hidden');
-      };
+      // markerContainerElement.onmouseout = () => {
+      //   console.log('onmouseout');
+      //   markerText.classList.replace('visible', 'hidden');
+      // };
 
       const markerElement = document.createElement('div');
       markerElement.classList.add('marker');
+      markerElement.style.backgroundColor = `${theme.bg}`;
+      markerElement.insertAdjacentHTML('afterbegin', `${theme.icon}`);
 
       // const markerImage = document.createElement('img');
       // markerImage.src = getImageSrc(feature.id);
@@ -236,10 +275,10 @@ async function initMap() {
     };
 
     removeL = (layer) => {
-      map.removeChild(layer);
+      this._props.map.removeChild(layer);
     };
     addL = (layer) => {
-      map.addChild(layer);
+      this._props.map.addChild(layer);
     };
 
     _onDetach() {
@@ -251,33 +290,40 @@ async function initMap() {
     }
   }
 
-  const controls = new YMapControls({
-    position: 'top left',
-    orientation: 'vertical',
-  });
-  const control = new YMapControl({});
-  control.addChild(new CustomMenuControl(markers));
-  controls.addChild(control);
+  const mapsEL = document.querySelectorAll('.infrastrct-map');
+  Array.from([...mapsEL]).forEach((mapEL) => {
+    if (mapEL) {
+      const controls = new YMapControls({
+        position: 'top left',
+        orientation: 'vertical',
+      });
 
-  // Иницилиазируем карту
-  const map = new YMap(
-    // Передаём ссылку на HTMLElement контейнера
-    document.querySelector('#infrastrct-map'),
+      // Иницилиазируем карту
+      const map = new YMap(
+        // Передаём ссылку на HTMLElement контейнера
+        mapEL,
 
-    // Передаём параметры инициализации карты
-    {
-      location: {
-        // Координаты центра карты
-        center: [82.8665, 55.0964],
+        // Передаём параметры инициализации карты
+        {
+          location: {
+            // Координаты центра карты
+            center: [82.8665, 55.0964],
 
-        // Уровень масштабирования
-        zoom: 12,
-      },
+            // Уровень масштабирования
+            zoom: 12,
+          },
+        }
+      );
+      const control = new YMapControl({});
+      controls.addChild(control);
+      control.addChild(
+        new CustomMenuControl({ markers, map, center: [82.8665, 55.0964] })
+      );
+      map.addChild(new YMapDefaultSchemeLayer());
+      map.addChild(new YMapDefaultFeaturesLayer());
+      map.addChild(controls);
     }
-  );
-
-  map.addChild(new YMapDefaultSchemeLayer());
-  map.addChild(new YMapDefaultFeaturesLayer());
+  });
   // for (const key in markers) {
   //   if (Object.prototype.hasOwnProperty.call(markers, key)) {
   //     map.addChild(new YMapFeatureDataSource({ id: key }));
@@ -296,358 +342,573 @@ async function initMap() {
   // features.forEach((f) => {
   //   map.addChild(marker(f));
   // });
-  map.addChild(controls);
 }
-async function initMap2() {
-  // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-  await ymaps3.ready;
+// async function initMap2() {
+//   // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+//   await ymaps3.ready;
 
-  const {
-    YMap,
-    YMapDefaultSchemeLayer,
-    YMapDefaultFeaturesLayer,
-    YMapLayer,
-    YMapMarker,
-    YMapFeatureDataSource,
-    YMapControls,
-    YMapControl,
-    YMapGroupEntity,
-  } = ymaps3;
+//   const {
+//     YMap,
+//     YMapDefaultSchemeLayer,
+//     YMapDefaultFeaturesLayer,
+//     YMapLayer,
+//     YMapMarker,
+//     YMapFeatureDataSource,
+//     YMapControls,
+//     YMapControl,
+//     YMapGroupEntity,
+//   } = ymaps3;
 
-  const markers = {
-    aisOff: {
-      btn: {
-        name: 'Офис АИС',
-      },
-      points: [
-        {
-          name: 'Test',
-          geometry: {
-            type: 'Point',
-            coordinates: [82.88611700042408, 55.07147614178742],
-          },
-          properties: { name: 'marker', description: '' },
-          type: 'Feature',
-          cardEl: `
-              <div class="card-map">
-                <div >
-                  <h4 class="card-map__title">Центральный офис продаж</h4>
-                  <p class="card-map__text">450022, Республика Башкортостан,г. Уфа, ул. Обская, 7</p>
-                </div>
-                <div class="card-map__item">
-                  <h6 class="card-map__title">Приемная</h5>
-                  <p class="card-map__text">+7 (347) 224-25-40</p>
-                </div>
-                <div class="card-map__item">
-                  <h6 class="card-map__title">Отдел продаж</h5>
-                  <p class="card-map__text">+7 (347) 224-20-40</p>
-                  <p class="card-map__text">agidel-invest@mail.ru</p>
-                </div>
-                <div class="card-map__item">
-                  <p class="card-map__text">Пн. - Пт.: 9.00 - 18.00</p>
-                  <p class="card-map__text">Перерыв: 13.00 - 14.00</p>
-                </div>
-              </div>
-            `,
-        },
-      ],
-    },
-    sellerOff: {
-      btn: {
-        name: 'Офисы продаж',
-      },
-      points: [
-        {
-          name: 'Test2',
-          geometry: {
-            type: 'Point',
-            coordinates: [82.87446639248576, 55.1443451567671],
-          },
-          properties: { name: 'marker', description: '' },
-          type: 'Feature',
-          cardEl: `
-              <div class="card-map">
-                <div >
-                  <h4 class="card-map__title"></h4>
-                  <p class="card-map__text">450022, Республика Башкортостан,г. Уфа, ул. Обская, 7</p>
-                </div>
-                <div class="card-map__item">
-                  <h6 class="card-map__title">Приемная</h5>
-                  <p class="card-map__text">+7 (347) 224-25-40</p>
-                </div>
-                <div class="card-map__item">
-                  <h6 class="card-map__title">Отдел продаж</h5>
-                  <p class="card-map__text">+7 (347) 224-20-40</p>
-                  <p class="card-map__text">agidel-invest@mail.ru</p>
-                </div>
-                <div class="card-map__item">
-                  <p class="card-map__text">Пн. - Пт.: 9.00 - 18.00</p>
-                  <p class="card-map__text">Перерыв: 13.00 - 14.00</p>
-                </div>
-              </div>
-            `,
-        },
-        {
-          name: 'Test22',
-          geometry: {
-            type: 'Point',
-            coordinates: [83.87446639248576, 55.1443451567671],
-          },
-          properties: { name: 'marker', description: '' },
-          type: 'Feature',
-          cardEl: `
-              <div class="card-map">
-                <div >
-                  <h4 class="card-map__title"></h4>
-                  <p class="card-map__text">450022, Республика Башкортостан,г. Уфа, ул. Обская, 7</p>
-                </div>
-                <div class="card-map__item">
-                  <h6 class="card-map__title">Приемная</h5>
-                  <p class="card-map__text">+7 (347) 224-25-40</p>
-                </div>
-                <div class="card-map__item">
-                  <h6 class="card-map__title">Отдел продаж</h5>
-                  <p class="card-map__text">+7 (347) 224-20-40</p>
-                  <p class="card-map__text">agidel-invest@mail.ru</p>
-                </div>
-                <div class="card-map__item">
-                  <p class="card-map__text">Пн. - Пт.: 9.00 - 18.00</p>
-                  <p class="card-map__text">Перерыв: 13.00 - 14.00</p>
-                </div>
-              </div>
-            `,
-        },
-      ],
-    },
-  };
-  //боковая панель
-  class CustomMenuControl extends YMapGroupEntity {
-    _element;
-    _container;
+//   const markers = {
+//     aisOff: {
+//       btn: {
+//         name: 'Офис АИС',
+//       },
+//       points: [
+//         {
+//           name: 'Test',
+//           geometry: {
+//             type: 'Point',
+//             coordinates: [82.88611700042408, 55.07147614178742],
+//           },
+//           properties: { name: 'marker', description: '' },
+//           type: 'Feature',
+//           cardEl: `
+//               <div class="card-map">
+//                 <div >
+//                   <h4 class="card-map__title">Центральный офис продаж</h4>
+//                   <p class="card-map__text">450022, Республика Башкортостан,г. Уфа, ул. Обская, 7</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <h6 class="card-map__title">Приемная</h5>
+//                   <p class="card-map__text">+7 (347) 224-25-40</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <h6 class="card-map__title">Отдел продаж</h5>
+//                   <p class="card-map__text">+7 (347) 224-20-40</p>
+//                   <p class="card-map__text">agidel-invest@mail.ru</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <p class="card-map__text">Пн. - Пт.: 9.00 - 18.00</p>
+//                   <p class="card-map__text">Перерыв: 13.00 - 14.00</p>
+//                 </div>
+//               </div>
+//             `,
+//         },
+//       ],
+//     },
+//     sellerOff: {
+//       btn: {
+//         name: 'Офисы продаж',
+//       },
+//       points: [
+//         {
+//           name: 'Test2',
+//           geometry: {
+//             type: 'Point',
+//             coordinates: [82.87446639248576, 55.1443451567671],
+//           },
+//           properties: { name: 'marker', description: '' },
+//           type: 'Feature',
+//           cardEl: `
+//               <div class="card-map">
+//                 <div >
+//                   <h4 class="card-map__title"></h4>
+//                   <p class="card-map__text">450022, Республика Башкортостан,г. Уфа, ул. Обская, 7</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <h6 class="card-map__title">Приемная</h5>
+//                   <p class="card-map__text">+7 (347) 224-25-40</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <h6 class="card-map__title">Отдел продаж</h5>
+//                   <p class="card-map__text">+7 (347) 224-20-40</p>
+//                   <p class="card-map__text">agidel-invest@mail.ru</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <p class="card-map__text">Пн. - Пт.: 9.00 - 18.00</p>
+//                   <p class="card-map__text">Перерыв: 13.00 - 14.00</p>
+//                 </div>
+//               </div>
+//             `,
+//         },
+//         {
+//           name: 'Test22',
+//           geometry: {
+//             type: 'Point',
+//             coordinates: [83.87446639248576, 55.1443451567671],
+//           },
+//           properties: { name: 'marker', description: '' },
+//           type: 'Feature',
+//           cardEl: `
+//               <div class="card-map">
+//                 <div >
+//                   <h4 class="card-map__title"></h4>
+//                   <p class="card-map__text">450022, Республика Башкортостан,г. Уфа, ул. Обская, 7</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <h6 class="card-map__title">Приемная</h5>
+//                   <p class="card-map__text">+7 (347) 224-25-40</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <h6 class="card-map__title">Отдел продаж</h5>
+//                   <p class="card-map__text">+7 (347) 224-20-40</p>
+//                   <p class="card-map__text">agidel-invest@mail.ru</p>
+//                 </div>
+//                 <div class="card-map__item">
+//                   <p class="card-map__text">Пн. - Пт.: 9.00 - 18.00</p>
+//                   <p class="card-map__text">Перерыв: 13.00 - 14.00</p>
+//                 </div>
+//               </div>
+//             `,
+//         },
+//       ],
+//     },
+//   };
+//   //боковая панель
 
-    _detachDom;
+//   const mapEL = document.querySelector('#contacts-map');
 
-    _onAttach() {
-      this._createMenu();
-    }
+//   if (mapEL) {
+//     class CustomMenuControl extends YMapGroupEntity {
+//       _element;
+//       _container;
 
-    _createMenu() {
-      this._element = document.createElement('div');
-      this._element.classList.add('card-menu');
-      this._containertop = document.createElement('div');
-      this._containertop.classList.add('card-menu__top', 'tabs');
+//       _detachDom;
 
-      this._element.appendChild(this._containertop);
-      this._container = document.createElement('div');
+//       _onAttach() {
+//         this._createMenu();
+//       }
 
-      this._container.classList.add('card-menu__list');
+//       _createMenu() {
+//         this._element = document.createElement('div');
+//         this._element.classList.add('card-menu');
+//         this._containertop = document.createElement('div');
+//         this._containertop.classList.add('card-menu__top', 'tabs');
 
-      this._element.appendChild(this._container);
+//         this._element.appendChild(this._containertop);
+//         this._container = document.createElement('div');
 
-      this._detachDom = ymaps3.useDomContext(
-        this,
-        this._element,
-        this._containertop,
-        this._container
-      );
-      this._layouts = {};
-      this._countALL = 0;
-      let i = 0;
-      for (const key in this._props) {
-        i++;
+//         this._container.classList.add('card-menu__list');
 
-        if (Object.prototype.hasOwnProperty.call(this._props, key)) {
-          // создание маркеров
-          const l = new YMapLayer({ source: key, type: 'markers' });
-          map.addChild(new YMapFeatureDataSource({ id: key }));
-          map.addChild(l);
-          this._layouts[key] = l;
-          console.log(this._layouts);
+//         this._element.appendChild(this._container);
 
-          this._props[key].points.forEach((f) => {
-            map.addChild(this.marker(f, key));
-          });
+//         this._detachDom = ymaps3.useDomContext(
+//           this,
+//           this._element,
+//           this._containertop,
+//           this._container
+//         );
+//         this._layouts = {};
+//         this._countALL = 0;
+//         let i = 0;
+//         for (const key in this._props) {
+//           i++;
 
-          // cоздание кнопок в окне
-          const element = this._props[key];
-          const buttonEl = document.createElement('button');
-          // buttonEl.classList.add('btn', 'btn--secondary', 'btn--teartiary');
-          buttonEl.classList.add('btn', 'btn--teartiary');
-          if (i === 1) {
-            buttonEl.classList.add('active', 'btn--secondary');
-            buttonEl.classList.remove('btn--teartiary');
-          }
-          buttonEl.setAttribute('data-layout', key);
-          buttonEl.setAttribute('data-target', key);
+//           if (Object.prototype.hasOwnProperty.call(this._props, key)) {
+//             // создание маркеров
+//             const l = new YMapLayer({ source: key, type: 'markers' });
+//             map.addChild(new YMapFeatureDataSource({ id: key }));
+//             map.addChild(l);
+//             this._layouts[key] = l;
+//             console.log(this._layouts);
 
-          //клик по табу
-          buttonEl.addEventListener('click', () => {
-            const btns = this._containertop.querySelectorAll('.btn');
-            const nameLBtn = buttonEl.getAttribute('data-layout');
-            clicktTab.bind(null, buttonEl, btns)();
-            // перемещение карты по границам маркеров
-            let bounds = [];
-            this._props[key].points.forEach((p) =>
-              bounds.push(p.geometry.coordinates)
-            );
-            console.log(bounds);
-            if (bounds.length > 1)
-              map.setLocation({
-                bounds,
-                duration: 1000,
-                easing: 'ease-in-out',
-                // center: this._props[key].points[0].geometry.coordinates,
-              });
-            else
-              map.setLocation({
-                duration: 1000,
-                easing: 'ease-in-out',
-                center: this._props[key].points[0].geometry.coordinates,
-              });
-            // setLocation;
+//             this._props[key].points.forEach((f) => {
+//               map.addChild(this.marker(f, key));
+//             });
 
-            [...btns].forEach((b) => {
-              console.log(this._props[key].points);
-              const nameL = b.getAttribute('data-layout');
-              if (nameL) {
-                if (b == buttonEl) {
-                  b.classList.add('active', 'btn--secondary');
-                  b.classList.remove('btn--teartiary');
-                  this.addL(this._layouts[nameL]);
-                } else {
-                  b.classList.remove('active', 'btn--secondary');
-                  buttonEl.classList.add('btn--teartiary');
-                  this.removeL(this._layouts[nameL]);
-                }
-              }
-            });
-          });
-          buttonEl.insertAdjacentHTML(
-            'afterbegin',
-            `
-              <span class="">
-                ${element.btn.name}
-              </span>
-              
-            `
-          );
-          this._containertop.appendChild(buttonEl);
+//             // cоздание кнопок в окне
+//             const element = this._props[key];
+//             const buttonEl = document.createElement('button');
+//             // buttonEl.classList.add('btn', 'btn--secondary', 'btn--teartiary');
+//             buttonEl.classList.add('btn', 'btn--teartiary');
+//             if (i === 1) {
+//               buttonEl.classList.add('active', 'btn--secondary');
+//               buttonEl.classList.remove('btn--teartiary');
+//             }
+//             buttonEl.setAttribute('data-layout', key);
+//             buttonEl.setAttribute('data-target', key);
 
-          const contentItem = document.createElement('div');
-          contentItem.classList.add('card-menu__item');
-          const tabContent = document.createElement('div');
-          tabContent.classList.add('tab-content');
-          tabContent.setAttribute('id', key);
-          if (i === 1) tabContent.classList.add('active');
-          element.points.forEach((p) => {
-            tabContent.insertAdjacentHTML(
-              'afterbegin',
-              `
-              
-                ${p.cardEl}
-              
-              
-            `
-            );
-            console.log();
-          });
-          this._container.appendChild(contentItem);
-          contentItem.appendChild(tabContent);
+//             //клик по табу
+//             buttonEl.addEventListener('click', () => {
+//               const btns = this._containertop.querySelectorAll('.btn');
+//               const nameLBtn = buttonEl.getAttribute('data-layout');
+//               clicktTab.bind(null, buttonEl, btns)();
+//               // перемещение карты по границам маркеров
+//               let bounds = [];
+//               this._props[key].points.forEach((p) =>
+//                 bounds.push(p.geometry.coordinates)
+//               );
+//               console.log(bounds);
+//               if (bounds.length > 1)
+//                 map.setLocation({
+//                   bounds,
+//                   duration: 1000,
+//                   easing: 'ease-in-out',
+//                   // center: this._props[key].points[0].geometry.coordinates,
+//                 });
+//               else
+//                 map.setLocation({
+//                   duration: 1000,
+//                   easing: 'ease-in-out',
+//                   center: this._props[key].points[0].geometry.coordinates,
+//                 });
+//               // setLocation;
+
+//               [...btns].forEach((b) => {
+//                 console.log(this._props[key].points);
+//                 const nameL = b.getAttribute('data-layout');
+//                 if (nameL) {
+//                   if (b == buttonEl) {
+//                     b.classList.add('active', 'btn--secondary');
+//                     b.classList.remove('btn--teartiary');
+//                     this.addL(this._layouts[nameL]);
+//                   } else {
+//                     b.classList.remove('active', 'btn--secondary');
+//                     buttonEl.classList.add('btn--teartiary');
+//                     this.removeL(this._layouts[nameL]);
+//                   }
+//                 }
+//               });
+//             });
+//             buttonEl.insertAdjacentHTML(
+//               'afterbegin',
+//               `
+//                 <span class="">
+//                   ${element.btn.name}
+//                 </span>
+
+//               `
+//             );
+//             this._containertop.appendChild(buttonEl);
+
+//             const contentItem = document.createElement('div');
+//             contentItem.classList.add('card-menu__item');
+//             const tabContent = document.createElement('div');
+//             tabContent.classList.add('tab-content');
+//             tabContent.setAttribute('id', key);
+//             if (i === 1) tabContent.classList.add('active');
+//             element.points.forEach((p) => {
+//               tabContent.insertAdjacentHTML(
+//                 'afterbegin',
+//                 `
+
+//                   ${p.cardEl}
+
+//               `
+//               );
+//               console.log();
+//             });
+//             this._container.appendChild(contentItem);
+//             contentItem.appendChild(tabContent);
+//           }
+//         }
+//       }
+
+//       marker = (feature, source) => {
+//         // console.log(feature);
+//         // console.log(feature.geometry);
+
+//         const markerContainerElement = document.createElement('div');
+//         markerContainerElement.classList.add('marker-container');
+
+//         const markerText = document.createElement('div');
+//         markerText.id = feature.name;
+//         // markerText.classList.add('marker-text', 'hidden');
+//         markerText.innerText = feature.name;
+//         markerContainerElement.onclick = () => {
+//           map.update({
+//             location: {
+//               center: feature.geometry.coordinates,
+//               duration: 1000,
+//               easing: 'ease-in-out',
+//             },
+//           });
+//         };
+//         markerContainerElement.onmouseover = () => {
+//           markerText.classList.replace('hidden', 'visible');
+//         };
+
+//         markerContainerElement.onmouseout = () => {
+//           markerText.classList.replace('visible', 'hidden');
+//         };
+
+//         const markerElement = document.createElement('div');
+//         markerElement.classList.add('marker');
+
+//         // const markerImage = document.createElement('img');
+//         // markerImage.src = getImageSrc(feature.id);
+//         // markerImage.classList.add('image');
+
+//         // markerElement.appendChild(markerImage);
+
+//         markerContainerElement.appendChild(markerText);
+//         markerContainerElement.appendChild(markerElement);
+//         console.log(markerText);
+
+//         return new YMapMarker(
+//           {
+//             source: source,
+//             coordinates: feature.geometry.coordinates,
+//           },
+//           markerContainerElement
+//         );
+//       };
+
+//       removeL = (layer) => {
+//         map.removeChild(layer);
+//       };
+//       addL = (layer) => {
+//         map.addChild(layer);
+//       };
+
+//       _onDetach() {
+//         // Detaching the DOM from the entity and removing references to the elements
+//         this._detachDom?.();
+//         this._detachDom = undefined;
+//         this._element = undefined;
+//         this._container = undefined;
+//       }
+//     }
+//     const controls = new YMapControls({
+//       position: 'top left',
+//       orientation: 'vertical',
+//     });
+//     const control = new YMapControl({});
+//     control.addChild(new CustomMenuControl(markers));
+//     controls.addChild(control);
+//     // Иницилиазируем карту
+//     const map = new YMap(
+//       // Передаём ссылку на HTMLElement контейнера
+//       document.querySelector('#contacts-map'),
+
+//       // Передаём параметры инициализации карты
+//       {
+//         location: {
+//           // Координаты центра карты
+//           center: [82.8665, 55.0964],
+
+//           // Уровень масштабирования
+//           zoom: 12,
+//         },
+//       }
+//     );
+
+//     map.addChild(new YMapDefaultSchemeLayer());
+//     map.addChild(new YMapDefaultFeaturesLayer());
+
+//     map.addChild(controls);
+//   }
+// }
+const chipsContents = document.querySelectorAll('.filter-actions__chips');
+const filterForm = document.querySelectorAll('.filter-form');
+// const handler = {
+//   set(target, property, value, receiver) {
+//     console.log(`Свойство ${property} изменено на ${value}`);
+//     target[property] = value;
+//     return true;
+//   },
+//   get(target, property, receiver) {
+//     console.log(`Свойство ${property} прочитано`);
+//     return target[property];
+//   },
+//   deleteProperty(target, property) {
+//     console.log(`Свойство ${property} удалено`);
+//     delete target[property];
+//     return true;
+//   },
+// };
+// let inpsObj = new Proxy({}, handler);
+window.inpsObj = {};
+Array.from([...filterForm]).forEach((f) => {
+  let inputs = f.querySelectorAll('input');
+  Array.from([...inputs]).forEach((inp) => {
+    // console.log(inp.type == 'range');
+
+    if (inp.type == 'checkbox') {
+      inp.addEventListener('change', function (e) {
+        if (inp.checked) {
+          console.log(inp.value);
+
+          window.inpsObj[inp.name] = inp;
+          addChip(chipsContents, inp.name, inp.value);
+        } else {
+          clearVal(inp.name);
         }
-      }
-    }
+      });
+    } else if (inp.type == 'range') {
+      const parent = inp.closest('.range-filter');
+      if (parent) {
+        const observerInRezumeList = new MutationObserver(function (mutations) {
+          const name = mutations[0].target.getAttribute('data-name');
 
-    marker = (feature, source) => {
-      // console.log(feature);
-      // console.log(feature.geometry);
-
-      const markerContainerElement = document.createElement('div');
-      markerContainerElement.classList.add('marker-container');
-
-      const markerText = document.createElement('div');
-      markerText.id = feature.name;
-      // markerText.classList.add('marker-text', 'hidden');
-      markerText.innerText = feature.name;
-      markerContainerElement.onclick = () => {
-        map.update({
-          location: {
-            center: feature.geometry.coordinates,
-            duration: 1000,
-            easing: 'ease-in-out',
-          },
+          const [to, from] = mutations[0].target
+            .getAttribute('data-value')
+            .match(/\d*[^-]\d*\w/g);
+          window.inpsObj[name] = Array(2);
+          window.inpsObj[name][0] = to;
+          window.inpsObj[name][1] = from;
+          addChip(
+            chipsContents,
+            name,
+            mutations[0].target.getAttribute('data-value')
+          );
         });
-      };
-      markerContainerElement.onmouseover = () => {
-        markerText.classList.replace('hidden', 'visible');
-      };
 
-      markerContainerElement.onmouseout = () => {
-        markerText.classList.replace('visible', 'hidden');
-      };
+        observerInRezumeList.observe(parent, {
+          attributes: true,
+          characterDataOldValue: true,
+          attributeFilter: ['data-value'],
+        });
+      }
 
-      const markerElement = document.createElement('div');
-      markerElement.classList.add('marker');
+      // inp.addEventListener('mouseout', function () {
+      //   window.inpsObj[inp.name] = inp;
+      //   addChip(chipsContents, inp, inp.value);
+      // });
+      // inp.addEventListener('touchend', function () {
+      //   window.inpsObj[inp.name] = inp;
+      //   addChip(chipsContents, inp, inp.value);
+      // });
+    } else {
+      observeElement(inp, 'value', function (oldValue, newValue) {
+        if (newValue) {
+          window.inpsObj[inp.name] = inp;
+          console.log(window.inpsObj);
 
-      // const markerImage = document.createElement('img');
-      // markerImage.src = getImageSrc(feature.id);
-      // markerImage.classList.add('image');
+          addChip(chipsContents, inp.name, newValue);
+        }
+        // if (newValue) {
+        //   window.inpsObj[inp.name] = inp;
+        // }
+        console.log(
+          "Input value changed via API. Value changed from '%s' to '%s'",
+          oldValue,
+          newValue
+        );
+      });
+    }
+  });
 
-      // markerElement.appendChild(markerImage);
+  function observeElement(element, property, callback, delay = 0) {
+    let elementPrototype = Object.getPrototypeOf(element);
+    if (elementPrototype.hasOwnProperty(property)) {
+      console.log(element);
 
-      markerContainerElement.appendChild(markerText);
-      markerContainerElement.appendChild(markerElement);
-      console.log(markerText);
-
-      return new YMapMarker(
-        {
-          source: source,
-          coordinates: feature.geometry.coordinates,
-        },
-        markerContainerElement
+      let descriptor = Object.getOwnPropertyDescriptor(
+        elementPrototype,
+        property
       );
-    };
-
-    removeL = (layer) => {
-      map.removeChild(layer);
-    };
-    addL = (layer) => {
-      map.addChild(layer);
-    };
-
-    _onDetach() {
-      // Detaching the DOM from the entity and removing references to the elements
-      this._detachDom?.();
-      this._detachDom = undefined;
-      this._element = undefined;
-      this._container = undefined;
+      Object.defineProperty(element, property, {
+        get: function () {
+          return descriptor.get.apply(this, arguments);
+        },
+        set: function () {
+          let oldValue = this[property];
+          descriptor.set.apply(this, arguments);
+          let newValue = this[property];
+          if (typeof callback == 'function') {
+            setTimeout(callback.bind(this, oldValue, newValue), delay);
+          }
+          return newValue;
+        },
+      });
     }
   }
+});
 
-  const controls = new YMapControls({
-    position: 'top left',
-    orientation: 'vertical',
-  });
-  const control = new YMapControl({});
-  control.addChild(new CustomMenuControl(markers));
-  controls.addChild(control);
-  // Иницилиазируем карту
-  const map = new YMap(
-    // Передаём ссылку на HTMLElement контейнера
-    document.querySelector('#contacts-map'),
-
-    // Передаём параметры инициализации карты
-    {
-      location: {
-        // Координаты центра карты
-        center: [82.8665, 55.0964],
-
-        // Уровень масштабирования
-        zoom: 12,
-      },
-    }
+function clearVal(dataName, form) {
+  const inp = document.querySelector(`input[name="${dataName}"]`);
+  const rangeContent = document.querySelector(
+    `.range-filter[data-name='${dataName}']`
   );
-  map.addChild(new YMapDefaultSchemeLayer());
-  map.addChild(new YMapDefaultFeaturesLayer());
+  delete window.inpsObj[dataName];
+  const buttonsChip = document.querySelectorAll(
+    `button[data-name="${dataName}"]`
+  );
+  if (inp) {
+    const selects = document.querySelectorAll(
+      `.select[data-name="${dataName}"]`
+    );
 
-  map.addChild(controls);
+    if (selects.length > 0) {
+      Array.from([...selects]).forEach((select) => {
+        rezetSelect(select);
+        inp.dispatchEvent(new Event('change'));
+      });
+    }
+    if (inp.type === 'text') inp.value = '';
+    if (inp.type === 'checkbox') inp.checked = false;
+    if (inp.type === 'checkbox') inp.checked = false;
+  }
+  if (rangeContent) setMinMaxValue(rangeContent);
+  Array.from([...buttonsChip]).forEach((btn) => {
+    btn.remove();
+  });
+  if (Object.keys(window.inpsObj).length === 0) {
+    const chipsContents = document.querySelectorAll('.filter-actions__chips');
+    Array.from([...chipsContents]).forEach((c) => c.classList.remove('active'));
+  }
+  console.log(window.inpsObj);
 }
+
+function addChip(contents, inpName, newValue) {
+  Array.from([...contents]).forEach((c) => {
+    const currentChip = c.querySelector(`[data-name='${inpName}']`);
+
+    if (!currentChip) {
+      const chip = document.createElement('button');
+      chip.classList.add('chip', 'chip-xs');
+      chip.setAttribute('data-name', inpName);
+      chip.innerHTML = newValue;
+      console.log(newValue);
+
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
+        clearVal(inpName);
+      });
+      const block = c.querySelector('.filter-actions__chips-actions');
+      block.append(chip);
+      c.classList.add('active');
+    } else {
+      currentChip.innerHTML = newValue;
+    }
+  });
+}
+
+function setMinMaxValue(content) {
+  const inputLeft = content.querySelector('.input-left');
+  const inputRight = content.querySelector('.input-riht');
+  let range = content.querySelector('.slider > .range');
+  let priceFrom = content.querySelector('.price-from .number');
+  let priceTo = content.querySelector('.price-to .number');
+  let min = parseInt(inputLeft.min),
+    max = parseInt(inputLeft.max);
+  if (inputLeft) {
+    inputLeft.value = min;
+    priceFrom.textContent = `${inputLeft.value}`;
+
+    range.style.left = '0%';
+  }
+  if (inputRight) {
+    (min = parseInt(inputLeft.min)), (max = parseInt(inputLeft.max));
+    range.style.left = `${percent}% `;
+    priceTo.textContent = `${_this.value}`;
+
+    range.style.right = '100%';
+  }
+}
+
+const rezetBtns = document.querySelectorAll('[data-rezet]');
+Array.from(rezetBtns).forEach((btn) => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    for (const key in window.inpsObj) {
+      if (Object.prototype.hasOwnProperty.call(window.inpsObj, key)) {
+        const element = window.inpsObj[key];
+        clearVal(key);
+      }
+    }
+  });
+  // rezetBtns
+});

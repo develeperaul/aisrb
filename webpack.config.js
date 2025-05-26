@@ -105,9 +105,15 @@ module.exports = {
     publicPath: '',
     assetModuleFilename: 'src/assets/images/[name][ext]',
   },
+  externalsType: 'script',
   externals: {
-    ymaps3: 'ymaps3',
+    ymaps3: [
+      'https://api-maps.yandex.ru/v3/?apikey=62425c4f-4dfc-4f52-a01f-bc1e23d27b7d&lang=ru_RU',
+      'ymaps3',
+    ],
   },
+  // devtool: 'cheap-source-map',
+
   devServer: {
     historyApiFallback: true,
     open: true,

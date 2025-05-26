@@ -1,0 +1,36 @@
+include ../../input/index2.pug
+.modal(data-animate-open="fadeIn" data-animate-close="fadeOut" id="book" class="animate__faster")      
+  .popup.bottom-sheet
+    .sheet-header
+      .drag-handle
+    +iconbtn('close', 'secondary')(class="popup__close bottom-sheet__close" data-target="book" data-action="close")
+    .popup__wrapper.sheet-content
+      form.book(data-form="book" sss)
+        .book__top
+          .book__descr
+            h3.book__title Забронировать
+            p.book__text Оставьте заявку и наш специалист свяжется с вами, чтобы ответить на все вопросы о квартирах, ипотеке и спецпредложениях
+          .book__fields
+            +inputwhite('PROP1', '+7 (999) 000-00-00' )(data-mask="+{7}(000)-000-00-00")
+            +inputwhite('PROP2', 'Введите| текст')
+            .select.select-white(data-sel data-label="Выберите" )
+                  input(type="text" hidden name="PROP3")
+                  .select__label Когда позвонить
+                  .select__head Сегодня
+                  .select__body 
+                    .select__body-wrapper
+                      .select__options
+                        div(data-val='09:00 — 12:00') 09:00 — 12:00
+            .select.select-white(data-sel data-label="Выберите" )
+                  input(type="text" hidden name="PROP3")
+                  .select__label Во сколько позвонить
+                  .select__head Как можно скорее
+                  .select__body 
+                    .select__body-wrapper
+                      .select__options
+                        div(data-val='09:00 — 12:00') 09:00 — 12:00
+        .book__bottom
+          .book__actions
+            +btn('Отправить','primary2', '', 'submit')( class="book__btn" )
+            +btn('Написать в WhatsApp','teartiary-w', '','','whatsapp')( class="book__btn" data-target="book" data-action="close")
+          .book__info Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных

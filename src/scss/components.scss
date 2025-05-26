@@ -41,7 +41,10 @@
   }
 
   .filter-actions {
-    @apply grid gap-4;
+    @apply mb-6 lg:mb-12 xl:mb-16;
+    &__wrapper {
+      @apply grid gap-4;
+    }
     &__rooms {
       @apply grid gap-2;
       &--label {
@@ -59,6 +62,9 @@
   .menumap {
     @apply hidden xl:block;
     width: 274px;
+  }
+  .modal .menumap {
+    @apply lg:block;
   }
   .menumap-list {
     @apply grid gap-3 p-3 bg-text_000 rounded-xl;
@@ -124,6 +130,41 @@
       .card-map__title {
         @apply text-body_m;
       }
+    }
+  }
+
+  .marker {
+    @apply rounded-full h-[36px] w-[36px] grid place-content-center relative;
+  }
+  .marker-container {
+    .marker-text {
+      @apply absolute top-1/2 transform -translate-y-1/2 translate-x-full -right-2  cursor-pointer text-body_s py-2 px-3 rounded-xl opacity-0 bg-text_000;
+      transition: opacity 0.3s ease;
+    }
+    &:hover {
+      .marker-text {
+        opacity: 1;
+      }
+    }
+  }
+
+  .popup-header {
+    @apply bg-surface-dark_400 border-surface-dark_300 border-b py-4 text-text_000;
+    &-w {
+      @apply bg-text_000 border-surface-white_50 text-text_950;
+    }
+    .logo {
+      display: none;
+      @screen lg {
+        display: block;
+      }
+      height: 36px;
+    }
+    &__wrapper {
+      @apply grid grid-cols-[1fr_auto] lg:grid-cols-[auto_1fr_auto] text-center items-center;
+    }
+    &__title {
+      @apply text-body_m font-semibold;
     }
   }
 }

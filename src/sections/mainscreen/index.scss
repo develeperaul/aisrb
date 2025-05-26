@@ -3,7 +3,8 @@
   &__wrapper {
     @apply grid gap-4 lg:grid-cols-[1fr_375px] xl:grid-cols-[1fr_373px] xl:gap-4;
   }
-  &__slider {
+  &__slider,
+  &__offer {
     @apply overflow-hidden;
   }
 }

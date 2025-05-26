@@ -1,0 +1,24 @@
+.flatkladov {
+  @apply p-4 grid gap-3 bg-text_000 rounded-1.5xl relative;
+  &__top {
+    @apply grid gap-1;
+  }
+  &__bottom {
+    @apply grid gap-0.5;
+  }
+  &__title {
+    @apply text-text_950 font-semibold text-body_m;
+  }
+  &__ch {
+    @apply text-text_400 text-body_xs flex gap-0.5 items-center;
+  }
+  &__name {
+    @apply text-text_950 text-body_xs font-medium;
+  }
+  &__subname {
+    @apply text-surface-dark_50 text-body_xs;
+  }
+  &__btn {
+    @apply absolute right-4 bottom-4;
+  }
+}
