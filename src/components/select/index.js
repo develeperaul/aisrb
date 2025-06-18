@@ -76,7 +76,7 @@ function selectOpt(opt, head, options, _this, parentChild = null, e) {
     [...options].forEach((o) => {
       const inputOpt = o.querySelector('input');
       const optVal = o.dataset.val;
-      const optKey = o.dataset.key;
+      const optKey = o.querySelector('.checkbox__label').textContent;
 
       if (optVal) {
         if (inputOpt)
@@ -90,9 +90,8 @@ function selectOpt(opt, head, options, _this, parentChild = null, e) {
       }
     });
     // console.log(isChecked);
-    console.log(names);
 
-    setVal(undefined, head, input, v.join(','), names.join('-'));
+    setVal(opt, head, input, names.join(','), v.join('-'), true);
     if (!isChecked) {
       rezetSelect(_this);
     }
@@ -116,24 +115,26 @@ function windowTarget(_this, e) {
   }
 }
 
-function setVal(opt = undefined, head, input, val, keys = undefined) {
-  if (opt) {
+function setVal(opt, head, input, val, vals, isCheckbox) {
+  if (!isCheckbox) {
     opt.classList.add('active');
     head.textContent = opt.textContent;
+    input.value = opt.getAttribute('data-val');
   } else {
+    // head.setAttribute('data-select', names);
+    input.value = vals;
+
     head.textContent = val;
+
+    console.log(input.value);
   }
   head.setAttribute('data-select', val);
-  input.value = val;
 
-  if (keys !== undefined) {
-    console.log(keys);
-
-    input.setAttribute('data-names', keys);
-  } else {
-    input.removeAttribute('data-names', keys);
-  }
-  // input.dispatchEvent(new Event('change'));
+  // if (keys !== undefined) {
+  //   input.setAttribute('data-names', keys);
+  // } else {
+  //   input.removeAttribute('data-names', keys);
+  // }
 }
 
 function setXPosBody(select) {

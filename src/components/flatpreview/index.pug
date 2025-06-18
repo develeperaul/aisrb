@@ -1,17 +1,40 @@
 include ../iconbtn/index.pug 
+include ../btn/index.pug 
 include ../badge/index.pug 
 include ../svg.pug 
-.flatpreview
+.flatpreview(data-flat data-card='12' data-id="3387" data-complex='3')
   .flatpreview__top 
     div
       .flatpreview__name ЖК «Черника»
       .flatpreview__subname Черниковка
     .flatpreview__actions 
-      +iconbtn('dots', 'secondary', 'sm')
-      +iconbtn('heart', 'secondary', 'sm')
+      .flatpreview__action 
+        +iconbtn('dots', 'secondary', 'sm')(data-cardBtn)
+        div.flatpreview__modal( data-modal='cardModal') 
+          .flatpreview__modal--wrapper
+            +btn('Поделиться','', 'sm','','share')(class="btn-w" data-open="cardModalLink" )
+            +btn('Забронировать','', 'sm','','book')(class="btn-w" data-target="book" data-action="open")
+        div.flatpreview__modal-link( data-modal='cardModalLink') 
+          .flatpreview__modal-link--wrapper
+            div
+              +btn('Назад','', 'sm','','back')(class="btn-w" data-open="cardModal" )
+            div
+              +btn('Скопировать ссылку','', 'sm','','book')(class="btn-w" data-copy="https://ya.ru/?npr=1")
+            div
+              +btn('WhatsApp','', 'sm','','book')(class="btn-w")
+              +btn('Telegram','', 'sm','','book')(class="btn-w")
+              +btn('Вконтакте','', 'sm','','book')(class="btn-w")
+              +btn('Одноклассники','', 'sm','','book')(class="btn-w")
+      div(class="heart")
+        +iconbtn('heart', 'secondary', 'sm')
+      div(class="heart heart-active")
+        +iconbtn('heart-active', '', 'sm')
   .flatpreview__middle
-    +badge('с отделкой', 'paintroller','smm','secondary')(class='label')
-    include ../slider/flat/index.pug
+    .flatpreview__label 
+      +badge('с отделкой', 'paintroller','smm','secondary')(class='label')
+      +badge('с отделкой', 'paintroller','smm','secondary')(class='label')
+    .flatpreview__middle--wrapper
+      include ../slider/flat/index.pug
   .flatpreview__bottom
     .flatpreview__type Студия 
     .flatpreview__descr 

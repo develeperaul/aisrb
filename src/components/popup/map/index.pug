@@ -1,0 +1,13 @@
+include ../../btn/index.pug
+include ../../iconbtn/index.pug
+.modal.map-popup(data-animate-open="fadeIn" data-animate-close="fadeOut" id="map-content" class="animate__faster")
+  .popup-header 
+    .container
+      .popup-header__wrapper
+        a(href="/" class="logo")
+          img(src=require('/assets/icons/logo.svg'), alt="лого") 
+        .popup-header__title Наши объекты в Уфе
+        +iconbtn('close','primary','xs')(data-target="map-content" data-action="close")
+  .map-popup__content
+    #map
+    

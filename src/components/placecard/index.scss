@@ -1,12 +1,13 @@
 .place-card {
   @apply p-4 lg:p-6 grid lg:grid-cols-[48px_1fr] xl:grid-cols-1 lg:gap-6 xl:gap-0 bg-surface-dark_300 rounded-xl;
+  align-content: start;
   &__icon {
-    @apply mb-6 lg:mb-0 xl:mb-6 w-12 h-12 grid place-content-center bg-surface-dark_200 rounded-xl;
+    @apply mb-6 lg:mb-0 xl:mb-6 w-12 h-12 grid place-content-center bg-surface-dark_200 rounded-xl text-text_000;
     @screen xl {
       width: 64px;
       height: 64px;
     }
-    & img {
+    & * {
       width: 24px;
       height: 24px;
       @screen xl {

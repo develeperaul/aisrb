@@ -1,0 +1,73 @@
+include ../btn/index.pug
+include ../iconbtn/index.pug
+include ../svg.pug
+#sidebar.sidebar(data-animate-open='fadeInLeft' data-animate-close='fadeOutLeft' data-full class="animate__faster")
+
+  .sidebar__header
+    .container 
+      .header
+        .header__left
+          a(href="/" class="logo")
+            img(src=require('/assets/icons/logo.svg'), alt="лого") 
+        .header__middle
+          nav 
+            a(href="/" class="btn btn-xs btn--teartiary") 
+              span Недвижимость
+              +svg('down', 20)
+            a(href="/" class="btn btn-xs") 
+              span Проекты
+            a(href="/" class="btn btn-xs") 
+              span Как купить
+            a(href="/" class="btn btn-xs") 
+              span АИС-стандарты
+            a(href="/" class="btn btn-xs") 
+              span О компании
+            a(href="/" class="btn btn-xs") 
+              span Новости
+            a(href="/" class="btn btn-xs") 
+              span Контакты
+            
+            
+        .header__right
+          .header__contacts
+            a(href="tel:+73472242040") +7 (347) 224-20-40
+            address г. Уфа, ул. Обская, 7
+          //- +iconbtn('heart')
+          .header__right--actions
+            +iconbtn('heart','secondary','xs')()
+            +iconbtn('burger','primary','xs')(class="burger" data-target="sidebar" data-action="close")
+  .sidebar__content 
+    .container
+      .sidebar__wrapper
+        .sidebar__types
+          a(href="/") 
+            img(src=require('/assets/images/kv.png'), alt="test") 
+            span Квартиры
+          a(href="/") 
+            img(src=require('/assets/images/car.png'), alt="test") 
+            span Машино-места
+          a(href="/") 
+            img(src=require('/assets/images/kv.png'), alt="test") 
+            span Кладовые
+        .sidebar__links 
+          a(href="/")
+            span Проекты 
+            +svg("buildings")
+          a(href="/")
+            span Как купить 
+            +svg("treestructure")
+          a(href="/")
+            span АИС-стандарты 
+            +svg("stamp")
+          a(href="/")
+            span О компании 
+            +svg("info")
+          a(href="/")
+            span Новости 
+            +svg("newspaper")
+          a(href="/")
+            span Контакты 
+            +svg("addressbook")
+        .sidebar__actions 
+          +btn('Записаться на встречу', 'primary')
+          +iconbtn('whatsapp', 'primary')

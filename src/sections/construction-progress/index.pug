@@ -3,7 +3,7 @@ section.section.section2.section-offset.section-rounded.construction-progress
     .section__top   
       .left 
         h2.title Ход строительства 
-    .construction-progress__wrapper
+    .construction-progress__wrapper(data-watch)
       .construction-progress__actions
         .construction-progress__actions--left
           .select(data-sel data-label="Выберите" )
@@ -13,8 +13,8 @@ section.section.section2.section-offset.section-rounded.construction-progress
             .select__body 
               .select__body-wrapper
                 .select__options
-                  div(data-val='09:00 — 12:00') 09:00 — 12:00
-                  div(data-val='12:00 — 14:00') 12:00 — 14:00
+                  div(data-val='1') 2024
+                  div(data-val='2') 2025
           .select(data-sel data-label="Выберите" )
             input(type="text" hidden name="PROP3")
             .select__label Год
@@ -24,10 +24,39 @@ section.section.section2.section-offset.section-rounded.construction-progress
                 .select__options
                   div(data-val='09:00 — 12:00') 09:00 — 12:00
                   div(data-val='12:00 — 14:00') 12:00 — 14:00
-        .construction-progress__actions--right
-          +btn('Фото')
-          +btn('Онлайн')
-      .construction-progress__list 
-        each val in [1, 2, 3, 4]
-          include ../../components/album-preview/index.pug
-    
+        .construction-progress__actions--right.tabs
+          button.tab.active(data-target='data1') Фото
+          button.tab(data-target='data2') Онлайн
+          //- +btn('Фото')
+          //- +btn('Онлайн')
+      .tab-content.active#data1  
+        .construction-progress__list 
+          include ../../components/badge/index.pug
+          div(data-id="1")
+            .album-preview(data-target="construction" data-action="open"  id="slider2") 
+              .album-preview__top
+                +badge('20 фото', 'image','smm','')
+              .album-preview__bottom 
+                h4.album-preview__title Январь
+                p.album-preview__date 2025 г.
+          div(data-id="2")
+            .album-preview(data-target="construction" data-action="open"  id="slider2") 
+              .album-preview__top
+                +badge('20 фото', 'image','smm','')
+              .album-preview__bottom 
+                h4.album-preview__title Январь
+                p.album-preview__date 2025 г.
+          div(data-id="1")
+            .album-preview(data-target="construction" data-action="open"  id="slider2") 
+              .album-preview__top
+                +badge('20 фото', 'image','smm','')
+              .album-preview__bottom 
+                h4.album-preview__title Январь
+                p.album-preview__date 2025 г.
+          //- each val in [1, 2, 3, 4]
+          //-   include ../../components/album-preview/index.pug
+      .tab-content#data2  
+        .construction-progress__list 
+          each val in [1]
+            include ../../components/album-preview/index.pug
+include ../../components/popup/construction/index.pug

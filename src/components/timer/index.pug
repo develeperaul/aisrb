@@ -1,13 +1,13 @@
 include ../btn/index.pug
 include ./cell/index.pug
 
-.timer 
+.timer(data-timer="10.06.2025 23:59:00") 
   h4.timer__title До окончании акции
   .timer__content
-    +cell('дней')
-    +cell('часов')
-    +cell('мин.')
-    +cell('сек.')
+    +cell('дней')(data-day)
+    +cell('часов')(data-hour)
+    +cell('мин.')(data-minutes)
+    +cell('сек.')(data-seconds)
   .timer__action 
     +btn('Подробнее', 'primary', 'sm')
     svg(width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg")

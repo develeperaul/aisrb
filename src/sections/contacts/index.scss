@@ -1,4 +1,5 @@
 .contacts {
+  @apply pb-0;
   &__wrapper {
     @apply grid gap-12 lg:gap-8;
   }
@@ -15,7 +16,7 @@
           @apply text-text_000 text-body_m font-semibold;
         }
         &__text {
-          @apply text-text_400 text-body_m;
+          @apply text-text_400 text-body_m block mt-1;
         }
       }
     }
@@ -48,6 +49,7 @@
     }
   }
   &__map {
+    @apply mt-8  xl:mt-16;
     #contacts-map {
       display: none;
       width: 100%;

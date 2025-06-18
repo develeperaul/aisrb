@@ -44,51 +44,19 @@ const rangeList = document.querySelectorAll('.range-filter');
   //   characterDataOldValue: true,
   //   attributeFilter: ['data-value'],
   // });
-  function setLeftValue() {
-    let _this = inputLeft,
-      min = parseInt(_this.min),
-      max = parseInt(_this.max);
 
-    _this.value = Math.min(
-      parseInt(_this.value),
-      parseInt(inputRight.value) - 1
-    );
-    priceFrom.textContent = `${_this.value}`;
+  setLeft(inputLeft);
 
-    let percent = ((_this.value - min) / (max - min)) * 100;
-
-    range.style.left = `${percent}% `;
-  }
-
-  setLeftValue();
-
-  function setRightValue() {
-    let _this = inputRight,
-      min = parseInt(_this.min),
-      max = parseInt(_this.max);
-
-    _this.value = Math.max(
-      parseInt(_this.value),
-      parseInt(inputLeft.value) + 1
-    );
-    priceTo.textContent = `${_this.value}`;
-
-    let percent = ((_this.value - min) / (max - min)) * 100;
-
-    range.style.right = 100 - percent + '%';
-  }
-
-  setRightValue();
+  setRight(inputRight);
   function updateVal() {
-    setTimeout(() => {
-      const pref = r.getAttribute('data-prefix') ?? '';
-      r.setAttribute('data-left', `${inputLeft.value}`);
-      r.setAttribute('data-right', `${inputRight.value}`);
-      r.setAttribute(
-        'data-value',
-        `${inputLeft.value}-${inputRight.value} ${pref}`
-      );
-    }, 0);
+    const pref = r.getAttribute('data-prefix') ?? '';
+    r.setAttribute('data-left', `${inputLeft.value}`);
+    r.setAttribute('data-right', `${inputRight.value}`);
+    r.setAttribute(
+      'data-value',
+      `${inputLeft.value}-${inputRight.value} ${pref}`
+    );
+    setTimeout(() => {}, 0);
   }
   inputLeft.addEventListener('input', setLeftValue);
   inputLeft.addEventListener('change', updateVal);
@@ -133,6 +101,50 @@ const rangeList = document.querySelectorAll('.range-filter');
     inputRight.classList.remove('active');
   });
 });
+
+function setLeftValue() {
+  setLeft(this);
+}
+export function setLeft(inputLeft) {
+  let min = parseInt(inputLeft.min),
+    max = parseInt(inputLeft.max);
+  const parent = inputLeft.closest('.range-filter');
+  const priceFrom = parent.querySelector('.price-from .number');
+  const inputRight = parent.querySelector('.input-right');
+  const range = parent.querySelector('.slider > .range');
+  inputLeft.value = Math.min(
+    parseInt(inputLeft.value),
+    parseInt(inputRight.value) - 1
+  );
+  priceFrom.textContent = `${inputLeft.value}`;
+
+  let percent = ((inputLeft.value - min) / (max - min)) * 100;
+
+  range.style.left = `${percent}% `;
+}
+
+export function setRight(inputRight) {
+  let min = parseInt(inputRight.min),
+    max = parseInt(inputRight.max);
+  const parent = inputRight.closest('.range-filter');
+  const priceTo = parent.querySelector('.price-to .number');
+  const inputLeft = parent.querySelector('.input-left');
+  const range = parent.querySelector('.slider > .range');
+
+  inputRight.value = Math.max(
+    parseInt(inputRight.value),
+    parseInt(inputLeft.value) + 1
+  );
+  priceTo.textContent = `${inputRight.value}`;
+
+  let percent = ((inputRight.value - min) / (max - min)) * 100;
+
+  range.style.right = 100 - percent + '%';
+}
+
+function setRightValue() {
+  setRight(this);
+}
 
 const rangeInputs = document.querySelectorAll('.inprange ');
 // [...rangeInputs].forEach((r) => {

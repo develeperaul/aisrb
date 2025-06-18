@@ -13,13 +13,16 @@ include ../badge/index.pug
         span.objectcard__count 87 квартир в продаже
         span.objectcard__price от 3 526 455 ₽ 
       .objectcard__descr--right
-        .objectcard__descr--info
-          +svg('back',20)
-          span 110 машино-мест
-        .objectcard__descr--info
-          +svg('back',20)
-          span 57 кладовых
+        div
+          .objectcard__descr--info
+            +svg('back',20)
+            span 110 машино-мест
+          .objectcard__descr--info
+            +svg('back',20)
+            span 57 кладовых
+        div 
+          +badge('центр', 'back','sm','primary')
+          +badge('дом сдан', 'back','sm','primary')
   .objectcard__bottom
-    +badge('центр', 'back','sm','primary')
-    +badge('дом сдан', 'back','sm','primary')
+    
     

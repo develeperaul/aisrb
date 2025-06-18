@@ -1,10 +1,13 @@
+include ../../components/btn/index.pug
 section.section.section1.section-offset.section-rounded.news
   .container
+    .section__top
+      .left
+        h2.title Новости
     .news__wrapper
-      .section__top
-        .left
-          h2.title Новости
+      
       .news__list
         include ../../components/news/index.pug
         include ../../components/news/index.pug
         include ../../components/news/index.pug
+      +btn("Смотреть все новости", 'primary')(class="news__link")

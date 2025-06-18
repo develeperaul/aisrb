@@ -7,11 +7,11 @@
         @apply grid gap-2 xl:gap-3;
       }
     }
-    & .title {
-      @apply text-text_000 font-semibold text-h6 xl:text-h5;
+    h2.title {
+      @apply text-text_000 font-semibold text-h6 lg:text-h5 xl:text-h4 font-headingpro;
     }
     & .subtitle {
-      @apply text-surface-dark_400;
+      @apply text-text_400;
     }
   }
   .section1 {
@@ -25,6 +25,21 @@
     .title {
       @apply text-text_950;
     }
+    .subtitle {
+      @apply text-text_400;
+    }
+  }
+  .section4 {
+    @apply bg-text_000;
+    .title {
+      @apply text-text_950;
+    }
+    .subtitle {
+      @apply text-text_400;
+    }
+  }
+  .section5 {
+    @apply bg-surface-dark_400;
   }
   .section-offset {
     @apply pb-24 xl:pb-32 -mb-12 xl:-mb-16;
@@ -42,7 +57,7 @@
       &__head {
         @apply flex justify-between gap-4 items-center  cursor-pointer;
         h4 {
-          @apply font-semibold;
+          @apply font-semibold font-headingpro;
         }
         .icon {
           @apply w-8 h-8 inline-block relative;
@@ -96,7 +111,7 @@
 
   .modal {
     @apply fixed opacity-0 top-0 left-0 w-0 h-0 overflow-hidden;
-    z-index: 100;
+    z-index: 1000;
     background: rgba($color: #000000, $alpha: 0.3);
     display: none;
     &.open {
@@ -109,6 +124,32 @@
 
     & > .btn-close {
       @apply grid absolute top-12 right-12;
+    }
+  }
+
+  .tabs {
+    @apply inline-flex gap-4 overflow-auto;
+  }
+  .tab {
+    @extend .btn;
+    @apply bg-surface-dark_300 text-text_000 whitespace-nowrap;
+    svg {
+      @apply text-secondary_500;
+    }
+    &:not([disabled]):hover {
+      @apply bg-surface-dark_100;
+    }
+    &:not([disabled]):active {
+      @apply bg-surface-dark_200;
+    }
+    &:disabled {
+      @apply bg-surface-dark_300 text-surface-dark_200;
+      svg {
+        @apply text-surface-dark_200;
+      }
+    }
+    &.active {
+      @extend .btn--secondary;
     }
   }
 }

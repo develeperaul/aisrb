@@ -1,0 +1,57 @@
+include ../../components/badge/index.pug
+include ../../components/btn/index.pug
+include ../../components/iconbtn/index.pug
+section.section.section-offset.section3.section-rounded.flat-card 
+
+    .container
+      .flat-card__wrapper
+        .flat-card__top 
+          .flat-card__bg 
+            
+            .flat-card__imgs
+              .plan__street Street
+              .plan__street Street
+              .plan__street Street
+              .plan__street Street
+              .tab-content.active#data1  
+                .flat-card__imgs--wrapper
+                  img(src=require("/assets/test.jpeg"), alt="")
+              .tab-content#data2  
+                .flat-card__imgs--wrapper
+                  img(src=require("/assets/test.jpeg"), alt="")
+              .tab-content#data3  
+                .flat-card__imgs--wrapper
+                  img(src=require("/assets/test.jpeg"), alt="")
+            .flat-card__bg--indicators    
+              svg(width='64' height='64' viewbox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M63.5 39C63.5 52.531 52.531 63.5 39 63.5C25.469 63.5 14.5 52.531 14.5 39C14.5 25.469 25.469 14.5 39 14.5C52.531 14.5 63.5 25.469 63.5 39Z' stroke='#7199B6')
+                path(d='M51.9983 39.3963C51.9948 39.605 51.9085 39.8066 51.7584 39.9567C51.6083 40.1067 51.4068 40.193 51.1981 40.1966L39.3934 40.3955L39.1945 52.2006C39.1912 52.3796 39.1271 52.5542 39.0126 52.6956C38.8981 52.837 38.7401 52.9368 38.5647 52.9784C38.3893 53.0201 38.2069 53.0011 38.0477 52.9247C37.8885 52.8482 37.7619 52.7189 37.6889 52.558L27.069 29.1333C27.0027 28.988 26.9836 28.8242 27.0142 28.6644C27.0448 28.5045 27.1236 28.3563 27.24 28.24C27.3563 28.1237 27.5045 28.0448 27.6644 28.0142C27.8242 27.9836 27.9879 28.0027 28.1333 28.069L51.557 38.6893C51.6918 38.7502 51.8051 38.849 51.8835 38.9739C51.962 39.0989 52.0023 39.2449 51.9999 39.3947L51.9983 39.3963Z' fill='#7199B6')
+                path(d='M16.7175 3.28249C20.4275 6.99247 20.4275 13.0075 16.7175 16.7175C13.0075 20.4275 6.99247 20.4275 3.28249 16.7175C-0.427495 13.0075 -0.427494 6.99246 3.28249 3.28248C6.99247 -0.427496 13.0075 -0.427495 16.7175 3.28249Z' fill='#2E96E1' stroke='#2E96E1')
+                path(d='M10.4668 13.0113C9.83483 13.0113 9.27883 12.8833 8.79883 12.6273C8.31883 12.3713 7.94683 12.0113 7.68283 11.5473C7.42683 11.0753 7.29883 10.5313 7.29883 9.91534C7.29883 9.30734 7.43083 8.77134 7.69483 8.30734C7.95883 7.83534 8.32683 7.47134 8.79883 7.21534C9.27883 6.95134 9.83083 6.81934 10.4548 6.81934C11.3188 6.81934 12.0668 7.12334 12.6988 7.73134L11.8828 8.60734C11.7068 8.43134 11.4948 8.29534 11.2468 8.19934C10.9988 8.09534 10.7428 8.04334 10.4788 8.04334C9.93483 8.04334 9.49083 8.21934 9.14683 8.57134C8.81083 8.91534 8.64283 9.36334 8.64283 9.91534C8.64283 10.4753 8.81083 10.9273 9.14683 11.2713C9.49083 11.6153 9.93483 11.7873 10.4788 11.7873C10.7668 11.7873 11.0388 11.7353 11.2948 11.6313C11.5508 11.5273 11.7668 11.3753 11.9428 11.1753L12.7708 12.0753C12.4428 12.3953 12.0908 12.6313 11.7148 12.7833C11.3388 12.9353 10.9228 13.0113 10.4668 13.0113Z' fill='white')
+            .flat-card__tabs
+              .tabs 
+                button.tab.active(data-target='data1') Без мебели
+                button.tab(data-target='data2') С мебелью
+                button.tab(data-target='data3') Без мебели
+        .flat-card__bottom
+          .flat-card__descr
+            .flat-card__descr--top
+              .flat-card__descr--labels
+                +badge('Ключи в день сделки', 'key','sm','secondary')
+                +badge('С отделкой', '','sm','accept', '', true)
+              .flat-card__descr--title 1-комнатная 22,58 м²
+              .flat-card__descr--list
+                .flat-card__descr--item
+                  div ЖК
+                  div Новый Фамильный
+              .flat-card__descr--subtitle Особенности квартиры
+              .flat-card__descr--osob
+                +badge('Мастер-спальня', 'back','sm','accept')
+                +badge('2 с/у', 'back','sm','accept')
+                +badge('Терраса', 'back','sm','accept')
+            .flat-card__descr--bottom
+              .flat-card__descr--actions
+                +iconbtn('back', 'primary-w')
+                +iconbtn('back', 'primary-w')
+                +iconbtn('back', 'primary-w')
+              +btn('Забронировать','primary-w', '')(  data-target="book" data-action="open")

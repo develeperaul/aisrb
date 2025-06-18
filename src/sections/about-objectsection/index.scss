@@ -1,9 +1,9 @@
 .about-objectsection {
   &__wrapper {
-    @apply grid gap-6 lg:grid-cols-2 xl:flex xl:justify-between xl:items-center;
+    @apply grid gap-6 lg:grid-cols-2 xl:flex xl:justify-between xl:items-center content-start;
   }
   &__top {
-    @apply grid gap-2 xl:gap-3;
+    @apply grid gap-2 xl:gap-3 items-center content-center;
     .title {
       @apply text-h6 xl:text-h5;
     }

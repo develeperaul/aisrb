@@ -8,7 +8,9 @@ import {
 } from 'swiper/modules';
 const construction = new Swiper('.construction-slider', {
   modules: [Navigation, HashNavigation],
-  hashNavigation: true,
+  hashNavigation: {
+    watchState: true,
+  },
   slidesPerView: 1,
   allowTouchMove: false,
 

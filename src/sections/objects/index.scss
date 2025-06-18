@@ -71,7 +71,7 @@
   }
   &__content {
     & > :first-child {
-      @apply col-span-2;
+      @apply lg:col-span-2;
     }
     @apply grid gap-6 lg:grid-cols-2 lg:gap-4 xl:gap-y-8 xl:gap-x-5;
   }

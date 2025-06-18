@@ -33,7 +33,7 @@
     }
   }
   &__content {
-    @apply grid gap-5 lg:grid-cols-2 content-start;
+    @apply grid gap-5 lg:grid-cols-2 content-start text-text_000;
   }
   &__item {
     @apply grid gap-6 content-between  xl:h-[184px] xl:grid-cols-[1fr_184px] xl:content-normal;

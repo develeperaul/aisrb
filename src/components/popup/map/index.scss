@@ -1,0 +1,9 @@
+.map-popup {
+  @apply fixed w-full h-full top-0 left-0 grid grid-rows-[auto_1fr];
+  &__content {
+    @apply h-full;
+  }
+  #map {
+    @apply h-full w-full;
+  }
+}

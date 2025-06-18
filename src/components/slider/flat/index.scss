@@ -4,7 +4,7 @@
   .swiper-slide {
     @apply relative overflow-hidden rounded-xl;
     img {
-      @apply h-[325px] w-[325px] object-cover mx-auto;
+      @apply h-full w-[325px] object-contain;
     }
   }
   .swiper-pagination {

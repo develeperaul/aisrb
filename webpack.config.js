@@ -96,6 +96,7 @@ module.exports = {
   mode: 'development',
   entry: {
     main: './js/main.js',
+    validate: './js/validate-form.js',
     // index: "./js/pages/index.js",
     // ...p,
   },
@@ -111,6 +112,7 @@ module.exports = {
       'https://api-maps.yandex.ru/v3/?apikey=62425c4f-4dfc-4f52-a01f-bc1e23d27b7d&lang=ru_RU',
       'ymaps3',
     ],
+    // constraintsObj: 'src/assets/validate.json',
   },
   // devtool: 'cheap-source-map',
 

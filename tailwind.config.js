@@ -20,6 +20,7 @@ module.exports = {
     },
     fontFamily: {
       geist: ['Geist', 'sans-serif'],
+      headingpro: ['Heading-Pro', 'sans-serif'],
     },
     colors: {
       text_000: '#FAFCFE',

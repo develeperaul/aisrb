@@ -1,0 +1,42 @@
+
+extend ../layouts/main.pug
+
+include ../components/iconbtn/index.pug
+include ../components/btncheck/index.pug
+include ../components/btn/index.pug
+include ../components/svg.pug
+  
+block content
+  section.inner
+    .container
+      .inner-cover 
+        .inner-cover__wrapper
+          .inner-cover__top
+            include ../components/breadcrumb/index.pug
+            .inner-cover__top-content
+              h1.title Избранное
+              p.subtitle Оставьте заявку и наш специалист свяжется с вами, чтобы ответить на все вопросы о квартирах, ипотеке и спецпредложениях
+          
+            
+  
+
+  section.section.section3.section-rounded.flats 
+    .container 
+      .flats__wrapper
+        
+        .flats__bottom
+          
+          .flats-list.col
+            each val in [1, 2, 3, 4]
+              include ../components/flatpreview/index.pug
+          .flats-no
+            .flats-no__icon
+              +svg('binocl', 24)
+            h2.flats-no__title Вы ещё не добавили ни одной квартиры в «Избранное»
+            p.flats-no__text «Избранное» позволяет удобно сохранять интересующие вас объекты недвижимости для быстрого доступа, просмотра и сравнения.
+            +btn('Поиск квартир','primary2', '', '', 'xcircle')(class="flats-no__action")
+  script 
+    
+            
+    
+

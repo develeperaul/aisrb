@@ -1,5 +1,11 @@
 .news {
+  &__wrapper {
+    @apply grid gap-4 lg:gap-6;
+  }
   &__list {
     @apply grid gap-4 lg:grid-cols-3;
+  }
+  &__link {
+    @apply lg:w-fit mx-auto;
   }
 }

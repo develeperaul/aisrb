@@ -1,3 +1,4 @@
+include ../../components/btn/index.pug
 section.section.section2.section-rounded.standarts
   .container 
     .section__top
@@ -30,3 +31,4 @@ section.section.section2.section-rounded.standarts
             p.text Мы строим дома как из кирпича, так и по монолитно-каркасной технологии.
           .standarts__item--bottom
             img(src=require('/assets/images/standarts/standart-4.png'), alt="1") 
+      +btn("Смотреть все стандарты", 'primary')(class="standarts__link")

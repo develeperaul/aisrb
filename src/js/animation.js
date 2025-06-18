@@ -120,7 +120,7 @@ export function toggle(target, action) {
   }
 }
 
-function clickBtn() {
+export function clickBtn() {
   const target = this.getAttribute('data-target');
   const action = this.getAttribute('data-action');
   const body = document.querySelector('body');

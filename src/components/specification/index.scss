@@ -1,9 +1,9 @@
 .specification {
-  @apply rounded-xl bg-surface-dark_200 grid gap-8 p-4 max-w-[315px] content-between lg:p-6;
+  @apply rounded-xl bg-surface-dark_200 grid gap-8 p-4 max-w-[315px] content-start lg:p-6;
   img {
     @apply h-[96px] w-[96px] rounded-xl xl:h-[144px] xl:w-[144px];
   }
   h4 {
-    @apply text-text_000 font-semibold;
+    @apply text-text_000 font-semibold font-headingpro;
   }
 }

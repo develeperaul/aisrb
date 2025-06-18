@@ -1,5 +1,5 @@
 .badge {
-  @apply grid grid-cols-[auto_1fr] gap-1 items-center rounded-lg px-2 py-1.5 text-body_m bg-text_000 w-fit;
+  @apply grid grid-cols-[auto_1fr] gap-1 items-center rounded-lg px-2 py-1.5 text-body_m bg-text_000 w-fit whitespace-nowrap;
   &__title {
     @apply text-body_m font-semibold xl:text-h6;
   }

@@ -1,4 +1,4 @@
 mixin cell(name)
-  .cell 
-    span 32
+  .cell&attributes(attributes) 
+    span(data-time) 00
     span #{name}

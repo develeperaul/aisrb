@@ -16,6 +16,10 @@
     @apply flex items-center gap-4;
   }
   &__top {
+    @apply grid gap-6;
+    .icon {
+      @apply rounded-full w-16 h-16 overflow-hidden shrink-0;
+    }
     .bg {
       @apply rounded-xl h-[190px];
     }

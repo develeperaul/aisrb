@@ -1,0 +1,5 @@
+.similar {
+  &__wrapper {
+    @apply grid gap-3 xl:gap-5 lg:grid-cols-3;
+  }
+}

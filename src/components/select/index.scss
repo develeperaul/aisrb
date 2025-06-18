@@ -24,7 +24,7 @@
   }
 
   &__body {
-    @apply absolute bottom-3  transform translate-y-full  w-fit whitespace-nowrap  bg-text_000 rounded-lg;
+    @apply absolute -bottom-4  transform translate-y-full  w-fit whitespace-nowrap  bg-text_000 rounded-lg;
 
     z-index: 11;
     display: grid;
@@ -35,7 +35,7 @@
       0px 47px 28px 0px #0000000d, 0px 84px 33px 0px #00000003,
       0px 131px 37px 0px #00000000;
     @screen lg {
-      width: 228px;
+      width: 100%;
     }
     &-wrapper {
       @apply bg-text_000 p-4 grid gap-6;

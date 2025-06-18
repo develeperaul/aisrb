@@ -19,7 +19,41 @@ html(lang="ru")
     
               
     main
-      
+      .hotobuy__list  
+        .accordeon.hotobuy__content
+          .item
+            
+            .item__head 
+              
+              div(class="item__icon")
+                +svg('back',32)
+              div.item__head--content
+                h4.item__title Наличный расчёт
+                p.item__text Простой и понятный вариант покупки. Репутация компания гарантирует своевременный ввод дома в эксплуатацию, поэтому вы абсолютно не рискуете и не переплачиваете банку.
+              span.item__iconright
+                +svg('down',32)
+                +svg('minus',32)  
+            .item__body 
+              .item__body-wrapper
+                .hotobuy__item
+                  img(src=require('/assets/images/standarts/standart-1.png'), alt="1") 
+                  .hotobuy__item--content 
+                    .hotobuy__item--title Как подать заявку? 
+                    .hotobuy__item--list 
+                      .hotobuy__item--wrapper
+                        each val in [1, 2, 3, 4]
+                          div.hotobuy__descr 
+                            .hotobuy__descr--stage 1 
+                            .hotobuy__descr--title Выбираете квартиру
+                            .hotobuy__descr--text Бронируем квартиру (на срок не более 2 недель). Согласовываем ДДУ и порядок расчетов
+                            a(href="/").hotobuy__descr--link Смотреть квартиры
+                    .hotobuy__item--actions
+                      +btn('Узнать подробнее','', '')
+                      +iconbtn('whatsapp', 'primary')
+
+                  
+                    
+
       include ../components/header/index.pug
       include ../components/footer/index.pug
       include ../components/select/index.pug
@@ -58,11 +92,13 @@ html(lang="ru")
       +iconbtn('back', 'secondary')(disabled)
       +iconbtn('back', 'tertiary')(disabled)
       +iconbtn('back', 'border')(disabled)
+      +btn('open','primary', '')(onclick="myFunction()")
       +btn('open','primary', '')(data-target="banks" data-action="open")
       +btn('open','primary', '')(data-target="book" data-action="open")
       +btn('open','primary', '')(data-target="infrastructure" data-action="open")
       +btn('open','primary', '')(data-target="construction" data-action="open" id="slider1")
       +btn('open','primary', '')(data-target="construction" data-action="open" id="slider2")
+      +btn('open','primary', '')(data-target="map-content" data-action="open" )
       <a class="btn btn--primary" href="#slider2" data-target="construction" data-action="open" id="slider2"><span>open</span></a>
       +btn('hi','primary', '')()
       +btn('hi','primary', '')(disabled)
@@ -82,12 +118,13 @@ html(lang="ru")
         | ф sdfssdfsd
 
       
-      
+    
       
     //- button(class="show-modal")
     //- | Show Bottom Sheet
     include ../components/popup/thanks/index.pug
     include ../components/popup/book/index.pug
     include ../components/popup/infrastructure/index.pug
+    include ../components/popup/map/index.pug
     
     include ../components/popup/construction/index.pug

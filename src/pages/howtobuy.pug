@@ -1,0 +1,223 @@
+
+extend ../layouts/main.pug
+
+  
+block content
+  section.inner
+    .container
+      .inner-cover 
+        .inner-cover__wrapper
+          .inner-cover__top
+            include ../components/breadcrumb/index.pug
+            .inner-cover__top-content
+              h1.title Как купить
+          .inner-cover__bg 
+            img(src=require('/assets/images/services.png'), alt="test")
+  section.section.section5.section-offset.section-rounded
+    .hotobuy__list  
+      .accordeon.hotobuy__content
+        .item
+          
+          .item__head 
+            
+            div(class="item__icon")
+              +svg('pig',32)
+            div.item__head--content
+              h4.item__title Наличный расчёт
+              p.item__text Простой и понятный вариант покупки. Репутация компания гарантирует своевременный ввод дома в эксплуатацию, поэтому вы абсолютно не рискуете и не переплачиваете банку.
+            span.item__iconright
+              +svg('down',32)
+              +svg('minus',32)  
+          .item__body 
+            .item__body-wrapper
+              .hotobuy__item
+                img(src=require('/assets/images/howtobuy/1-stage.png'), alt="1") 
+                .hotobuy__item--content 
+                  .hotobuy__item--title Как подать заявку? 
+                  .hotobuy__item--list 
+                    .hotobuy__item--wrapper
+                      
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 1 
+                        .hotobuy__descr--title Выбираете квартиру
+                        .hotobuy__descr--text Бронируем квартиру (на срок не более 2 недель). Согласовываем ДДУ и порядок расчетов
+                        a(href="/").hotobuy__descr--link Смотреть квартиры
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 2
+                        .hotobuy__descr--title Подписание и регистрация ДДУ
+                        .hotobuy__descr--text Подписываем договор долевого участия и регистрируем его в Росреестре
+                        
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 3
+                        .hotobuy__descr--title Открытие эскроу-счета
+                        .hotobuy__descr--text Открытие эскроу счета в банке (на этом счете ваши средства хранятся до сдачи дома и только затем перечисляются застройщику)
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 4
+                        .hotobuy__descr--title Перечисление средств на эскроу-счет
+                        .hotobuy__descr--text Перечисление денежных средств на эскроу-счет
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 5
+                        .hotobuy__descr--title Ожидание ввода дома в эксплуатацию
+                        .hotobuy__descr--text Ожидание ввода дома в эксплуатацию
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 6
+                        .hotobuy__descr--title Монолит-каркас с заполнением кирпичом
+                        .hotobuy__descr--text Монолит-каркас с заполнением кирпичом
+                  .hotobuy__item--actions
+                    +btn('Узнать подробнее','primary', '')
+                    +btn('Узнать подробнее','secondary', '', "", 'whatsapp')
+        .item
+          
+          .item__head 
+            
+            div(class="item__icon")
+              +svg('bank',32)
+            div.item__head--content
+              h4.item__title Ипотека
+              p.item__text Пожалуй, самый распространенный способ покупки недвижимости. Необходим первоначальный взнос в размере 10-15% и достаточный доход для осуществления ежемесячных платежей. Также вам предстоит определиться с банком и подобрать оптимальные для вас условия кредитования.
+            span.item__iconright
+              +svg('down',32)
+              +svg('minus',32)  
+          .item__body 
+            .item__body-wrapper
+              .hotobuy__item
+                img(src=require('/assets/images/howtobuy/1-stage.png'), alt="1") 
+                .hotobuy__item--content 
+                  .hotobuy__item--title Как подать заявку? 
+                  .hotobuy__item--list 
+                    .hotobuy__item--wrapper
+                      
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 1 
+                        .hotobuy__descr--title Выбираете квартиру
+                        .hotobuy__descr--text Бронируем квартиру (на срок не более 2 недель). Согласовываем ДДУ и порядок расчетов
+                        a(href="/").hotobuy__descr--link Смотреть квартиры
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 2
+                        .hotobuy__descr--title Оформление ипотеки и ДДУ
+                        .hotobuy__descr--text Подаете в банк заявление, согласовываем ДДУ с банком. Подписываете кредитный договор
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 3
+                        .hotobuy__descr--title Подаете в банк заявление, согласовываем ДДУ с банком. Подписываете кредитный договор
+                        .hotobuy__descr--text Подписываем договор долевого участия и регистрируем его в Росреестре
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 4 
+                        .hotobuy__descr--title Передача ДДУ в банк
+                        .hotobuy__descr--text Передаете зарегистрированный договор в банк для перечисления денежных средств
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 5 
+                        .hotobuy__descr--title Ожидание ввода дома в эксплуатацию
+                        .hotobuy__descr--text Получаете экземпляр договора долевого участия и ждете ввода дома в эксплуатацию
+                  .hotobuy__item--contentother
+                    .hotobuy__item--title Перечень необходимых документов
+                    .hotobuy__item--list 
+                      .hotobuy__item--wrapper
+                        
+                        div.hotobuy__descr 
+                          .hotobuy__descr--stage 1 
+                          .hotobuy__descr--title Паспорт
+                          .hotobuy__descr--text Гражданина РФ, оригинал.
+                          a(href="/").hotobuy__descr--link Смотреть квартиры
+                        div.hotobuy__descr 
+                          .hotobuy__descr--stage 2
+                          .hotobuy__descr--title Трудовая книжка
+                          .hotobuy__descr--text Или другой документ, подтверждающий занятость (трудовой договор и т.п.)
+                        div.hotobuy__descr 
+                          .hotobuy__descr--stage 3
+                          .hotobuy__descr--title Военный билет
+                          .hotobuy__descr--text Для лиц мужского пола призывного возраста (для возможности учета доходов)
+                        div.hotobuy__descr 
+                          .hotobuy__descr--stage 4 
+                          .hotobuy__descr--title Справка 2-НДФЛ
+                          .hotobuy__descr--text Или другой документ, подтверждающий доход (справка по форме Банка, копия налоговой декларации и т.п.)
+                  .hotobuy__item--actions
+                    +btn('Узнать подробнее','primary', '')
+                    +btn('Узнать подробнее','secondary', '', "", 'whatsapp')
+        .item
+          
+          .item__head 
+            
+            div(class="item__icon")
+              +svg('smile',32)
+            div.item__head--content
+              h4.item__title Материнский капитал
+              p.item__text Материнским капиталом можно воспользоваться в качестве первоначального взноса при оформлении ипотеки, можно погасить часть основного долга или проценты по кредиту. Так же при определенных условиях материнским капиталом можно воспользоваться и без ипотеки.
+            span.item__iconright
+              +svg('down',32)
+              +svg('minus',32)  
+          .item__body 
+            .item__body-wrapper
+              .hotobuy__item
+                img(src=require('/assets/images/howtobuy/1-stage.png'), alt="1") 
+                .hotobuy__item--content 
+                  .hotobuy__item--title Как подать заявку? 
+                  .hotobuy__item--list 
+                    .hotobuy__item--wrapper
+                      
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 1 
+                        .hotobuy__descr--title Подача документов в ПФР
+                        .hotobuy__descr--text Подаете документы в Пенсионный фонд (территориальное отделение ПФР), получаете сертификат
+                        a(href="/").hotobuy__descr--link Смотреть квартиры
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 2
+                        .hotobuy__descr--title Выбор квартиры и расчет с маткапиталом
+                        .hotobuy__descr--text Выбираете квартиру, согласовываете порядок расчетов с учетом материнского капитала
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 3
+                        .hotobuy__descr--title Выбор квартиры и расчет
+                        .hotobuy__descr--text Заключаете сделку, подаете в ПФР заявление (в течение 2 месяцев средства перечисляются банку в счет погашения ипотеки)
+                      
+                  .hotobuy__item--actions
+                    +btn('Узнать подробнее','primary', '')
+                    +btn('Узнать подробнее','secondary', '', "", 'whatsapp')
+        .item
+          
+          .item__head 
+            
+            div(class="item__icon")
+              +svg('percent',32)
+            div.item__head--content
+              h4.item__title Трейд-ин
+              p.item__text Если для покупки квартиры вам необходимо продать имеющееся жилье, вы можете воспользоваться услугой Trade-in. Сотрудники отдела продаж сделают все за вас: проведут оценку рыночной стоимости, проверят юридическую чистоту, подадут объявление о продаже вашей старой квартиры, проведут сделку. И все это бесплатно.
+            span.item__iconright
+              +svg('down',32)
+              +svg('minus',32)  
+          .item__body 
+            .item__body-wrapper
+              .hotobuy__item
+                img(src=require('/assets/images/howtobuy/1-stage.png'), alt="1") 
+                .hotobuy__item--content 
+                  .hotobuy__item--title Как подать заявку? 
+                  .hotobuy__item--list 
+                    .hotobuy__item--wrapper
+                      
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 1 
+                        .hotobuy__descr--title Выбираете квартиру
+                        .hotobuy__descr--text Бронируем квартиру (на срок не более 2 недель). Согласовываем ДДУ и порядок расчетов
+                        a(href="/").hotobuy__descr--link Смотреть квартиры
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 2
+                        .hotobuy__descr--title Подготовка старой квартиры к продаже
+                        .hotobuy__descr--text Готовите к продаже старую квартиру вместе с менеджером застройщика по trade-in (выезд, ознакомление с документами, оценка, съемка)
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 3
+                        .hotobuy__descr--title Договор на продажу квартиры
+                        .hotobuy__descr--text Заключаете договор на реализацию вашей квартиры
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 4 
+                        .hotobuy__descr--title Бронирование новой квартиры
+                        .hotobuy__descr--text Бронируете новую квартиру по фиксированной стоимости (на срок не более 2 месяцев)
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 5
+                        .hotobuy__descr--title Продажа старой квартиры
+                        .hotobuy__descr--text Продаете старую квартиру силами наших менеджеров
+                      div.hotobuy__descr 
+                        .hotobuy__descr--stage 4 
+                        .hotobuy__descr--title Оформление сделки
+                        .hotobuy__descr--text Бронируете новую квартиру по фиксированной стоимости (на срок не более 2 месяцев)
+                  .hotobuy__item--actions
+                    +btn('Узнать подробнее','primary', '')
+                    +btn('Узнать подробнее','secondary', '', "", 'whatsapp')
+                    

@@ -20,3 +20,17 @@
   }
 }
 @include geist();
+
+@mixin headingpro {
+  $path: '../fonts';
+  @font-face {
+    font-family: 'Heading-Pro';
+    src: local('Heading-Pro'), local('Heading-Pro'),
+      url(#{$path}/Heading-Pro.woff2) format('woff2'),
+      url(#{$path}/Heading-Pro.woff) format('woff'),
+      url(#{$path}/Heading-Pro.ttf) format('ttf');
+    font-weight: 600;
+    font-style: normal;
+  }
+}
+@include headingpro();

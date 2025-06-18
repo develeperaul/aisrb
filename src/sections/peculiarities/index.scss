@@ -1,0 +1,23 @@
+.peculiarities {
+  &__list {
+    @apply flex overflow-auto gap-4;
+  }
+  &__item {
+    @apply grid gap-6 bg-surface-white_50 rounded-1.5xl  w-[315px] xl:w-[503px] p-6 shrink-0;
+    svg {
+      @apply text-surface-white_500 w-8 h-8;
+    }
+    img {
+      @apply w-8 h-8 rounded-xl;
+    }
+    &--content {
+      @apply grid gap-2;
+      h4 {
+        @apply font-semibold font-headingpro;
+      }
+      p {
+        @apply text-text_400;
+      }
+    }
+  }
+}

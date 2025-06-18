@@ -1,4 +1,7 @@
 .standarts {
+  &__wrapper {
+    @apply grid gap-4 lg:gap-6;
+  }
   &__content {
     @apply grid gap-5 lg:grid-cols-2;
   }
@@ -19,5 +22,8 @@
         @apply rounded-xl w-full h-full object-cover;
       }
     }
+  }
+  &__link {
+    @apply lg:w-fit mx-auto;
   }
 }

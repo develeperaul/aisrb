@@ -1,19 +1,39 @@
 include ../../components/minispecification/index.pug
 include ../../components/btn/index.pug
+include ../../components/iconbtn/index.pug
 include ../../components/svg.pug
 
 section.section.section3.section-rounded.flats 
   .container 
     .flats__wrapper
       .flats__top
-        
+        .flats__top--left
+          h2 Найдено 
+            span(data-count) 7 570
+            |  предложений
+        .flats__top--right
+          .select.select-white.sort(data-sel data-label="Выберите" )
+            input(type="text" hidden name="PROP3")
+            //- .select__label Когда позвонить
+            .select__head Сегодня
+            .select__body 
+              .select__body-wrapper
+                .select__options
+                  div(data-val='09:00 — 12:00') 09:00 — 12:00
+          .tabs.flats__tabs 
+            +iconbtn('sqfour')(class="active" data-target='data1')
+            +iconbtn('rows')(class="" data-target='data2')
       .flats__bottom
-        .flats-list.col
-          each val in [1, 2, 3, 4]
-            include ../../components/flatpreview/index.pug
-        .flats-list.row
-          each val in [1, 2, 3, 4]
-            include ../../components/flatpreview/index2.pug
+        svg(viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="spinner")
+          circle(class="spin2" cx="400" cy="400" fill="none" r="206" stroke-width="35" stroke="#000000" stroke-dasharray="287 1400" stroke-linecap="round")
+        div(class="tab-content active" id="data1")
+          .flats-list.col
+            each val in [1, 2, 3, 4]
+              include ../../components/flatpreview/index.pug
+        div(class="tab-content" id="data2")
+          .flats-list.row
+            each val in [1, 2, 3, 4]
+              include ../../components/flatpreview/index2.pug
         .flats-no
           .flats-no__icon
             +svg('binocl', 24)

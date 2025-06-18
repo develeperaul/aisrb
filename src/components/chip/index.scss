@@ -1,5 +1,5 @@
 .chip {
-  @apply bg-surface-dark_300 font-medium text-body_m rounded-full inline-flex items-center justify-center gap-1 text-text_000;
+  @apply bg-surface-dark_300 font-medium text-body_m rounded-full inline-flex items-center justify-center gap-1 text-text_000 whitespace-nowrap;
 
   @apply transition-all duration-300 ease-linear;
 

@@ -1,0 +1,128 @@
+.flat-card {
+  @apply pt-6;
+  &__wrapper {
+    @apply grid gap-6 lg:grid-cols-[1fr_397px] xl:grid-cols-[1fr_507px];
+  }
+  &__imgs {
+    @apply relative p-4 py-6;
+    &--wrapper {
+      @apply w-full h-full grid place-content-center;
+      & > img {
+        @apply object-contain w-[295px] h-[295px] lg:w-[596px] lg:h-[596px];
+      }
+    }
+  }
+  .plan__street {
+    @apply absolute text-body_xs text-text_400;
+
+    &:nth-child(1) {
+      @apply -top-0 left-1/2 transform -translate-x-1/2;
+    }
+
+    &:nth-child(2) {
+      @apply -right-2 top-1/2 transform -translate-y-1/2;
+      writing-mode: vertical-lr;
+    }
+
+    &:nth-child(3) {
+      @apply -bottom-0 left-1/2 transform -translate-x-1/2;
+    }
+
+    &:nth-child(4) {
+      @apply -left-2 top-1/2 transform rotate-180 -translate-y-1/2;
+      writing-mode: vertical-lr;
+    }
+  }
+  &__characteristic {
+    @apply py-6 px-4;
+
+    &--content {
+      @apply grid gap-4;
+    }
+  }
+  &__price {
+    @apply grid gap-8 px-4 py-6 lg:gap-20;
+
+    &--content {
+      @apply grid gap-6;
+      &:first-child {
+        @apply grid gap-1;
+      }
+    }
+    &--btns {
+      @apply hidden lg:inline-flex lg:gap-5;
+      & > * {
+        @apply w-fit;
+      }
+    }
+  }
+  &__peculiarities {
+    @apply grid gap-6 lg:w-[400px] self-start;
+  }
+
+  &__bg {
+    @apply relative grid   pb-[136px] lg:pb-0;
+
+    &--indicators {
+      @apply absolute bottom-[120px] left-0;
+    }
+  }
+  &__title {
+    @apply grid content-start lg:flex flex-wrap gap-1 lg:gap-8;
+  }
+  &__tabs {
+    @apply absolute bottom-0 left-0 w-full overflow-auto lg:static lg:mx-auto lg:flex lg:justify-center lg:mt-16;
+  }
+  &__descr {
+    @apply bg-text_000 rounded-xl p-4 lg:p-8 grid gap-16;
+    &--labels {
+      @apply flex flex-wrap gap-3 mb-4;
+    }
+    &--title {
+      @apply text-h6 font-semibold mb-4;
+    }
+    &--list {
+      @apply grid gap-2 mb-6;
+    }
+    &--item {
+      @apply flex items-center justify-between;
+      & > :first-child {
+        @apply text-surface-dark_50 text-body_s;
+      }
+      & > :last-child {
+        @apply text-body_m;
+      }
+      &:first-child {
+        & > :last-child {
+          @apply relative;
+          &::before {
+            @apply bg-secondary_500;
+            content: '';
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: block;
+          }
+        }
+      }
+    }
+    &--subtitle {
+      @apply text-body_m font-semibold;
+    }
+    &--osob {
+      @apply mt-4 flex flex-wrap gap-2;
+    }
+    &--bottom {
+      @apply fixed bottom-0 left-0 w-full p-4 bg-text_000 rounded-t-xl grid gap-3 lg:static lg:p-0 lg:bg-transparent lg:rounded-none;
+      z-index: 2;
+    }
+    &--actions {
+      @apply flex gap-3;
+      & > * {
+        @apply w-full;
+      }
+    }
+  }
+}
