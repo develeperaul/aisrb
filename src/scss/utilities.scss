@@ -22,7 +22,7 @@
   }
   .section3 {
     @apply bg-surface-white_50;
-    .title {
+    h2.title {
       @apply text-text_950;
     }
     .subtitle {
@@ -31,7 +31,7 @@
   }
   .section4 {
     @apply bg-text_000;
-    .title {
+    h2.title {
       @apply text-text_950;
     }
     .subtitle {

@@ -1,5 +1,6 @@
 .objectcard {
   display: grid;
+  align-content: start;
   gap: 16px;
   &__middle {
     @apply grid gap-4;
@@ -106,9 +107,10 @@
     }
 
     .objectcard__bottom {
-      @apply flex gap-2;
+      @apply grid grid-cols-3 gap-2;
       & > * {
         width: 100%;
+        @apply text-body_xs gap-6 xl:text-body_m whitespace-normal break-words;
       }
     }
     @screen xl {

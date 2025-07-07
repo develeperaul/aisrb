@@ -1,5 +1,15 @@
 .similar {
   &__wrapper {
-    @apply grid gap-3 xl:gap-5 lg:grid-cols-3;
+    @apply flex overflow-auto lg:grid gap-3 xl:gap-5 lg:grid-cols-3;
+    .objectcard {
+      flex-shrink: 0;
+      min-width: 311px;
+
+      @media screen and (max-width: 1023px) {
+        .objectcard__descr {
+          display: none;
+        }
+      }
+    }
   }
 }

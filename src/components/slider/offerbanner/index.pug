@@ -9,7 +9,7 @@
           img.bg(src=require('/assets/icons/logo.svg'), alt="")
         .offerbanner__bottom
           include ../../timer/index.pug
-    .swiper-slide
+    //- .swiper-slide
       .offerbanner 
         .offerbanner__top
           .offerbanner__descr
@@ -19,3 +19,5 @@
         .offerbanner__bottom
           include ../../timer/index.pug
   .swiper-pagination
+  +iconbtn('back',  'secondary', 'xxs')(class="btnoffer-prev")
+  +iconbtn('forward',  'secondary', 'xxs')(class="btnoffer-next")

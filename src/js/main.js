@@ -2,12 +2,17 @@ import '../scss/style.scss';
 import '../index.pug';
 
 import './animation.js';
-import { clickBtn } from './animation';
+import { clickBtn, animateCSS } from './animation';
 import './bsheet.js';
+import './article.js';
 
 import './tabs.js';
 import { clicktTab } from './tabs.js';
-import { rezetSelect, initSelect } from '../components/select/index.js';
+import {
+  rezetSelect,
+  initSelect,
+  selectOpt,
+} from '../components/select/index.js';
 import { setLeft, setRight } from '../components/range/index.js';
 import './accordeon.js';
 
@@ -1157,23 +1162,7 @@ import * as ymaps3 from 'ymaps3';
 
 const chipsContents = document.querySelectorAll('.filter-actions__chips');
 const filterForm = document.querySelectorAll('.filter-form');
-// const handler = {
-//   set(target, property, value, receiver) {
-//     console.log(`Свойство ${property} изменено на ${value}`);
-//     target[property] = value;
-//     return true;
-//   },
-//   get(target, property, receiver) {
-//     console.log(`Свойство ${property} прочитано`);
-//     return target[property];
-//   },
-//   deleteProperty(target, property) {
-//     console.log(`Свойство ${property} удалено`);
-//     delete target[property];
-//     return true;
-//   },
-// };
-// let inpsObj = new Proxy({}, handler);
+
 window.inpsObj = {};
 Array.from([...filterForm]).forEach((f) => {
   let inputs = f.querySelectorAll('input');
@@ -1182,6 +1171,9 @@ Array.from([...filterForm]).forEach((f) => {
       inp.addEventListener('change', function (e) {
         if (inp.checked) {
           window.inpsObj[inp.name] = inp.value;
+          // inp.dispatchEvent("");
+          // console.log(inp);
+
           addChip(chipsContents, inp.name, inp.value);
         } else {
           clearVal(inp.name);
@@ -1204,7 +1196,8 @@ Array.from([...filterForm]).forEach((f) => {
             chipsContents,
             name,
             mutations[0].target.getAttribute('data-value'),
-            [to, from]
+            [to, from],
+            true
           );
         });
 
@@ -1214,20 +1207,10 @@ Array.from([...filterForm]).forEach((f) => {
           attributeFilter: ['data-value'],
         });
       }
-
-      // inp.addEventListener('mouseout', function () {
-      //   window.inpsObj[inp.name] = inp;
-      //   addChip(chipsContents, inp, inp.value);
-      // });
-      // inp.addEventListener('touchend', function () {
-      //   window.inpsObj[inp.name] = inp;
-      //   addChip(chipsContents, inp, inp.value);
       // });
     } else {
       observeElement(inp, 'value', function (oldValue, newValue) {
         const select = inp.closest('.select');
-        // console.log(newValue, oldValue);
-        // console.log(newValue.split('-').length, oldValue.split('-').length);
 
         if (select) {
           const multiSelect = select.closest('.select-multi');
@@ -1237,26 +1220,6 @@ Array.from([...filterForm]).forEach((f) => {
             const dataV = sHead.getAttribute('data-select');
             window.inpsObj[inp.name] = inp.value;
             if (multiSelect) {
-              // const vals = dataV.split(',');
-              // const textVals = inp.value.split('-');
-              // vals.forEach((v, index) => {
-              //   console.log(v);
-              //   const inpCheck = multiSelect.querySelector(
-              //     `[data-val='${textVals[index]}'] input`
-              //   );
-              //   if (inpCheck) {
-              //     console.log(inpCheck.checked);
-              //   }
-              //   console.log(inpCheck);
-              //   addChip(
-              //     chipsContents,
-              //     `${inp.name}-${v}`,
-              //     v,
-              //     textVals[index],
-              //     true
-              //   );
-              // });
-              // dataV.forEach((d) => console.log(d));
             } else {
               addChip(chipsContents, inp.name, dataV, inp.value);
               if (newValue) {
@@ -1331,8 +1294,13 @@ function clearVal(dataName, form) {
       });
     }
     if (inp.type === 'text') inp.value = '';
-    if (inp.type === 'checkbox') inp.checked = false;
-    if (inp.type === 'checkbox') inp.checked = false;
+    if (inp.type === 'checkbox') {
+      if (inp.closest('label')) {
+        const label = inp.closest('label');
+        label.click();
+      }
+    }
+    // if (inp.type === 'checkbox') inp.checked = false;
   }
   if (rangeContent) setMinMaxValue(rangeContent);
   Array.from([...buttonsChip]).forEach((btn) => {
@@ -1369,7 +1337,15 @@ function addChip(contents, inpName, newValue, dataVal, isMulti) {
         block.append(chip);
         c.classList.add('active');
       } else {
-        if (!isMulti) currentChip.innerHTML = newValue;
+        if (isMulti) {
+          if (dataVal) currentChip.setAttribute('data-value', dataVal);
+          else currentChip.setAttribute('data-value', newValue);
+          currentChip.innerHTML = newValue;
+          currentChip.insertAdjacentHTML(
+            'beforeend',
+            '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.0675 15.1832C16.1256 15.2412 16.1717 15.3102 16.2031 15.386C16.2345 15.4619 16.2507 15.5432 16.2507 15.6253C16.2507 15.7075 16.2345 15.7888 16.2031 15.8647C16.1717 15.9405 16.1256 16.0095 16.0675 16.0675C16.0095 16.1256 15.9405 16.1717 15.8647 16.2031C15.7888 16.2345 15.7075 16.2507 15.6253 16.2507C15.5432 16.2507 15.4619 16.2345 15.386 16.2031C15.3102 16.1717 15.2412 16.1256 15.1832 16.0675L10.0003 10.8839L4.81753 16.0675C4.70026 16.1848 4.5412 16.2507 4.37535 16.2507C4.2095 16.2507 4.05044 16.1848 3.93316 16.0675C3.81588 15.9503 3.75 15.7912 3.75 15.6253C3.75 15.4595 3.81588 15.3004 3.93316 15.1832L9.11675 10.0003L3.93316 4.81753C3.81588 4.70026 3.75 4.5412 3.75 4.37535C3.75 4.2095 3.81588 4.05044 3.93316 3.93316C4.05044 3.81588 4.2095 3.75 4.37535 3.75C4.5412 3.75 4.70026 3.81588 4.81753 3.93316L10.0003 9.11675L15.1832 3.93316C15.3004 3.81588 15.4595 3.75 15.6253 3.75C15.7912 3.75 15.9503 3.81588 16.0675 3.93316C16.1848 4.05044 16.2507 4.2095 16.2507 4.37535C16.2507 4.5412 16.1848 4.70026 16.0675 4.81753L10.8839 10.0003L16.0675 15.1832Z" fill="#FAFCFE"/></svg>'
+          );
+        }
       }
     });
 }
@@ -1448,6 +1424,14 @@ function setParams() {
           setRight(rightInput);
         }
         if (el.type === 'checkbox') {
+          if (el.closest('.select')) {
+            const label = el.closest('label');
+            label.addEventListener('click', function (e) {
+              selectOpt(e);
+            });
+
+            label.click();
+          }
           el.checked = true;
           el.dispatchEvent(new Event('change'));
         }
@@ -1464,12 +1448,6 @@ window.setFav = () => {
       if (Object.prototype.hasOwnProperty.call(objF, comlexId)) {
         const element = objF[comlexId];
         Object.keys(element).forEach((elId) => {
-          console.log(
-            document.querySelector(
-              `[data-id="${elId}"][data-complex="${comlexId}"]`
-            )
-          );
-
           const flats = document.querySelectorAll(
             `[data-id="${elId}"][data-complex="${comlexId}"]`
           );
@@ -1488,18 +1466,33 @@ window.FlatCard = class FlatCard {
   constructor(card) {
     this.target;
     this.card = card;
+    card.onclick = (e) => {
+      if (e.target.closest('.action')) e.preventDefault();
+    };
     this._this = this;
     this.btn = this.card.querySelector('[data-cardBtn]');
-    this.btn.onclick = this.cardFunction;
+    if (this.btn) this.btn.onclick = this.cardFunction;
     this.btnCopy = this.card.querySelector('[data-copy]');
     this.btnCopy.onclick = this.copyLink;
+
+    this.btnsLink = this.card.querySelectorAll('[data-link]');
+    Array.from([...this.btnsLink]).forEach((btnLink) => {
+      btnLink.onclick = this.openLink;
+    });
 
     this.btnTarget = this.card.querySelector('[data-target]');
     this.btnTarget = clickBtn;
     this.modal = this.card.querySelector('[data-modal="cardModal"]');
     this.modalLink = this.card.querySelector('[data-modal="cardModalLink"]');
-    this.hearts = this.card.querySelectorAll('.heart');
 
+    this.btnBook = this.card.querySelector('[data-action]');
+    if (this.btnBook) this.btnBook.onclick = clickBtn;
+
+    this.btnsClose = this.card.querySelectorAll('[data-close]');
+    Array.from([...this.btnsClose]).forEach((btnClose) => {
+      btnClose.onclick = () => this.closeModal(this.target);
+    });
+    this.hearts = this.card.querySelectorAll('.heart');
     if (this.hearts) {
       Array.from([...this.hearts]).forEach((h) => {
         h.onclick = this.setfavorite;
@@ -1586,6 +1579,14 @@ window.FlatCard = class FlatCard {
         .writeText(link)
         .then(() => this.closeModal(this.target))
         .catch((err) => console.error(err));
+  };
+  openLink = (e) => {
+    const link = e.currentTarget.dataset.link;
+
+    if (link) {
+      window.open(link, '_blank');
+      this.closeModal(this.target);
+    }
   };
 };
 
@@ -1738,3 +1739,41 @@ Array.from([...cards]).forEach((cardEl) => {
 //     parent.classList.add('none');
 //   }
 // }
+const headerModalBtn = document.querySelector('#header__modal');
+const headerModal = document.querySelector('.header__modal');
+
+headerModalBtn.onclick = function () {
+  if (!headerModal.classList.contains('active')) {
+    headerModalBtn.classList.add('active');
+    headerModal.classList.add('open');
+    animateCSS(headerModal, 'fadeIn').then(() => {
+      headerModal.classList.remove('open');
+      headerModal.classList.add('active');
+    });
+  } else {
+    headerModalBtn.classList.remove('active');
+    animateCSS(headerModal, 'fadeOut').then(() => {
+      headerModal.classList.remove('active');
+    });
+  }
+};
+
+const chaticon = document.querySelector('.chaticon');
+const chaticonActions = document.querySelector('.chaticon__actions');
+const chaticonAction = document.querySelector('.chaticon__action');
+chaticonAction.onclick = function () {
+  if (!chaticonActions.classList.contains('active')) {
+    chaticonActions.classList.add('open');
+    chaticon.classList.add('active');
+
+    animateCSS(chaticonActions, 'fadeIn').then(() => {
+      chaticonActions.classList.remove('open');
+      chaticonActions.classList.add('active');
+    });
+  } else {
+    chaticon.classList.remove('active');
+    animateCSS(chaticonActions, 'fadeOut').then(() => {
+      chaticonActions.classList.remove('active');
+    });
+  }
+};

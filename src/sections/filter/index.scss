@@ -1,4 +1,11 @@
 .filter {
+  .right {
+    display: flex;
+    gap: 12px;
+    .action-filter {
+      @apply lg:hidden;
+    }
+  }
   .subtitle {
     @apply text-text_400;
   }
@@ -20,6 +27,7 @@
     }
     .desc {
       @apply hidden lg:block;
+
       .filter-actions__wrapper {
         @apply xl:flex;
         & > :nth-child(1) {

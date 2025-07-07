@@ -1,5 +1,23 @@
 .flat-card {
   @apply pt-6;
+
+  .heart {
+    display: block;
+    & > * {
+      width: 100%;
+    }
+  }
+  .heart.heart-active {
+    display: none;
+  }
+  &.favorite {
+    .heart {
+      display: none;
+    }
+    .heart.heart-active {
+      display: block;
+    }
+  }
   &__wrapper {
     @apply grid gap-6 lg:grid-cols-[1fr_397px] xl:grid-cols-[1fr_507px];
   }
@@ -116,12 +134,34 @@
     }
     &--bottom {
       @apply fixed bottom-0 left-0 w-full p-4 bg-text_000 rounded-t-xl grid gap-3 lg:static lg:p-0 lg:bg-transparent lg:rounded-none;
-      z-index: 2;
+      z-index: 10;
     }
     &--actions {
-      @apply flex gap-3;
-      & > * {
+      @apply grid grid-cols-3 gap-3 relative;
+
+      & > *:not([data-modal]) {
         @apply w-full;
+      }
+    }
+  }
+  &__modal-link {
+    @apply absolute bottom-0 right-0 lg:transform lg:translate-y-full rounded-xl p-4 bg-text_000;
+    display: none;
+    z-index: 3;
+    box-shadow: 0px 0px 8px 4px rgba(12, 12, 13, 0.05);
+    &.active {
+      display: block;
+    }
+    &--wrapper {
+      @apply grid;
+      & > *:not(:last-child) {
+        @apply border-b border-surface-white_50 pb-1 mb-1;
+      }
+      & > * {
+        @apply grid gap-2;
+      }
+      .btn {
+        @apply justify-start;
       }
     }
   }

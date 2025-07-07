@@ -1,10 +1,10 @@
 include ../../components/badge/index.pug
 include ../../components/btn/index.pug
 include ../../components/iconbtn/index.pug
-section.section.section-offset.section3.section-rounded.flat-card 
+section.section.section-offset.section3.section-rounded.flat-card(data-card data-id="3387" data-complex='3') 
 
     .container
-      .flat-card__wrapper
+      .flat-card__wrapper()
         .flat-card__top 
           .flat-card__bg 
             
@@ -51,7 +51,21 @@ section.section.section-offset.section3.section-rounded.flat-card
                 +badge('Терраса', 'back','sm','accept')
             .flat-card__descr--bottom
               .flat-card__descr--actions
+                div(class="heart")
+                  +iconbtn('heart', 'primary-w')
+                div(class="heart heart-active")
+                  +iconbtn('heart-active', 'primary-w')
+
                 +iconbtn('back', 'primary-w')
-                +iconbtn('back', 'primary-w')
-                +iconbtn('back', 'primary-w')
+                +iconbtn('back', 'primary-w')(data-cardBtn)
+                div.flat-card__modal-link( data-modal='cardModal') 
+                  .flat-card__modal-link--wrapper
+                    
+                    div
+                      +btn('Скопировать ссылку','', 'sm','','book')(class="btn-w" data-copy="https://ya.ru/?npr=1")
+                    div
+                      +btn('WhatsApp','', 'sm','','book')(class="btn-w")
+                      +btn('Telegram','', 'sm','','book')(class="btn-w")
+                      +btn('Вконтакте','', 'sm','','book')(class="btn-w")
+                      +btn('Одноклассники','', 'sm','','book')(class="btn-w")
               +btn('Забронировать','primary-w', '')(  data-target="book" data-action="open")

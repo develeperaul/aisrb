@@ -9,7 +9,7 @@ header
           img(src=require('/assets/icons/logo.svg'), alt="лого") 
       .header__middle
         nav 
-          a(href="/" class="btn btn-xs btn--teartiary") 
+          button(id="header__modal" class="btn btn-xs btn--teartiary") 
             span Недвижимость
             +svg('down', 20)
           a(href="/" class="btn btn-xs") 
@@ -34,3 +34,28 @@ header
         .header__right--actions
           +iconbtn('heart','secondary','xs')()
           +iconbtn('burger','primary','xs')(class="burger" data-target="sidebar" data-action="open")
+  .header__modal 
+    .header__modal--wrapper 
+      .container
+        .header__modal--types
+            a(href="/") 
+              img(src=require('/assets/images/kv.png'), alt="test") 
+              span Квартиры
+            a(href="/") 
+              img(src=require('/assets/images/car.png'), alt="test") 
+              span Машино-места
+            a(href="/") 
+              img(src=require('/assets/images/kv.png'), alt="test") 
+              span Кладовые
+.chaticon
+  .chaticon__actions
+    +iconbtn('plus', 'tertiary', 'sm')()
+    +iconbtn('plus', 'tertiary', 'sm')()
+    +iconbtn('plus', 'tertiary', 'sm')()
+  .chaticon__action
+    .chaticon__chat
+      +iconbtn('chat', 'secondary', 'sm')(class="")
+    .chaticon__close
+      +iconbtn('close', 'secondary', 'sm')(class="")
+.article
+  +iconbtn('up', 'secondary', 'sm')(class="")

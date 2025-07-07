@@ -9,6 +9,20 @@
       @apply bg-text_000;
     }
   }
+  .btnoffer-prev,
+  .btnoffer-next {
+    position: absolute;
+    bottom: 138px;
+    &.swiper-button-lock {
+      display: none;
+    }
+  }
+  .btnoffer-prev {
+    left: 0;
+  }
+  .btnoffer-next {
+    right: 0;
+  }
 }
 .offerbanner {
   @apply inline-grid gap-6;

@@ -1,14 +1,14 @@
 include ../iconbtn/index.pug 
 include ../badge/index.pug 
 include ../svg.pug 
-.flatpreview-g
+.flatpreview-g.favorite
   .flatpreview-g__left
     .flatpreview-g__left--content
       
       .flatpreview__type Студия 
       .flatpreview-g__descr 
         span 9 этаж из 12
-        span 
+        span.dot 
           +svg("dot", 4)
         span 22,58 м²
       .flatpreview-g__naming
@@ -23,7 +23,10 @@ include ../svg.pug
       +badge('2 с/у', 'toilet','sm','accept')
     .flatpreview-g__actions 
       +iconbtn('dots', 'secondary', 'sm')
-      +iconbtn('heart', 'secondary', 'sm')
+      div(class="heart")
+        +iconbtn('heart', 'secondary', 'sm')
+      div(class="heart heart-active")
+        +iconbtn('heart-active', '', 'sm')
   
     
     

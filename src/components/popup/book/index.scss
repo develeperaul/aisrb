@@ -5,6 +5,9 @@
   &__top {
     overflow: auto;
     height: 100%;
+    @screen lg {
+      overflow: hidden;
+    }
   }
   &__fields {
     @apply grid gap-5;

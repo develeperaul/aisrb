@@ -16,5 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     pagination: {
       el: '.swiper-pagination',
     },
+    navigation: {
+      nextEl: '.btnoffer-next',
+      prevEl: '.btnoffer-prev',
+    },
   });
 });

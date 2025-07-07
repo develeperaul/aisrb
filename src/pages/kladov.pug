@@ -1,6 +1,10 @@
 
 extend ../layouts/main.pug
 
+include ../components/iconbtn/index.pug
+include ../components/btncheck/index.pug
+include ../components/btn/index.pug
+
   
 block content
   section.inner
@@ -10,7 +14,45 @@ block content
           .inner-cover__top
             include ../components/breadcrumb/index.pug
             .inner-cover__top-content
-              h1.title Выбор кладовой
+              h1.title Выбор квартиры
+          .inner-cover__bottom
+            .inner-cover__filter 
+              .mob 
+                .filter-actions
+                  .filter-actions__wrapper
+                    +btn('Фильтры','primary', '','','filter')(class="action" data-target="filter" data-action="open")
+                    
+                    
+                  .filter-actions__chips
+                    .filter-actions__chips-actions
+                    div
+                      +btn('Очистить фильтр','', 'xs', '', 'xcircle')(class="action" data-rezet='filter-form')
+              .desc 
+                form.filter-actions.filter-form.filter-other
+                  .filter-actions__wrapper
+                    
+                    .select(data-sel data-label="Выберите" data-name="PROP3" )
+                      input(type="text" hidden name="PROP3" data-input)
+                      .select__label Выберите ЖК
+                      .select__head Любой
+                      .select__body 
+                        .select__body-wrapper
+                          .select__options
+                            div(data-val='1') 09:00 — 12:00
+                            div(data-val='12:00 — 14:00') 12:00 — 14:00
+                    .filter-actions__rooms
+                      .filter-actions__rooms--label Количество комнат
+                      .filter-actions__rooms--btns
+                        +btncheck('С','primary','', name='room-C', 'С')(class="action")
+                        +btncheck('1','primary','', name='room-1', '1')(class="action")
+                        +btncheck('2','primary','', name='room-2', '2')(class="action")
+                  
+                    +btn('Показать предложения','primary','','submit')(class="action")
+                  
+                  .filter-actions__chips
+                    .filter-actions__chips-actions
+                    div
+                      +btn('Очистить фильтр','', 'xs', '', 'xcircle')(class="action" data-rezet='filter-form')
               
           //- .inner-cover__bg 
             

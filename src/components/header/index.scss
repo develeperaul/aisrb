@@ -1,5 +1,6 @@
 header {
   @apply bg-surface-dark_400 border-b border-surface-dark_300;
+  position: relative;
 }
 .header {
   display: flex;
@@ -40,6 +41,50 @@ header {
     address {
       @apply text-surface-dark_100 text-body_xs;
       font-style: normal;
+    }
+  }
+  &__modal {
+    @apply rounded-b-1.5xl hidden  opacity-0 w-0;
+    @apply bg-surface-dark_400;
+
+    position: absolute;
+    bottom: -1px;
+    overflow: hidden;
+    z-index: 11;
+    left: 0;
+    transform: translateY(100%);
+
+    &.open {
+      @apply opacity-100 w-full  xl:block;
+    }
+
+    &.active {
+      @apply opacity-100 w-full  xl:block;
+    }
+    &--wrapper {
+    }
+    &--types {
+      @apply py-6;
+      @apply flex gap-4;
+      & > * {
+        @apply w-fit shrink-0 lg:w-full flex gap-5 items-center text-body_s text-text_000 bg-surface-dark_300 p-4 rounded-xl;
+        min-width: 96px;
+        width: fit-content;
+        flex-shrink: 0;
+        img {
+          @apply w-[64px] h-[64px] rounded-xl overflow-hidden;
+        }
+      }
+    }
+  }
+  #header__modal {
+    svg {
+      transition: transform 0.3s ease;
+    }
+    &.active {
+      svg {
+        @apply transform rotate-180;
+      }
     }
   }
   .logo {

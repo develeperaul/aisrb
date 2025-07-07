@@ -2,7 +2,7 @@ include ../iconbtn/index.pug
 include ../btn/index.pug 
 include ../badge/index.pug 
 include ../svg.pug 
-.flatpreview(data-flat data-card='12' data-id="3387" data-complex='3')
+a(href="/").flatpreview(data-flat data-card='12' data-id="3387" data-complex='3')
   .flatpreview__top 
     div
       .flatpreview__name ЖК «Черника»
@@ -21,9 +21,9 @@ include ../svg.pug
             div
               +btn('Скопировать ссылку','', 'sm','','book')(class="btn-w" data-copy="https://ya.ru/?npr=1")
             div
-              +btn('WhatsApp','', 'sm','','book')(class="btn-w")
-              +btn('Telegram','', 'sm','','book')(class="btn-w")
-              +btn('Вконтакте','', 'sm','','book')(class="btn-w")
+              +btn('WhatsApp','', 'sm','','book')(class="btn-w" data-link="https://ya.ru/?npr=1")
+              +btn('Telegram','', 'sm','','book')(class="btn-w" data-link="https://ya.ru/?npr=1")
+              +btn('Вконтакте','', 'sm','','book')(class="btn-w" data-link="https://ya.ru/?npr=1")
               +btn('Одноклассники','', 'sm','','book')(class="btn-w")
       div(class="heart")
         +iconbtn('heart', 'secondary', 'sm')

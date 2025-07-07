@@ -124,6 +124,7 @@ export function clickBtn() {
   const target = this.getAttribute('data-target');
   const action = this.getAttribute('data-action');
   const body = document.querySelector('body');
+
   if (
     this.closest('.modal') &&
     this.closest('.modal').querySelector('form') &&

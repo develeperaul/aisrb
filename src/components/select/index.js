@@ -55,15 +55,26 @@ function actionSelect(e) {
         //     );
         //   });
         // }
-        opt.onclick = selectOpt.bind(null, opt, head, options, this, null);
+        opt.onclick = selectOpt;
+        // opt.onclick = selectOpt.bind(null, opt, head, options, this, null);
       });
       window.onclick = windowTarget.bind(null, this);
       setTimeout(() => (openSelect = this), 0);
     }
   }
 }
-function selectOpt(opt, head, options, _this, parentChild = null, e) {
+// function selectOpt(opt, head, options, _this, parentChild = null, e) {
+export function selectOpt(e) {
   updateEl(true);
+  const opt = e.currentTarget;
+
+  const _this = opt.closest('.select');
+
+  const head = _this.querySelector('.select__head');
+  const options = _this.querySelectorAll('.select__options > *');
+
+  // console.log(select);
+  // console.log(e.currentTarget);
 
   // const val = opt.dataset.val;
   const val = opt.textContent;
@@ -122,11 +133,9 @@ function setVal(opt, head, input, val, vals, isCheckbox) {
     input.value = opt.getAttribute('data-val');
   } else {
     // head.setAttribute('data-select', names);
-    input.value = vals;
+    // input.value = vals;
 
     head.textContent = val;
-
-    console.log(input.value);
   }
   head.setAttribute('data-select', val);
 

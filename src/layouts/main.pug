@@ -1,3 +1,4 @@
+include ../components/iconbtn/index.pug
 doctype html
 html(lang="ru")
   head
@@ -8,11 +9,13 @@ html(lang="ru")
     
     title Document
   body
+    
     include ../components/header/index.pug
     block top
     main
       block content
     include ../components/footer/index.pug
+    
     //- .modal(data-animate-open="fadeIn" data-animate-close="fadeOut" id="success" class="animate__faster")      
       .btn-close
         button(data-target="success" data-action="close")

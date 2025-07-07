@@ -50,10 +50,16 @@ if (formsBookForm) {
     });
     function requestFooterForm() {
       console.log('suc');
-
-      formReq(formFooterForm, '/api/feedback.php', () =>
-        toggle('thanks', 'open')
-      );
+      const parent = formFooterForm.closest('.modal');
+      if (parent) {
+        const idP = parent.id;
+        if (idP) {
+          formReq(formFooterForm, '/api/feedback.php', () => {
+            toggle(idP, 'close');
+            toggle('thanks', 'open');
+          });
+        }
+      }
     }
   });
 }
@@ -167,7 +173,6 @@ export function closestParent(child, className) {
 
 export function checkInvalid(form, errors) {
   console.log(errors);
-  console.log(form);
 
   if (Object.keys(errors).length === 0) {
     Array.from(form.querySelectorAll("button[type='submit']")).forEach((btn) =>
@@ -182,7 +187,6 @@ export function checkInvalid(form, errors) {
 
 const formReq = async (form, url, action, options = {}) => {
   // action();
-  console.log(action);
   const formData = new FormData();
   const fields = form.querySelectorAll('input, textarea, checkbox');
   const theme = form.getAttribute('data-theme');
@@ -221,7 +225,7 @@ const formReq = async (form, url, action, options = {}) => {
   })
     .then((responce) => {
       if (responce.status === 200) {
-        suc = true;
+        success = true;
         action();
       }
     })

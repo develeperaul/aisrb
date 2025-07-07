@@ -1,26 +1,4 @@
 .advantages {
   .swiper {
-    &::before {
-      content: '';
-      height: 100%;
-      width: 152px;
-      background: linear-gradient(90deg, #202b43 0%, rgba(32, 43, 67, 0) 100%);
-      position: absolute;
-      left: -24px;
-      top: 0;
-      z-index: 2;
-    }
-    &::after {
-      content: '';
-      height: 100%;
-      width: 152px;
-
-      background: linear-gradient(90deg, rgba(32, 43, 67, 0) 0%, #202b43 100%);
-
-      position: absolute;
-      right: -24px;
-      top: 0;
-      z-index: 2;
-    }
   }
 }
