@@ -32,7 +32,14 @@ header
           address г. Уфа, ул. Обская, 7
         //- +iconbtn('heart')
         .header__right--actions
-          +iconbtn('heart','secondary','xs')()
+          .heart-icon.heart-btn.active
+            +iconbtn('heart','secondary','xs')()
+            span.count 1
+            .snackbar.info
+              .snackbar__wrapper
+                div 
+                span Избранное
+                div
           +iconbtn('burger','primary','xs')(class="burger" data-target="sidebar" data-action="open")
   .header__modal 
     .header__modal--wrapper 

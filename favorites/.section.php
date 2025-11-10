@@ -1,6 +1,0 @@
-<?
-$sSectionName = "Podborshik";
-$arDirProperties = Array(
-
-);
-?>

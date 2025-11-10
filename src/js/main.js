@@ -1507,12 +1507,18 @@ window.FlatCard = class FlatCard {
     }
   };
   closeModal = (modal) => {
+    window.removeEventListener('click', this.targetClick);
+    window.removeEventListener('scroll', this.scrollPage);
     this.target = undefined;
 
     modal.classList.remove('active');
   };
   openModal = (modal) => {
     this.target = modal;
+    setTimeout(() => {
+      window.addEventListener('click', this.targetClick);
+      window.addEventListener('scroll', this.scrollPage);
+    }, 0);
 
     modal.classList.add('active');
     const cardBtns = this.card.querySelectorAll('button');
@@ -1536,6 +1542,7 @@ window.FlatCard = class FlatCard {
   };
   backModal = () => {};
   setfavorite = (e) => {
+    console.log(e);
     const btn = e.currentTarget;
     const localFavorite = window.localStorage.getItem('favorite');
     const dataId = this.card.dataset.id;
@@ -1558,7 +1565,11 @@ window.FlatCard = class FlatCard {
           if (objCard) {
             if (localFavorite) {
               const objF = JSON.parse(localFavorite);
-              objF[dataComplex][dataId] = objCard;
+              if (objF[dataComplex]) {
+                objF[dataComplex] = { ...objF[dataComplex], [dataId]: objCard };
+              } else {
+                objF[dataComplex] = { [dataId]: objCard };
+              }
               window.localStorage.setItem('favorite', JSON.stringify(objF));
             } else {
               window.localStorage.setItem(
@@ -1571,6 +1582,39 @@ window.FlatCard = class FlatCard {
         this.card.classList.add('favorite');
       }
     }
+    function countFav() {
+      const localFavorite = window.localStorage.getItem('favorite');
+      let len = 0;
+      if (localFavorite) {
+        const objF = JSON.parse(localFavorite);
+
+        for (const comlexId in objF) {
+          if (Object.prototype.hasOwnProperty.call(objF, comlexId)) {
+            const element = objF[comlexId];
+            console.log(Object.values(objF[comlexId]).length);
+            len += Object.values(objF[comlexId]).length;
+            console.log(element.length);
+
+            // Object.keys(element).forEach((elId) => {
+
+            // })
+          }
+        }
+      }
+      return len;
+    }
+    function setCountFav(cLenght) {
+      const heartIconEls = document.querySelectorAll('.heart-icon');
+      const len = cLenght();
+      if (len > 0) {
+        Array.from([...heartIconEls]).forEach((el) => {
+          const countEl = el.querySelector('.count');
+          el.classList.add('active');
+          countEl.textContent = len;
+        });
+      }
+    }
+    setCountFav(countFav);
   };
   copyLink = (e) => {
     const link = this.btnCopy.dataset.copy;
@@ -1587,6 +1631,16 @@ window.FlatCard = class FlatCard {
       window.open(link, '_blank');
       this.closeModal(this.target);
     }
+  };
+  targetClick = (e) => {
+    if (!e.composedPath().includes(this.target)) {
+      this.closeModal(this.target);
+    }
+  };
+  scrollPage = (e) => {
+    console.log(e);
+
+    this.closeModal(this.target);
   };
 };
 
@@ -1777,3 +1831,39 @@ chaticonAction.onclick = function () {
     });
   }
 };
+
+function countFav() {
+  const localFavorite = window.localStorage.getItem('favorite');
+  let len = 0;
+  if (localFavorite) {
+    const objF = JSON.parse(localFavorite);
+
+    for (const comlexId in objF) {
+      if (Object.prototype.hasOwnProperty.call(objF, comlexId)) {
+        const element = objF[comlexId];
+        console.log(Object.values(objF[comlexId]).length);
+        len += Object.values(objF[comlexId]).length;
+        console.log(element.length);
+
+        // Object.keys(element).forEach((elId) => {
+
+        // })
+      }
+    }
+  }
+  return len;
+}
+function setCountFav(cLenght) {
+  const heartIconEls = document.querySelectorAll('.heart-icon');
+  const len = cLenght();
+  if (len > 0) {
+    Array.from([...heartIconEls]).forEach((el) => {
+      const countEl = el.querySelector('.count');
+      el.classList.add('active');
+      countEl.textContent = len;
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  setCountFav(countFav);
+});

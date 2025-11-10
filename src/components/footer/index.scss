@@ -17,6 +17,11 @@ footer {
     }
     &__bottom {
       @apply border-t border-surface-dark_300 pt-6 pb-8 lg:pt-8;
+      @apply text-surface-dark_100 text-body_xs grid gap-2 lg:flex lg:items-center lg:justify-between;
+
+      div {
+        @apply grid gap-4 lg:gap-5 lg:max-w-[480px] lg:flex items-center lg:justify-between lg:w-full xl:max-w-[766px];
+      }
     }
     &__descr {
       @apply grid gap-4 lg:grid-cols-2;

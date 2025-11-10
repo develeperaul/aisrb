@@ -9,22 +9,19 @@
   }
   .topcontent {
     h4 {
-      @apply text-text_000 font-headingpro text-body_m xl:text-h5 mb-3;
+      @apply text-text_000 text-body_m xl:text-h5 mb-3;
     }
     p {
       @apply text-text_400;
     }
     &__04 {
-      h4 {
-        @apply font-headingpro;
-      }
       p {
         @apply text-body_s;
       }
     }
     &__05 {
       h4 {
-        @apply text-h6 font-semibold font-headingpro;
+        @apply text-h6 font-semibold;
       }
       p {
         @apply text-body_s;
@@ -32,7 +29,7 @@
     }
     &__06 {
       h4 {
-        @apply text-body_m font-semibold font-headingpro;
+        @apply text-body_m font-semibold;
       }
       p {
         @apply text-body_s;
@@ -195,7 +192,7 @@
         }
       }
       .card-menu2__descr--bottom {
-        @apply flex gap-4;
+        @apply flex gap-4 flex-wrap;
       }
       .card-menu2__descr__action {
         @apply grid;

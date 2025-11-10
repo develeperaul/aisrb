@@ -13,6 +13,7 @@
   .btnoffer-next {
     position: absolute;
     bottom: 138px;
+    z-index: 1;
     &.swiper-button-lock {
       display: none;
     }
@@ -37,6 +38,9 @@
     .bg {
       @apply rounded-xl h-[190px];
     }
+  }
+  .subtitle {
+    @apply text-text_400 text-body_s mb-1;
   }
   .title {
     @apply text-text_000 text-body_m font-semibold;

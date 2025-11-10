@@ -51,10 +51,16 @@ section.section.section-offset.section3.section-rounded.flat-card(data-card data
                 +badge('Терраса', 'back','sm','accept')
             .flat-card__descr--bottom
               .flat-card__descr--actions
-                div(class="heart")
-                  +iconbtn('heart', 'primary-w')
-                div(class="heart heart-active")
-                  +iconbtn('heart-active', 'primary-w')
+                .heart-btn
+                  div(class="heart")
+                    +iconbtn('heart', 'primary-w')
+                  div(class="heart heart-active")
+                    +iconbtn('heart-active', 'primary-w')
+                  .snackbar.info.info--t
+                    .snackbar__wrapper
+                      div 
+                      span Добавить в избранное
+                      div
 
                 +iconbtn('back', 'primary-w')
                 +iconbtn('back', 'primary-w')(data-cardBtn)
